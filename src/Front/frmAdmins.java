@@ -8,12 +8,12 @@ package Front;
  *
  * @author edwin
  */
-public class frmCajero extends javax.swing.JFrame {
+public class frmAdmins extends javax.swing.JFrame {
 
     /**
      * Creates new form frmAdmins
      */
-    public frmCajero() {
+    public frmAdmins() {
         initComponents();
         this.setLocationRelativeTo(this);
     }
@@ -37,14 +37,14 @@ public class frmCajero extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cajero");
+        setTitle("Administrador");
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
-        jLabel1.setText("         Cajero  De Dionisio´s");
+        jLabel1.setText("  Administrador De Dionisio´s");
 
         btnRegistrarUsu1.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrarUsu1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -196,21 +196,20 @@ public class frmCajero extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCajero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCajero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCajero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCajero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCajero().setVisible(true);
+                new frmAdmins().setVisible(true);
             }
         });
     }

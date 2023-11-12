@@ -175,7 +175,7 @@ public class frmLogin extends javax.swing.JFrame {
                   if(RS.next()){
                       String TipoRol = RS.getString("Rol");
                       if(TipoRol.equalsIgnoreCase("ADMIN")){
-                          frmAdmin objAdmin = new frmAdmin();
+                          frmAdmins objAdmin = new frmAdmins();
                           objAdmin.setVisible(true);
                          dispose();
                       }else if(TipoRol.equalsIgnoreCase("CAJERO")){

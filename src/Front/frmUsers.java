@@ -13,38 +13,27 @@ public class frmUsers extends javax.swing.JFrame {
 
     ClsConexion CON;
     Connection CN;
-    
+
     public frmUsers() {
         initComponents();
-        this.setLocationRelativeTo(this);
-        lblErrorDNI.setVisible(false);
-        lblErrorNombre.setVisible(false);
-        lblErrorApellidos.setVisible(false);
-        lblErrorCorreo.setVisible(false);
-        lblErrorContra.setVisible(false);
+        lblErrorUser.setVisible(false);
+        lblErrorPass.setVisible(false);
         lblErrorRol.setVisible(false);
-        
+        this.setLocationRelativeTo(this);
         CON = new ClsConexion();
         CN = CON.getConnection();
-        
         ListarTabla();
     }
     
     private void Limpiar(){
         // Se limpian todos los campos
-        txtDNI.setText("");
-        txtNombre.setText("");
-        txtApellidos.setText("");
-        txtCorreo.setText("");
-        txtContrasena.setText("");
+        txtUser.setText("");
+        txtPass.setText("");
         cbRol.setSelectedIndex(0);
         
         // Se ocultan todos los errores
-        lblErrorDNI.setVisible(false);
-        lblErrorNombre.setVisible(false);
-        lblErrorApellidos.setVisible(false);
-        lblErrorCorreo.setVisible(false);
-        lblErrorContra.setVisible(false);
+        lblErrorUser.setVisible(false);
+        lblErrorPass.setVisible(false);
         lblErrorRol.setVisible(false);
     }
     
@@ -52,24 +41,24 @@ public class frmUsers extends javax.swing.JFrame {
         
         // Definición de la configuración de la tabla y sus columnas
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("USER");
-        modelo.addColumn("PASS");
+        modelo.addColumn("Nombre");       
         modelo.addColumn("ROL");
-
+       
+        
+        
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM TblUsers";
+            String ConsLista = "SELECT * FROM tblUsers";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
             
             // Recorer los resultados y cargalos a una lista
             while(RS.next()){
-                Object [] Lista = {RS.getString(1), RS.getString(2), RS.getString(3),
-                RS.getString(4), RS.getString(5), RS.getString(7)};
+                Object [] Lista = {RS.getString(1),  RS.getString(3)};
                 modelo.addRow(Lista);
             }
-            tblListaUsuarios.setModel(modelo);
+            tbListUsers.setModel(modelo);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, 
@@ -90,260 +79,46 @@ public class frmUsers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        pnlUsuario = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtDNI = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtContrasena = new javax.swing.JPasswordField();
-        lblErrorDNI = new javax.swing.JLabel();
-        lblErrorCorreo = new javax.swing.JLabel();
-        lblErrorNombre = new javax.swing.JLabel();
-        lblErrorApellidos = new javax.swing.JLabel();
-        lblErrorContra = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        cbRol = new javax.swing.JComboBox<>();
-        lblErrorRol = new javax.swing.JLabel();
-        btnLimpiar = new javax.swing.JButton();
+        txtUser = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
+        cbRol = new javax.swing.JComboBox<>();
+        lblErrorUser = new javax.swing.JLabel();
+        lblErrorPass = new javax.swing.JLabel();
+        lblErrorRol = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbListUsers = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblListaUsuarios = new javax.swing.JTable();
-        lblTitulo1 = new javax.swing.JLabel();
-        btnEliminar1 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("LOGIN");
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel7.setText("APELLIDOS DEL USUARIO");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
-
-        pnlUsuario.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblTitulo.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(102, 0, 102));
-        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("LISTA DE USUARIOS");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestion Usuarios");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Personales", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Sans", 1, 14), new java.awt.Color(102, 0, 102))); // NOI18N
-        jPanel1.setToolTipText("");
+        jPanel1.setPreferredSize(new java.awt.Dimension(555, 361));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel1.setText("DNI DEL USUARIO");
-
-        txtDNI.setBackground(new java.awt.Color(255, 204, 255));
-        txtDNI.setForeground(new java.awt.Color(51, 0, 51));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel2.setText("NOMBRE DEL USUARIO");
-
-        txtNombre.setBackground(new java.awt.Color(255, 204, 255));
-        txtNombre.setForeground(new java.awt.Color(51, 0, 51));
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtUser.setBackground(new java.awt.Color(0, 153, 255));
+        txtUser.setForeground(new java.awt.Color(51, 0, 51));
+        txtUser.setToolTipText("");
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                txtUserActionPerformed(evt);
             }
         });
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel4.setText("FECHA DE NACIMIENTO");
-
-        txtApellidos.setBackground(new java.awt.Color(255, 204, 255));
-        txtApellidos.setForeground(new java.awt.Color(51, 0, 51));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel5.setText("CORREO ELECTRÓNICO DEL USUARIO");
-
-        txtCorreo.setBackground(new java.awt.Color(255, 204, 255));
-        txtCorreo.setForeground(new java.awt.Color(51, 0, 51));
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel6.setText("CONTRASEÑA DEL USUARIO");
-
-        txtContrasena.setBackground(new java.awt.Color(255, 204, 255));
-        txtContrasena.setForeground(new java.awt.Color(51, 0, 51));
-
-        lblErrorDNI.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorDNI.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorDNI.setText("* Error, ingrese DNI válido");
-
-        lblErrorCorreo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorCorreo.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorCorreo.setText("* Error, ingrese Correo Electrónico válido");
-
-        lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorNombre.setText("* Error, ingrese Nombre válido");
-
-        lblErrorApellidos.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorApellidos.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorApellidos.setText("* Error, ingrese Apellidos válido");
-
-        lblErrorContra.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorContra.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorContra.setText("* Error, la contraseña para el sistema");
-
-        btnBuscar.setBackground(new java.awt.Color(102, 0, 102));
-        btnBuscar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 204, 255));
-        btnBuscar.setText(">");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel8.setText("APELLIDOS DEL USUARIO");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblErrorApellidos)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblErrorDNI)
-                                .addComponent(lblErrorNombre)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel8))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblErrorContra)
-                                .addComponent(lblErrorCorreo)
-                                .addComponent(jLabel5)
-                                .addComponent(txtCorreo)
-                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)))))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblErrorDNI)
-                    .addComponent(lblErrorCorreo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblErrorNombre)
-                    .addComponent(lblErrorContra))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblErrorApellidos)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar Rol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Sans", 1, 14), new java.awt.Color(102, 0, 102))); // NOI18N
-
-        cbRol.setBackground(new java.awt.Color(255, 204, 255));
-        cbRol.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
-        cbRol.setForeground(new java.awt.Color(102, 0, 102));
-        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Administrador", "Usuario" }));
-
-        lblErrorRol.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorRol.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorRol.setText("* Error, debe elegir una opción");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblErrorRol)
-                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblErrorRol)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnLimpiar.setBackground(new java.awt.Color(102, 0, 102));
-        btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(255, 204, 255));
-        btnLimpiar.setText("LIMPIAR REGISTRO");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-
-        btnRegistrar.setBackground(new java.awt.Color(102, 0, 102));
+        btnRegistrar.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(255, 204, 255));
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRAR USUARIO");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,37 +126,43 @@ public class frmUsers extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(102, 0, 102));
-        btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 204, 255));
-        btnCancelar.setText("CANCELAR");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        cbRol.setBackground(new java.awt.Color(0, 153, 255));
+        cbRol.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        cbRol.setForeground(new java.awt.Color(255, 255, 255));
+        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "ADMIN", "CAJERO", "MENSAJERO" }));
+        cbRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                cbRolActionPerformed(evt);
             }
         });
 
-        btnModificar.setBackground(new java.awt.Color(102, 0, 102));
-        btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 204, 255));
-        btnModificar.setText("MODIFICAR USUARIO");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
+        lblErrorUser.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
+        lblErrorUser.setForeground(new java.awt.Color(153, 0, 0));
+        lblErrorUser.setText("* Error, ingrese Nombre válido");
 
-        btnEliminar.setBackground(new java.awt.Color(102, 0, 102));
-        btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 204, 255));
-        btnEliminar.setText("ELIMINAR USUARIO");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
+        lblErrorPass.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
+        lblErrorPass.setForeground(new java.awt.Color(153, 0, 0));
+        lblErrorPass.setText("* Error, ingrese Contraseña válida");
 
-        tblListaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+        lblErrorRol.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
+        lblErrorRol.setForeground(new java.awt.Color(153, 0, 0));
+        lblErrorRol.setText("* Error, Por favor elija una opcion");
+
+        txtPass.setBackground(new java.awt.Color(0, 153, 255));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setText("NOMBRE DEL USUARIO");
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel2.setText("CONTRASENA DEL USUARIO");
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setText("ROL DEL USUARIO");
+
+        tbListUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -392,287 +173,252 @@ public class frmUsers extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblListaUsuarios);
+        jScrollPane1.setViewportView(tbListUsers);
 
-        lblTitulo1.setFont(new java.awt.Font("Lucida Sans", 1, 18)); // NOI18N
-        lblTitulo1.setForeground(new java.awt.Color(102, 0, 102));
-        lblTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo1.setText("FORMULARIO DE REGISTRO - USUARIOS");
-
-        btnEliminar1.setBackground(new java.awt.Color(102, 0, 102));
-        btnEliminar1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnEliminar1.setForeground(new java.awt.Color(255, 204, 255));
-        btnEliminar1.setText("ACTUALIZAR LISTA USUARIOS");
-        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
+        btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("ELIMINAR USUARIO");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminar1ActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlUsuarioLayout = new javax.swing.GroupLayout(pnlUsuario);
-        pnlUsuario.setLayout(pnlUsuarioLayout);
-        pnlUsuarioLayout.setHorizontalGroup(
-            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                        .addComponent(btnRegistrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                        .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUsuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
-            .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                    .addGap(65, 65, 65)
-                    .addComponent(lblTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(698, Short.MAX_VALUE)))
+        btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
+        btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(0, 0, 255));
+        btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("MODIFICAR USUARIO");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
+        btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("ACTUALIZAR LISTA");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
+        btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("LIMPIAR REGISTRO");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel4.setText("LISTA DE USUARIOS");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblErrorPass)
+                                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblErrorUser)
+                                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel3)))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRegistrar)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblErrorRol)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel4)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        pnlUsuarioLayout.setVerticalGroup(
-            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 31, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblErrorUser)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblErrorPass)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUsuarioLayout.createSequentialGroup()
-                    .addGap(26, 26, 26)
-                    .addComponent(lblTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(463, Short.MAX_VALUE)))
+                        .addComponent(lblErrorRol)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String DNI = txtDNI.getText();
-        String Nombre = txtNombre.getText();
-        String Apellidos = txtApellidos.getText();
-        String Correo = txtCorreo.getText();
-        String Contrasena = txtContrasena.getText();
-        String Rol = (String) cbRol.getSelectedItem();
-        
-        if(DNI.equals("")){
-            lblErrorDNI.setVisible(true);
-            txtDNI.requestFocus();
-        }else if(Nombre.equals("")){
-            lblErrorNombre.setVisible(true);
-            txtNombre.requestFocus();
-        }else if(Apellidos.equals("")){
-            lblErrorApellidos.setVisible(true);
-            txtApellidos.requestFocus();
-        }else if(Correo.equals("")){
-            lblErrorCorreo.setVisible(true);
-            txtCorreo.requestFocus();
-        }else if(Contrasena.equals("")){
-            lblErrorContra.setVisible(true);
-            txtContrasena.requestFocus();
-        }else if(Rol.equalsIgnoreCase("Seleccione una opción")){
-            lblErrorRol.setVisible(true);
-        }else{
-            try {
-                String ValDNI = "SELECT * FROM TblUsers WHERE USER='"+DNI+"'";
-                PreparedStatement PS = CN.prepareStatement(ValDNI);
-                ResultSet RS = PS.executeQuery();
-                if(RS.next()){
-                    JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario ya existe en la BD");
-                }else{
-                    String ConsInser = "INSERT INTO tbl_usuarios(dni_usuario,"
-                        + " nombre_usuario, apellidos_usuario, correo_usuario, "
-                        + "password_usuario, rol_usuario) "
-                        + "VALUES ('"+ DNI +"','"+Nombre+"','"+Apellidos+"','"
-                        + Correo + "','"+Contrasena+"','"+Rol+"')";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsInser);
-                    PS1.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Usuario registrado con éxito");
-                    ListarTabla();
-                    Limpiar();
-                }   
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, 
-                            "Error en el registro:"+e.getMessage(),
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        ListarTabla();
+        Limpiar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
-        String DNI = txtDNI.getText();
-        String Nombre = txtNombre.getText();
-        String Apellidos = txtApellidos.getText();
-        String Correo = txtCorreo.getText();
-        String Contrasena = txtContrasena.getText();
+        String User = txtUser.getText();
+        String Pass = txtPass.getText();
         String Rol = (String) cbRol.getSelectedItem();
-        
-        if(DNI.equals("")){
-            lblErrorDNI.setVisible(true);
-            txtDNI.requestFocus();
-        }else if(Nombre.equals("")){
-            lblErrorNombre.setVisible(true);
-            txtNombre.requestFocus();
-        }else if(Apellidos.equals("")){
-            lblErrorApellidos.setVisible(true);
-            txtApellidos.requestFocus();
-        }else if(Correo.equals("")){
-            lblErrorCorreo.setVisible(true);
-            txtCorreo.requestFocus();
-        }else if(Contrasena.equals("")){
-            lblErrorContra.setVisible(true);
-            txtContrasena.requestFocus();
+
+        if(User.equals("")){
+            lblErrorUser.setVisible(true);
+            txtUser.requestFocus();
+        }else if(Pass.equals("")){
+            lblErrorPass.setVisible(true);
+            txtPass.requestFocus();
         }else if(Rol.equalsIgnoreCase("Seleccione una opción")){
             lblErrorRol.setVisible(true);
         }else{
             try {
-                String ValDNI = "SELECT * FROM tbl_usuarios WHERE dni_usuario='"+DNI+"'";
-                PreparedStatement PS = CN.prepareStatement(ValDNI);
+                String ValUser = "SELECT * FROM TblUsers WHERE User='"+User+"'";
+                PreparedStatement PS = CN.prepareStatement(ValUser);
                 ResultSet RS = PS.executeQuery();
                 if(!RS.next()){
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario NO existe en la BD");
                 }else{
-                    String ConsUpdate = "UPDATE tbl_usuarios SET nombre_usuario='" + Nombre + 
-                            "',apellidos_usuario='"+Apellidos+"',correo_usuario='"+Correo+
-                            "',password_usuario='"+Contrasena+"',rol_usuario='"+Rol+
-                            "' WHERE dni_usuario='"+DNI+"'";
+                    String ConsUpdate = "UPDATE TblUsers SET Pass='"+Pass+"',Rol='"+Rol+
+                    "' WHERE User='"+User+"'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
                     PS1.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Usuario modificado con éxito");
                     Limpiar();
-                    txtDNI.requestFocus();
+                    txtUser.requestFocus();
                     ListarTabla();
-                }   
+                }
             } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(rootPane, 
-                            "Error en el registro: " + e.getMessage(),
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane,
+                    "Error en el registro: " + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
-        
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String DNI = txtDNI.getText();
-        
-        if(!DNI.equalsIgnoreCase("")){
+        String User = txtUser.getText();
+
+        if(!User.equalsIgnoreCase("")){
             try {
-                String ConsBuscar = "SELECT * FROM tbl_usuarios WHERE dni_usuario='"+DNI+"'";
+                String ConsBuscar = "SELECT * FROM tblUsers WHERE User='"+User+"'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if(RS.next()){
-                    String ConsEliminar = "DELETE FROM tbl_usuarios WHERE dni_usuario='"+DNI+"'";
+                    String ConsEliminar = "DELETE FROM tblUsers WHERE User='"+User+"'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
                     PS1.executeUpdate();
                     Limpiar();
                     JOptionPane.showMessageDialog(rootPane, "Usuario eliminado con éxito");
                     ListarTabla();
                 }else{
-                    JOptionPane.showMessageDialog(rootPane, 
-                        "¡¡No existe el usuario en la base de datos!!",
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-                    txtDNI.setText("");
-                    txtDNI.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, 
-                "Error en el consulta:" + e.getMessage(),
-                "¡Error!",
-                JOptionPane.ERROR_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, 
-                            "Debe ingresar un DNI para validar",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-            lblErrorDNI.setVisible(false);
-            txtDNI.requestFocus();
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        Limpiar();
-    }//GEN-LAST:event_btnEliminar1ActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        String DNI = txtDNI.getText();
-
-        if(!DNI.equalsIgnoreCase("")){
-            try {
-                String ConsBuscar = "SELECT * FROM tbl_usuarios WHERE dni_usuario='"+DNI+"'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if(RS.next()){
-                    txtNombre.setText(RS.getString("nombre_usuario"));
-                    txtApellidos.setText(RS.getString("apellidos_usuario"));
-                    txtCorreo.setText(RS.getString("correo_usuario"));
-                    txtContrasena.setText(RS.getString("password_usuario"));
-                    cbRol.setSelectedItem(RS.getString("rol_usuario"));
-                }else{
                     JOptionPane.showMessageDialog(rootPane,
                         "¡¡No existe el usuario en la base de datos!!",
                         "¡Error!",
                         JOptionPane.ERROR_MESSAGE);
-                    txtDNI.setText("");
-                    txtDNI.requestFocus();
+                    txtUser.setText("");
+                    txtUser.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
@@ -682,18 +428,60 @@ public class frmUsers extends javax.swing.JFrame {
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,
-                "Debe ingresar un DNI para validar",
+                "Debe ingresar un Usuario para validar",
                 "¡Error!",
                 JOptionPane.ERROR_MESSAGE);
-            lblErrorDNI.setVisible(false);
-            txtDNI.requestFocus();
+            lblErrorUser.setVisible(false);
+            txtUser.requestFocus();
         }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void cbRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRolActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_cbRolActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        String User = txtUser.getText();
+        String Pass = txtPass.getText();
+        String Rol = (String) cbRol.getSelectedItem();
+
+        if(User.equals("")){
+            lblErrorUser.setVisible(true);
+            txtUser.requestFocus();
+        }else if(Pass.equals("")){
+            lblErrorPass.setVisible(true);
+            txtPass.requestFocus();
+        }else if(Rol.equalsIgnoreCase("Seleccione una opción")){
+            lblErrorRol.setVisible(true);
+        }else{
+            try {
+                String ValUser = "SELECT * FROM tblUsers WHERE User='"+User+"'";
+                PreparedStatement PS = CN.prepareStatement(ValUser);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()){
+                    JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario ya existe en la BD");
+                }else{
+                    String ConsInser = "INSERT INTO tblUsers(User,"
+                    + " Pass, Rol) "
+                    + "VALUES ('"+ User +"','"+Pass+"','"+Rol+"')";
+                    PreparedStatement PS1 = CN.prepareStatement(ConsInser);
+                    PS1.executeUpdate();
+                    JOptionPane.showMessageDialog(rootPane, "Usuario registrado con éxito");
+                    ListarTabla();
+                    Limpiar();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                    "Error en el registro:"+e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -721,9 +509,8 @@ public class frmUsers extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the fobtnBuscarrm */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmUsers().setVisible(true);
@@ -732,10 +519,9 @@ public class frmUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnEliminar1;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
@@ -745,26 +531,13 @@ public class frmUsers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblErrorApellidos;
-    private javax.swing.JLabel lblErrorContra;
-    private javax.swing.JLabel lblErrorCorreo;
-    private javax.swing.JLabel lblErrorDNI;
-    private javax.swing.JLabel lblErrorNombre;
+    private javax.swing.JLabel lblErrorPass;
     private javax.swing.JLabel lblErrorRol;
-    private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTitulo1;
-    private javax.swing.JPanel pnlUsuario;
-    private javax.swing.JTable tblListaUsuarios;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JPasswordField txtContrasena;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JLabel lblErrorUser;
+    private javax.swing.JTable tbListUsers;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

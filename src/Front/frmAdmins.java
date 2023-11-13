@@ -159,12 +159,12 @@ public class frmAdmins extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarUsu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu1ActionPerformed
-          frmUsers venUser = new frmUsers();
-        venUser.setVisible(true);
+        
     }//GEN-LAST:event_btnRegistrarUsu1ActionPerformed
 
     private void btnRegistrarUsu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu2ActionPerformed
-        // TODO add your handling code here:
+          frmUsers venUser = new frmUsers();
+        venUser.setVisible(true);
     }//GEN-LAST:event_btnRegistrarUsu2ActionPerformed
 
     private void btnRegistrarUsu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu3ActionPerformed

@@ -10,7 +10,7 @@ public class frmLogin extends javax.swing.JFrame {
 
     ClsConexion CON;
     Connection CN;
-    
+
     public frmLogin() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -150,62 +150,66 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String User = txtUser.getText();
         String Pass = txtPass.getText();
-        
-        if(User.equalsIgnoreCase("")){
-            JOptionPane.showMessageDialog(rootPane, 
-                    "Por favor ingrese el nombre del Usuario", 
-                    "¡Error! Campo De Usuario vacio", 
+
+        if (User.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Por favor ingrese el nombre del Usuario",
+                    "¡Error! Campo De Usuario vacio",
                     JOptionPane.ERROR_MESSAGE);
             txtUser.setFocusable(true);
-        }else{
-            if(Pass.equalsIgnoreCase("")){
-                JOptionPane.showMessageDialog(rootPane, 
-                    "Por favor ingrese la contraseña del usuario", 
-                    "¡Error! Campo De Contraseña Vacio", 
-                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (Pass.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Por favor ingrese la contraseña del usuario",
+                        "¡Error! Campo De Contraseña Vacio",
+                        JOptionPane.ERROR_MESSAGE);
                 txtPass.setFocusable(true);
-            }else{
+            } else {
                 try {
-                  PreparedStatement PS = CN.prepareStatement
-        ("SELECT User, Pass, Rol "
-                + "FROM TblUsers "
-                + "WHERE User='"+User+"' AND pass='"+Pass+"'");
-                  
-                  ResultSet RS = PS.executeQuery();
-                  if(RS.next()){
-                      String TipoRol = RS.getString("Rol");
-                      if(TipoRol.equalsIgnoreCase("ADMIN")){
-                          frmAdmins objAdmin = new frmAdmins();
-                          objAdmin.setVisible(true);
-                         dispose();
-                      }else if(TipoRol.equalsIgnoreCase("CAJERO")){
-                          frmCajero objCajero = new frmCajero();
-                          objCajero.setVisible(true);
-                         dispose();
-                      }else if(TipoRol.equalsIgnoreCase("MENSAJERO")){
-                         frmMensajero objMensajero = new frmMensajero();
-                          objMensajero.setVisible(true);
-                         dispose();
-                      }else{
-                          JOptionPane.showMessageDialog(rootPane, 
-                        "No tiene los permisos de ingreso", 
-                        "¡Error!", 
-                        JOptionPane.ERROR_MESSAGE);
-                          txtUser.setText("");
-                          txtPass.setText("");
-                        txtUser.requestFocus();
-                      }
-                  }else{
-                      JOptionPane.showMessageDialog(rootPane, 
-                        "Usuario o contraseña erroneo", 
-                        "¡Error!", 
-                        JOptionPane.ERROR_MESSAGE);
-                    txtPass.setFocusable(true);
-                  }
-                
+                    PreparedStatement PS = CN.prepareStatement("SELECT User, Pass, Rol "
+                            + "FROM TblUsers "
+                            + "WHERE User='" + User + "' AND pass='" + Pass + "'");
+
+                    ResultSet RS = PS.executeQuery();
+                    if (RS.next()) {
+                        String TipoRol = RS.getString("Rol");
+                        if (TipoRol.equalsIgnoreCase("ADMIN")) {
+                            JOptionPane.showMessageDialog(rootPane, "Bienvenido Administrador");
+                            frmAdmins objAdmin = new frmAdmins();
+                            objAdmin.setVisible(true);
+                            dispose();
+                        } else if (TipoRol.equalsIgnoreCase("CAJERO")) {
+                            JOptionPane.showMessageDialog(rootPane, "Bienvenido Cajero");
+
+                            frmCajero objCajero = new frmCajero();
+                            objCajero.setVisible(true);
+                            dispose();
+                        } else if (TipoRol.equalsIgnoreCase("MENSAJERO")) {
+                            JOptionPane.showMessageDialog(rootPane, "Bienvenido Mensajero");
+
+                            frmMensajero objMensajero = new frmMensajero();
+                            objMensajero.setVisible(true);
+                            dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane,
+                                    "No tiene los permisos de ingreso",
+                                    "¡Error!",
+                                    JOptionPane.ERROR_MESSAGE);
+                            txtUser.setText("");
+                            txtPass.setText("");
+                            txtUser.requestFocus();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane,
+                                "Usuario o contraseña erroneo",
+                                "¡Error!",
+                                JOptionPane.ERROR_MESSAGE);
+                        txtPass.setFocusable(true);
+                    }
+
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, 
-                            "Error en el ingreso:"+e.getMessage(),
+                    JOptionPane.showMessageDialog(rootPane,
+                            "Error en el ingreso:" + e.getMessage(),
                             "¡Error!",
                             JOptionPane.ERROR_MESSAGE);
                 }

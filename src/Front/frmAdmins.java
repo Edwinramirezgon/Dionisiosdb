@@ -29,7 +29,6 @@ public class frmAdmins extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnVent = new javax.swing.JButton();
         btnGestUser = new javax.swing.JButton();
         btnGestClient = new javax.swing.JButton();
         btnGestProv = new javax.swing.JButton();
@@ -45,16 +44,6 @@ public class frmAdmins extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel1.setText("  Administrador De Dionisio´s");
-
-        btnVent.setBackground(new java.awt.Color(0, 0, 255));
-        btnVent.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnVent.setForeground(new java.awt.Color(255, 255, 255));
-        btnVent.setText("VENTAS");
-        btnVent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentActionPerformed(evt);
-            }
-        });
 
         btnGestUser.setBackground(new java.awt.Color(0, 0, 255));
         btnGestUser.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -117,8 +106,7 @@ public class frmAdmins extends javax.swing.JFrame {
                             .addComponent(btnGestClient, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGestProv, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGestProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVent, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnGestProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -129,19 +117,20 @@ public class frmAdmins extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGestClient, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGestProv, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGestProd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGap(37, 37, 37))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,10 +147,6 @@ public class frmAdmins extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentActionPerformed
-        
-    }//GEN-LAST:event_btnVentActionPerformed
-
     private void btnGestUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestUserActionPerformed
           frmUsers venUser = new frmUsers();
         venUser.setVisible(true);
@@ -173,11 +158,12 @@ public class frmAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestClientActionPerformed
 
     private void btnGestProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProvActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnGestProvActionPerformed
 
     private void btnGestProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProdActionPerformed
-        // TODO add your handling code here:
+           frmProducts ObjProducts = new frmProducts();
+        ObjProducts.setVisible(true);
     }//GEN-LAST:event_btnGestProdActionPerformed
 
     /**
@@ -220,7 +206,6 @@ public class frmAdmins extends javax.swing.JFrame {
     private javax.swing.JButton btnGestProd;
     private javax.swing.JButton btnGestProv;
     private javax.swing.JButton btnGestUser;
-    private javax.swing.JButton btnVent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;

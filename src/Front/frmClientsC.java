@@ -9,12 +9,12 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class frmClients extends javax.swing.JFrame {
+public class frmClientsC extends javax.swing.JFrame {
 
     ClsConexion CON;
     Connection CN;
 
-    public frmClients() {
+    public frmClientsC() {
         initComponents();
         lblErrorDni.setVisible(false);
         lblErrorNombre.setVisible(false);
@@ -102,9 +102,7 @@ public class frmClients extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListClients = new javax.swing.JTable();
-        btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -190,16 +188,6 @@ public class frmClients extends javax.swing.JFrame {
         tbListClients.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(tbListClients);
 
-        btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
-        btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("ELIMINAR CLIENTE");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,16 +195,6 @@ public class frmClients extends javax.swing.JFrame {
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
-            }
-        });
-
-        btnModificar.setBackground(new java.awt.Color(0, 0, 255));
-        btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setText("MODIFICAR CLIENTE");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
             }
         });
 
@@ -369,27 +347,26 @@ public class frmClients extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(385, 385, 385)
-                                .addComponent(jLabel4)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                        .addGap(385, 385, 385)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -487,10 +464,6 @@ public class frmClients extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -499,21 +472,19 @@ public class frmClients extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(173, 173, 173))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1398, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -528,104 +499,9 @@ public class frmClients extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        String Dni = txtDni.getText();
-        String Nombre = txtNombre.getText();
-        String Apellido = txtApellido.getText();
-        String Correo = txtCorreo.getText();
-        String Direccion = txtDireccion.getText();
-        String Telefono = txtTelefono.getText();
-        String Fecha = txtFecha.getText();
-
-        if (Dni.equals("")) {
-            lblErrorDni.setVisible(true);
-            txtDni.requestFocus();
-        } else if (Nombre.equals("")) {
-            lblErrorNombre.setVisible(true);
-            txtNombre.requestFocus();
-        } else if (Apellido.equals("")) {
-            lblErrorApellido.setVisible(true);
-            txtApellido.requestFocus();
-        } else if (Correo.equals("")) {
-            lblErrorCorreo.setVisible(true);
-            txtCorreo.requestFocus();
-        } else if (Direccion.equals("")) {
-            lblErrorDireccion.setVisible(true);
-            txtDireccion.requestFocus();
-        } else if (Telefono.equals("")) {
-            lblErrorTelefono.setVisible(true);
-            txtTelefono.requestFocus();
-        } else if (Fecha.equals("")) {
-            lblErrorFecha.setVisible(true);
-            txtFecha.requestFocus();
-        } else {
-            try {
-                String ValDni = "SELECT * FROM TblClients WHERE DNI='" + Dni + "'";
-                PreparedStatement PS = CN.prepareStatement(ValDni);
-                ResultSet RS = PS.executeQuery();
-                if (!RS.next()) {
-                    JOptionPane.showMessageDialog(rootPane, "¡Error! el Cliente NO existe en la BD");
-                } else {
-                    String ConsUpdate = "UPDATE TblClients SET Nombre='" + Nombre + "', Apellido='" + Apellido + "',Correo='" + Correo + "',Direccion='" + Direccion + "',Telefono='" + Telefono + "',Fecha='" + Fecha
-                            + "' WHERE Dni='" + Dni + "'";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
-                    PS1.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Cliente modificado con éxito");
-                    Limpiar();
-                    txtDni.requestFocus();
-                    ListarTabla();
-                }
-            } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en el registro: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String Dni = txtDni.getText();
-
-        if (!Dni.equalsIgnoreCase("")) {
-            try {
-                String ConsBuscar = "SELECT * FROM tblClients WHERE Dni='" + Dni + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    String ConsEliminar = "DELETE FROM tblClients WHERE Dni='" + Dni + "'";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
-                    PS1.executeUpdate();
-                    Limpiar();
-                    JOptionPane.showMessageDialog(rootPane, "Cliente eliminado con éxito");
-                    ListarTabla();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Cliente en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtDni.setText("");
-                    txtDni.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en el consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un Dni para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorDni.setVisible(false);
-            txtDni.requestFocus();
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String Dni = txtDni.getText();
@@ -773,21 +649,23 @@ public class frmClients extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmClientsC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmClientsC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmClientsC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmClients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmClientsC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmClients().setVisible(true);
+                new frmClientsC().setVisible(true);
             }
         });
     }
@@ -795,9 +673,7 @@ public class frmClients extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -3,7 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Gestion De Clientes"/>
+    <Property name="title" type="java.lang.String" value="Gestion De Productos"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
@@ -27,15 +27,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" pref="1398" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" pref="1542" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" pref="653" max="-2" attributes="0"/>
+          <Component id="jPanel1" min="-2" pref="526" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -53,158 +50,138 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnModificar" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnEliminar" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
-                              <Component id="btnLimpiar" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
-                              <Component id="btnActualizar" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
-                              <Component id="btnCancelar" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
-                              <Component id="btnRegistrar" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" min="-2" pref="168" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="102" pref="102" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                          <Component id="jLabel10" min="-2" pref="182" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" min="-2" pref="186" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtNombre" min="-2" pref="178" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtApodo" min="-2" pref="166" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtCantidadP" min="-2" pref="188" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtCantidadV" min="-2" pref="152" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtValorC" min="-2" pref="138" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="txtValorV" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="txtValorD" min="-2" pref="182" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+                          <Component id="lblErrorCodigo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
+                          <Component id="lblErrorNombre" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
+                          <Component id="lblErrorApodo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                          <Component id="lblErrorCantidadP" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                          <Component id="lblErrorCantidadV" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="lblErrorValorC" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="lblErrorValorV" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="lblErrorValorD" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" min="-2" pref="168" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnRegistrar" min="-2" pref="203" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnLimpiar" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="btnActualizar" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" min="-2" pref="203" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="385" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="468" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" min="-2" pref="1168" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtDni" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <EmptySpace pref="16" max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" pref="78" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                  <Component id="lblErrorDni" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblErrorNombre" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNombre" min="-2" pref="160" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtApellido" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtCorreo" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblErrorApellido" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Component id="lblErrorCorreo" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="1253" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                          <Component id="lblErrorDireccion" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtDireccion" min="-2" pref="160" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtFecha" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Component id="lblErrorFecha" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTelefono" min="-2" pref="160" max="-2" attributes="0"/>
-                              <Component id="lblErrorTelefono" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtDni" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtNombre" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtApellido" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtCorreo" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtDireccion" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtFecha" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="txtTelefono" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtCodigo" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtNombre" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtApodo" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtCantidadP" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtCantidadV" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtValorC" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtValorV" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtValorD" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblErrorDni" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorApellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblErrorTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblErrorCodigo" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorNombre" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorApodo" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorCantidadP" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorCantidadV" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorValorC" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorValorV" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblErrorValorD" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                           <Component id="btnRegistrar" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnModificar" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnEliminar" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnLimpiar" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -212,19 +189,19 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnCancelar" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="484" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="362" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtDni">
+        <Component class="javax.swing.JTextField" name="txtCodigo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -236,7 +213,7 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDniActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRegistrar">
@@ -250,13 +227,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="REGISTRAR CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="REGISTRAR PRODUCTO"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorDni">
+        <Component class="javax.swing.JLabel" name="lblErrorCodigo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -264,11 +241,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese DNI v&#xe1;lido"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese Codigo v&#xe1;lido"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorApellido">
+        <Component class="javax.swing.JLabel" name="lblErrorApodo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -276,7 +253,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese Apellido v&#xe1;lido"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese Apodo v&#xe1;lido"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -288,7 +265,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DNI DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="CODIGO DEL PRODUCTO"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -300,7 +277,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="APELLIDO DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="APODO DEL PRODUCTO"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -311,7 +288,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tbListClients">
+            <Component class="javax.swing.JTable" name="tbListProducts">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
@@ -355,23 +332,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnEliminar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ELIMINAR CLIENTE"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -387,23 +347,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnModificar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Lucida Sans" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="MODIFICAR CLIENTE"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnActualizar">
@@ -445,7 +388,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="24" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="LISTA DE CLIENTES"/>
+            <Property name="text" type="java.lang.String" value="LISTA DE PRODUCTOS"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -456,11 +399,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CORREO DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="CANTIDAD DEL PRODUCTO"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorCorreo">
+        <Component class="javax.swing.JLabel" name="lblErrorCantidadP">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -468,7 +411,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese Correo v&#xe1;lido"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese Cantidad v&#xe1;lida"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -480,11 +423,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DIRECCION DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="CANTIDAD VENDIDA"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorDireccion">
+        <Component class="javax.swing.JLabel" name="lblErrorCantidadV">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -492,7 +435,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese Direccion v&#xe1;lida"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese Cantidad v&#xe1;lida"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -504,11 +447,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FECHA DE NACIMIENTO"/>
+            <Property name="text" type="java.lang.String" value="VALOR DE COMPRA"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorFecha">
+        <Component class="javax.swing.JLabel" name="lblErrorValorC">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -516,7 +459,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese fecha v&#xe1;lida"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese valor v&#xe1;lido"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -528,11 +471,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="TELEFONO DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="VALOR DE VENTA"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblErrorTelefono">
+        <Component class="javax.swing.JLabel" name="lblErrorValorV">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans" size="10" style="0"/>
@@ -540,7 +483,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="* Error, ingrese Telefono valido"/>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese valor valido"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
@@ -552,11 +495,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica Neue" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="NOMBRE DEL CLIENTE"/>
+            <Property name="text" type="java.lang.String" value="NOMBRE DEL PRODUCTO"/>
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtApellido">
+        <Component class="javax.swing.JTextField" name="txtApodo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -568,7 +511,7 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApodoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblErrorNombre">
@@ -598,7 +541,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCorreo">
+        <Component class="javax.swing.JTextField" name="txtCantidadP">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -610,10 +553,10 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCorreoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCantidadPActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtDireccion">
+        <Component class="javax.swing.JTextField" name="txtCantidadV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -625,10 +568,10 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCantidadVActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFecha">
+        <Component class="javax.swing.JTextField" name="txtValorC">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -640,10 +583,10 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFechaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorCActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTelefono">
+        <Component class="javax.swing.JTextField" name="txtValorD">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -655,7 +598,7 @@
             <Property name="alignmentY" type="float" value="10.0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorDActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -681,6 +624,45 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel10">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Helvetica Neue" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="VALOR CON DESCUENTO"/>
+            <Property name="alignmentY" type="float" value="10.0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtValorV">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="33" type="rgb"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="alignmentY" type="float" value="10.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorVActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblErrorValorD">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Sans" size="10" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="* Error, ingrese valor valido"/>
+            <Property name="alignmentY" type="float" value="10.0"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -6,6 +6,7 @@ package GeneralClass;
 2.Robinson Dionisio (El repartidor de juguitos)
 3.Robinson Taborda (el mas gay de todos)
 4.Juan David Velasquez (FUCK EVERYONE)
+5.El Mocho Bailarin
 */
 public class ClsGeneral {
     private String firstName;

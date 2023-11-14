@@ -62,8 +62,8 @@ public class frmProducts extends javax.swing.JFrame {
         modelo.addColumn("Apodo");
         modelo.addColumn("Cantidad De Productos");
         modelo.addColumn("Cantidad Vendida");
-        modelo.addColumn("Valor De Venta");
         modelo.addColumn("Valor De Compra");
+        modelo.addColumn("Valor De Venta");
         modelo.addColumn("Valor Con Descuento");
 
         // Cargado de datos a la tabla
@@ -75,7 +75,7 @@ public class frmProducts extends javax.swing.JFrame {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);

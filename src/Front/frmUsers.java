@@ -129,7 +129,7 @@ public class frmUsers extends javax.swing.JFrame {
         cbRol.setBackground(new java.awt.Color(0, 153, 255));
         cbRol.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
         cbRol.setForeground(new java.awt.Color(255, 255, 255));
-        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "ADMIN", "CAJERO", "MENSAJERO" }));
+        cbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "CAJERO", "MENSAJERO" }));
         cbRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbRolActionPerformed(evt);

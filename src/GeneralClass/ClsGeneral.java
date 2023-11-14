@@ -2,10 +2,10 @@
 package GeneralClass;
 
 /*Autores
-1.Edwin Ramirez Gonzalez
-2.Robinson Dionisio
-3.Robinson Taborda
-4.Juan David Velasquez
+1.Edwin Ramirez Gonzalez (FUCK EDWIN)
+2.Robinson Dionisio (El repartidor de juguitos)
+3.Robinson Taborda (el mas gay de todos)
+4.Juan David Velasquez (FUCK EVERYONE)
 */
 public class ClsGeneral {
     private String firstName;

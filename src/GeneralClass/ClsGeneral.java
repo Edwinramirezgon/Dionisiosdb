@@ -5,7 +5,7 @@ package GeneralClass;
 1.Edwin Ramirez Gonzalez
 2.Robinson Dionisio
 3.Robinson Taborda
-4.Juan David velasquez
+4.Juan David Velasquez
 */
 public class ClsGeneral {
     private String firstName;

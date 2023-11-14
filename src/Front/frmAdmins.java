@@ -29,11 +29,11 @@ public class frmAdmins extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnRegistrarUsu1 = new javax.swing.JButton();
-        btnRegistrarUsu2 = new javax.swing.JButton();
-        btnRegistrarUsu3 = new javax.swing.JButton();
-        btnRegistrarUsu4 = new javax.swing.JButton();
-        btnRegistrarUsu5 = new javax.swing.JButton();
+        btnVent = new javax.swing.JButton();
+        btnGestUser = new javax.swing.JButton();
+        btnGestClient = new javax.swing.JButton();
+        btnGestProv = new javax.swing.JButton();
+        btnGestProd = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,53 +46,53 @@ public class frmAdmins extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         jLabel1.setText("  Administrador De Dionisio´s");
 
-        btnRegistrarUsu1.setBackground(new java.awt.Color(0, 0, 255));
-        btnRegistrarUsu1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrarUsu1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsu1.setText("VENTAS");
-        btnRegistrarUsu1.addActionListener(new java.awt.event.ActionListener() {
+        btnVent.setBackground(new java.awt.Color(0, 0, 255));
+        btnVent.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnVent.setForeground(new java.awt.Color(255, 255, 255));
+        btnVent.setText("VENTAS");
+        btnVent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsu1ActionPerformed(evt);
+                btnVentActionPerformed(evt);
             }
         });
 
-        btnRegistrarUsu2.setBackground(new java.awt.Color(0, 0, 255));
-        btnRegistrarUsu2.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrarUsu2.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsu2.setText("GESTIÓN DE USUARIOS");
-        btnRegistrarUsu2.addActionListener(new java.awt.event.ActionListener() {
+        btnGestUser.setBackground(new java.awt.Color(0, 0, 255));
+        btnGestUser.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnGestUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestUser.setText("GESTIÓN DE USUARIOS");
+        btnGestUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsu2ActionPerformed(evt);
+                btnGestUserActionPerformed(evt);
             }
         });
 
-        btnRegistrarUsu3.setBackground(new java.awt.Color(0, 0, 255));
-        btnRegistrarUsu3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrarUsu3.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsu3.setText("GESTIÓN DE CLIENTES");
-        btnRegistrarUsu3.addActionListener(new java.awt.event.ActionListener() {
+        btnGestClient.setBackground(new java.awt.Color(0, 0, 255));
+        btnGestClient.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnGestClient.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestClient.setText("GESTIÓN DE CLIENTES");
+        btnGestClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsu3ActionPerformed(evt);
+                btnGestClientActionPerformed(evt);
             }
         });
 
-        btnRegistrarUsu4.setBackground(new java.awt.Color(0, 0, 255));
-        btnRegistrarUsu4.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrarUsu4.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsu4.setText("GESTIÓN DE PROVEEDORES");
-        btnRegistrarUsu4.addActionListener(new java.awt.event.ActionListener() {
+        btnGestProv.setBackground(new java.awt.Color(0, 0, 255));
+        btnGestProv.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnGestProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestProv.setText("GESTIÓN DE PROVEEDORES");
+        btnGestProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsu4ActionPerformed(evt);
+                btnGestProvActionPerformed(evt);
             }
         });
 
-        btnRegistrarUsu5.setBackground(new java.awt.Color(0, 0, 255));
-        btnRegistrarUsu5.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnRegistrarUsu5.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarUsu5.setText("GESTIÓN DE PRODUCTOS");
-        btnRegistrarUsu5.addActionListener(new java.awt.event.ActionListener() {
+        btnGestProd.setBackground(new java.awt.Color(0, 0, 255));
+        btnGestProd.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnGestProd.setForeground(new java.awt.Color(255, 255, 255));
+        btnGestProd.setText("GESTIÓN DE PRODUCTOS");
+        btnGestProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarUsu5ActionPerformed(evt);
+                btnGestProdActionPerformed(evt);
             }
         });
 
@@ -114,11 +114,11 @@ public class frmAdmins extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRegistrarUsu3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrarUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrarUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrarUsu5, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrarUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnGestClient, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestProv, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestProd, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVent, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -131,15 +131,15 @@ public class frmAdmins extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnRegistrarUsu2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarUsu3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGestClient, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarUsu4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGestProv, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarUsu5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGestProd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRegistrarUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVent, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -158,26 +158,27 @@ public class frmAdmins extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarUsu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu1ActionPerformed
+    private void btnVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentActionPerformed
         
-    }//GEN-LAST:event_btnRegistrarUsu1ActionPerformed
+    }//GEN-LAST:event_btnVentActionPerformed
 
-    private void btnRegistrarUsu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu2ActionPerformed
+    private void btnGestUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestUserActionPerformed
           frmUsers venUser = new frmUsers();
         venUser.setVisible(true);
-    }//GEN-LAST:event_btnRegistrarUsu2ActionPerformed
+    }//GEN-LAST:event_btnGestUserActionPerformed
 
-    private void btnRegistrarUsu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarUsu3ActionPerformed
+    private void btnGestClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestClientActionPerformed
+          frmClients ObjClient = new frmClients();
+        ObjClient.setVisible(true);
+    }//GEN-LAST:event_btnGestClientActionPerformed
 
-    private void btnRegistrarUsu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu4ActionPerformed
+    private void btnGestProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarUsu4ActionPerformed
+    }//GEN-LAST:event_btnGestProvActionPerformed
 
-    private void btnRegistrarUsu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsu5ActionPerformed
+    private void btnGestProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarUsu5ActionPerformed
+    }//GEN-LAST:event_btnGestProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,11 +216,11 @@ public class frmAdmins extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrarUsu1;
-    private javax.swing.JButton btnRegistrarUsu2;
-    private javax.swing.JButton btnRegistrarUsu3;
-    private javax.swing.JButton btnRegistrarUsu4;
-    private javax.swing.JButton btnRegistrarUsu5;
+    private javax.swing.JButton btnGestClient;
+    private javax.swing.JButton btnGestProd;
+    private javax.swing.JButton btnGestProv;
+    private javax.swing.JButton btnGestUser;
+    private javax.swing.JButton btnVent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;

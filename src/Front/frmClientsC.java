@@ -719,6 +719,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorNombre.setVisible(false);
             txtNombre.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchNomActionPerformed
 
     private void jButtonSearchDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDniActionPerformed
@@ -767,6 +768,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorDni.setVisible(false);
             txtDni.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchDniActionPerformed
 
     private void jButtonSearchApeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchApeActionPerformed
@@ -815,6 +817,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorApellido.setVisible(false);
             txtApellido.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchApeActionPerformed
 
     private void jButtonSearchCorrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCorrActionPerformed
@@ -863,6 +866,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorCorreo.setVisible(false);
             txtCorreo.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchCorrActionPerformed
 
     private void jButtonSearchDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDireActionPerformed
@@ -911,6 +915,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorDireccion.setVisible(false);
             txtDireccion.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchDireActionPerformed
 
     private void jButtonSearchFecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchFecActionPerformed
@@ -959,6 +964,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorFecha.setVisible(false);
             txtFecha.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchFecActionPerformed
 
     private void jButtonSearchTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchTelActionPerformed
@@ -1007,6 +1013,7 @@ public class frmClientsC extends javax.swing.JFrame {
             lblErrorTelefono.setVisible(false);
             txtTelefono.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchTelActionPerformed
 
     /**

@@ -735,6 +735,7 @@ public class frmProductsC extends javax.swing.JFrame {
             lblErrorCodigo.setVisible(false);
             txtCodigo.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchCodActionPerformed
 
     private void jButtonSearchApoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchApoActionPerformed
@@ -784,6 +785,7 @@ public class frmProductsC extends javax.swing.JFrame {
             lblErrorApodo.setVisible(false);
             txtApodo.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchApoActionPerformed
 
     private void jButtonSearchNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchNomActionPerformed
@@ -833,6 +835,7 @@ public class frmProductsC extends javax.swing.JFrame {
             lblErrorNombre.setVisible(false);
             txtNombre.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_jButtonSearchNomActionPerformed
 
     /**

@@ -154,7 +154,8 @@ public class frmCajero extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionCActionPerformed
 
     private void btnGestionProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionProvActionPerformed
-        // TODO add your handling code here:
+     frmProvC ObjProvC = new frmProvC();
+        ObjProvC.setVisible(true);
     }//GEN-LAST:event_btnGestionProvActionPerformed
 
     private void btnGestionProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionProdActionPerformed

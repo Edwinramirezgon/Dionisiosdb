@@ -136,6 +136,11 @@ public class frmProducts extends javax.swing.JFrame {
         jButtonSearchCod = new javax.swing.JButton();
         jButtonSearchApo = new javax.swing.JButton();
         jButtonSearchNom = new javax.swing.JButton();
+        jButtonSearchCP = new javax.swing.JButton();
+        jButtonSearchCV = new javax.swing.JButton();
+        jButtonSearchVC = new javax.swing.JButton();
+        jButtonSearchVV = new javax.swing.JButton();
+        jButtonSearchVD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestion De Productos");
@@ -196,8 +201,11 @@ public class frmProducts extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbListProducts.setEnabled(false);
-        tbListProducts.setRowSelectionAllowed(false);
+        tbListProducts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblProductsMouseClick(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbListProducts);
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
@@ -415,91 +423,162 @@ public class frmProducts extends javax.swing.JFrame {
             }
         });
 
+        jButtonSearchCP.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchCP.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchCP.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchCP.setText("BUSCAR");
+        jButtonSearchCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchCPActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchCV.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchCV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchCV.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchCV.setText("BUSCAR");
+        jButtonSearchCV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchCVActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchVC.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchVC.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchVC.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchVC.setText("BUSCAR");
+        jButtonSearchVC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchVCActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchVV.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchVV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchVV.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchVV.setText("BUSCAR");
+        jButtonSearchVV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchVVActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchVD.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchVD.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchVD.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchVD.setText("BUSCAR");
+        jButtonSearchVD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchVDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblErrorCodigo)
-                .addGap(43, 43, 43)
-                .addComponent(lblErrorNombre)
-                .addGap(44, 44, 44)
-                .addComponent(lblErrorApodo)
-                .addGap(41, 41, 41)
-                .addComponent(lblErrorCantidadP)
-                .addGap(48, 48, 48)
-                .addComponent(lblErrorCantidadV)
-                .addGap(18, 18, 18)
-                .addComponent(lblErrorValorC)
-                .addGap(18, 18, 18)
-                .addComponent(lblErrorValorV)
-                .addGap(18, 18, 18)
-                .addComponent(lblErrorValorD))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificar)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(35, 35, 35)
+                        .addComponent(lblErrorCodigo)
+                        .addGap(43, 43, 43)
+                        .addComponent(lblErrorNombre)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblErrorApodo)
+                        .addGap(41, 41, 41)
+                        .addComponent(lblErrorCantidadP)
+                        .addGap(48, 48, 48)
+                        .addComponent(lblErrorCantidadV)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblErrorValorC)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblErrorValorV)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblErrorValorD))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(jLabel4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonSearchCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1))
-                    .addComponent(txtCodigo))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonSearchCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel1))
+                            .addComponent(txtCodigo))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSearchNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtApodo)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSearchApo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtCantidadP, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSearchCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSearchNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApodo)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtCantidadV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtValorC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonSearchCV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonSearchVC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSearchApo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(txtCantidadP, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCantidadV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtValorC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtValorV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorD, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtValorV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorD, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonSearchVV, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSearchVD, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModificar)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(462, 462, 462)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,7 +639,12 @@ public class frmProducts extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSearchCod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSearchNom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchApo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSearchApo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchCP, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchCV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchVC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchVV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchVD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -588,11 +672,11 @@ public class frmProducts extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1520, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1464, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
         );
 
         pack();
@@ -611,11 +695,11 @@ public class frmProducts extends javax.swing.JFrame {
         String Codigo = txtCodigo.getText();
         String Nombre = txtNombre.getText();
         String Apodo = txtApodo.getText();
-        String CantidadP = txtCantidadP.getText();
-        String CantidadV = txtCantidadV.getText();
-        String ValorD = txtValorD.getText();
-        String ValorC = txtValorC.getText();
-        String ValorV = txtValorV.getText();
+        int CantidadP = Integer.parseInt(txtCantidadP.getText());
+        int CantidadV = Integer.parseInt(txtCantidadV.getText());
+        double ValorD = Double.parseDouble(txtValorD.getText());
+        double ValorC = Double.parseDouble(txtValorC.getText());
+        double ValorV = Double.parseDouble(txtValorV.getText());
 
         if (Codigo.equals("")) {
             lblErrorCodigo.setVisible(true);
@@ -626,19 +710,19 @@ public class frmProducts extends javax.swing.JFrame {
         } else if (Apodo.equals("")) {
             lblErrorApodo.setVisible(true);
             txtApodo.requestFocus();
-        } else if (CantidadP.equals("")) {
+        } else if (CantidadP == 0) {
             lblErrorCantidadP.setVisible(true);
             txtCantidadP.requestFocus();
-        } else if (CantidadV.equals("")) {
+        } else if (CantidadV == 0) {
             lblErrorCantidadV.setVisible(true);
             txtCantidadV.requestFocus();
-        } else if (ValorV.equals("")) {
+        } else if (ValorV == 0) {
             lblErrorValorV.setVisible(true);
             txtValorV.requestFocus();
-        } else if (ValorC.equals("")) {
+        } else if (ValorC == 0) {
             lblErrorValorC.setVisible(true);
             txtValorC.requestFocus();
-        } else if (ValorD.equals("")) {
+        } else if (ValorD == 0) {
             lblErrorValorD.setVisible(true);
             txtValorD.requestFocus();
         } else {
@@ -676,7 +760,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Codigo.equalsIgnoreCase("")) {
             try {
-                String ConsBuscar = "SELECT * FROM tblProcts WHERE Codigo='" + Codigo + "'";
+                String ConsBuscar = "SELECT * FROM tblProducts WHERE Codigo='" + Codigo + "'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -696,7 +780,7 @@ public class frmProducts extends javax.swing.JFrame {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
-                        "Error en el consulta:" + e.getMessage(),
+                        "Error en la consulta:" + e.getMessage(),
                         "¡Error!",
                         JOptionPane.ERROR_MESSAGE);
             }
@@ -714,11 +798,11 @@ public class frmProducts extends javax.swing.JFrame {
         String Codigo = txtCodigo.getText();
         String Nombre = txtNombre.getText();
         String Apodo = txtApodo.getText();
-        String CantidadP = txtCantidadP.getText();
-        String CantidadV = txtCantidadV.getText();
-        String ValorD = txtValorD.getText();
-        String ValorC = txtValorC.getText();
-        String ValorV = txtValorV.getText();
+        int CantidadP = Integer.parseInt(txtCantidadP.getText());
+        int CantidadV = Integer.parseInt(txtCantidadV.getText());
+        double ValorD = Double.parseDouble(txtValorD.getText());
+        double ValorC = Double.parseDouble(txtValorC.getText());
+        double ValorV = Double.parseDouble(txtValorV.getText());
 
         if (Codigo.equals("")) {
             lblErrorCodigo.setVisible(true);
@@ -729,19 +813,19 @@ public class frmProducts extends javax.swing.JFrame {
         } else if (Apodo.equals("")) {
             lblErrorApodo.setVisible(true);
             txtApodo.requestFocus();
-        } else if (CantidadP.equals("")) {
+        } else if (CantidadP == 0) {
             lblErrorCantidadP.setVisible(true);
             txtCantidadP.requestFocus();
-        } else if (CantidadV.equals("")) {
+        } else if (CantidadV == 0) {
             lblErrorCantidadV.setVisible(true);
             txtCantidadV.requestFocus();
-        } else if (ValorV.equals("")) {
+        } else if (ValorV == 0) {
             lblErrorValorV.setVisible(true);
             txtValorV.requestFocus();
-        } else if (ValorC.equals("")) {
+        } else if (ValorC == 0) {
             lblErrorValorC.setVisible(true);
             txtValorC.requestFocus();
-        } else if (ValorD.equals("")) {
+        } else if (ValorD == 0) {
             lblErrorValorD.setVisible(true);
             txtValorD.requestFocus();
         } else {
@@ -858,7 +942,7 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchCodActionPerformed
 
     private void jButtonSearchApoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchApoActionPerformed
-       String Apodo = txtApodo.getText();
+        String Apodo = txtApodo.getText();
 
         if (!Apodo.equalsIgnoreCase("")) {
             try {
@@ -908,7 +992,7 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchApoActionPerformed
 
     private void jButtonSearchNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchNomActionPerformed
-       String Nombre = txtNombre.getText();
+        String Nombre = txtNombre.getText();
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
@@ -957,6 +1041,278 @@ public class frmProducts extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_jButtonSearchNomActionPerformed
 
+    private void TblProductsMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblProductsMouseClick
+        try {
+            int row = this.tbListProducts.getSelectedRow();
+            this.txtCodigo.setText(String.valueOf(this.tbListProducts.getValueAt(row, 0)));
+            this.txtNombre.setText(String.valueOf(this.tbListProducts.getValueAt(row, 1)));
+            this.txtApodo.setText(String.valueOf(this.tbListProducts.getValueAt(row, 2)));
+            this.txtCantidadP.setText(String.valueOf(this.tbListProducts.getValueAt(row, 3)));
+            this.txtCantidadV.setText(String.valueOf(this.tbListProducts.getValueAt(row, 4)));
+            this.txtValorC.setText(String.valueOf(this.tbListProducts.getValueAt(row, 5)));
+            this.txtValorV.setText(String.valueOf(this.tbListProducts.getValueAt(row, 6)));
+            this.txtValorD.setText(String.valueOf(this.tbListProducts.getValueAt(row, 7)));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error en la consulta:" + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_TblProductsMouseClick
+
+    private void jButtonSearchCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCPActionPerformed
+   int CantidadP = Integer.parseInt(txtCantidadP.getText());
+
+        if (CantidadP!=0) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apodo");
+                modelo.addColumn("Cantidad De Productos");
+                modelo.addColumn("Cantidad Vendida");
+                modelo.addColumn("Valor De Compra");
+                modelo.addColumn("Valor De Venta");
+                modelo.addColumn("Valor Con Descuento");
+
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadP LIKE'%" + CantidadP + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
+                    tbListProducts.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtCantidadP.setText("");
+                    txtCantidadP.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar una cantidad para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorCantidadP.setVisible(false);
+            txtCantidadP.requestFocus();
+        }
+        Limpiar();
+    }//GEN-LAST:event_jButtonSearchCPActionPerformed
+
+    private void jButtonSearchCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCVActionPerformed
+       int CantidadV = Integer.parseInt(txtCantidadV.getText());
+
+        if (CantidadV!=0) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apodo");
+                modelo.addColumn("Cantidad De Productos");
+                modelo.addColumn("Cantidad Vendida");
+                modelo.addColumn("Valor De Compra");
+                modelo.addColumn("Valor De Venta");
+                modelo.addColumn("Valor Con Descuento");
+
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadV LIKE'%" + CantidadV + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
+                    tbListProducts.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtCantidadV.setText("");
+                    txtCantidadV.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar una cantidad para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorCantidadV.setVisible(false);
+            txtCantidadV.requestFocus();
+        }
+        Limpiar();
+    }//GEN-LAST:event_jButtonSearchCVActionPerformed
+
+    private void jButtonSearchVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVCActionPerformed
+       int ValorC = Integer.parseInt(txtValorC.getText());
+
+        if (ValorC!=0) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apodo");
+                modelo.addColumn("Cantidad De Productos");
+                modelo.addColumn("Cantidad Vendida");
+                modelo.addColumn("Valor De Compra");
+                modelo.addColumn("Valor De Venta");
+                modelo.addColumn("Valor Con Descuento");
+
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorC LIKE'%" + ValorC + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
+                    tbListProducts.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtValorC.setText("");
+                    txtValorC.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un valor para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorValorC.setVisible(false);
+            txtValorC.requestFocus();
+        }
+        Limpiar();
+    }//GEN-LAST:event_jButtonSearchVCActionPerformed
+
+    private void jButtonSearchVVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVVActionPerformed
+              int ValorV = Integer.parseInt(txtValorV.getText());
+
+
+        if (ValorV!=0) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apodo");
+                modelo.addColumn("Cantidad De Productos");
+                modelo.addColumn("Cantidad Vendida");
+                modelo.addColumn("Valor De Compra");
+                modelo.addColumn("Valor De Venta");
+                modelo.addColumn("Valor Con Descuento");
+
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorV LIKE'%" + ValorV + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
+                    tbListProducts.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtValorV.setText("");
+                    txtValorV.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un valor para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorValorV.setVisible(false);
+            txtValorV.requestFocus();
+        }
+        Limpiar();
+    }//GEN-LAST:event_jButtonSearchVVActionPerformed
+
+    private void jButtonSearchVDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVDActionPerformed
+           int ValorD = Integer.parseInt(txtValorD.getText());
+
+
+        if (ValorD!=0) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apodo");
+                modelo.addColumn("Cantidad De Productos");
+                modelo.addColumn("Cantidad Vendida");
+                modelo.addColumn("Valor De Compra");
+                modelo.addColumn("Valor De Venta");
+                modelo.addColumn("Valor Con Descuento");
+
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorD LIKE'%" + ValorD + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
+                    tbListProducts.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtValorD.setText("");
+                    txtValorD.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un valor para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorValorD.setVisible(false);
+            txtValorD.requestFocus();
+        }
+        Limpiar();
+    }//GEN-LAST:event_jButtonSearchVDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1003,8 +1359,13 @@ public class frmProducts extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButtonSearchApo;
+    private javax.swing.JButton jButtonSearchCP;
+    private javax.swing.JButton jButtonSearchCV;
     private javax.swing.JButton jButtonSearchCod;
     private javax.swing.JButton jButtonSearchNom;
+    private javax.swing.JButton jButtonSearchVC;
+    private javax.swing.JButton jButtonSearchVD;
+    private javax.swing.JButton jButtonSearchVV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

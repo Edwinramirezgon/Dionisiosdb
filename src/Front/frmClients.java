@@ -191,9 +191,20 @@ public class frmClients extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
-        tbListClients.setEnabled(false);
-        tbListClients.setRowSelectionAllowed(false);
+        ) {
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+        tbListClients.setFocusable(false);
+        tbListClients.setRequestFocusEnabled(false);
+        tbListClients.getTableHeader().setReorderingAllowed(false);
+        tbListClients.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbClientMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbListClients);
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
@@ -802,15 +813,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Nombre LIKE'%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -839,7 +850,7 @@ public class frmClients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchNomActionPerformed
 
     private void jButtonSearchDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDniActionPerformed
-         String Dni = txtDni.getText();
+        String Dni = txtDni.getText();
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
@@ -851,15 +862,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Dni LIKE'%" + Dni + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -888,7 +899,7 @@ public class frmClients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchDniActionPerformed
 
     private void jButtonSearchApeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchApeActionPerformed
-       String Apellido = txtApellido.getText();
+        String Apellido = txtApellido.getText();
 
         if (!Apellido.equalsIgnoreCase("")) {
             try {
@@ -900,15 +911,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Apellido LIKE'%" + Apellido + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -949,15 +960,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Correo LIKE'%" + Correo + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -986,7 +997,7 @@ public class frmClients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchCorrActionPerformed
 
     private void jButtonSearchDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDireActionPerformed
-           String Direccion = txtDireccion.getText();
+        String Direccion = txtDireccion.getText();
 
         if (!Direccion.equalsIgnoreCase("")) {
             try {
@@ -998,15 +1009,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Direccion LIKE'%" + Direccion + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -1035,7 +1046,7 @@ public class frmClients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchDireActionPerformed
 
     private void jButtonSearchFecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchFecActionPerformed
-           String Fecha = txtFecha.getText();
+        String Fecha = txtFecha.getText();
 
         if (!Fecha.equalsIgnoreCase("")) {
             try {
@@ -1047,15 +1058,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Fecha LIKE'%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -1096,15 +1107,15 @@ public class frmClients extends javax.swing.JFrame {
                 modelo.addColumn("DIRECCION      ");
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
-                
+
                 String ConsBuscar = "SELECT * FROM TblClients WHERE Telefono LIKE'%" + Telefono + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()) {
-                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                        modelo.addRow(Lista);}
-
-                    while (RS.next()) ;
+                if (RS.next()) {
+                    do {
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);
+                    } while (RS.next());
                     tbListClients.setModel(modelo);
 
                 } else {
@@ -1131,6 +1142,28 @@ public class frmClients extends javax.swing.JFrame {
         }
         Limpiar();
     }//GEN-LAST:event_jButtonSearchTelActionPerformed
+
+    private void tbClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientMouseClicked
+        
+   
+        try {
+            int row = this.tbListClients.getSelectedRow();
+            this.txtDni.setText(String.valueOf(this.tbListClients.getValueAt(row, 0)));
+            this.txtNombre.setText(String.valueOf(this.tbListClients.getValueAt(row, 1)));
+            this.txtApellido.setText(String.valueOf(this.tbListClients.getValueAt(row, 2)));
+            this.txtCorreo.setText(String.valueOf(this.tbListClients.getValueAt(row, 3)));
+            this.txtDireccion.setText(String.valueOf(this.tbListClients.getValueAt(row, 4)));
+            this.txtFecha.setText(String.valueOf(this.tbListClients.getValueAt(row, 5)));
+            this.txtTelefono.setText(String.valueOf(this.tbListClients.getValueAt(row, 6)));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error en la consulta:" + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }   
+           
+
+    }//GEN-LAST:event_tbClientMouseClicked
 
     /**
      * @param args the command line arguments

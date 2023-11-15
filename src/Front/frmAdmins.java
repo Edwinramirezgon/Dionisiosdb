@@ -158,7 +158,8 @@ public class frmAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestClientActionPerformed
 
     private void btnGestProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProvActionPerformed
-
+           frmProv ObjProv = new frmProv();
+        ObjProv.setVisible(true);
     }//GEN-LAST:event_btnGestProvActionPerformed
 
     private void btnGestProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProdActionPerformed

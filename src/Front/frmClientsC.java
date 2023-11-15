@@ -123,7 +123,13 @@ public class frmClientsC extends javax.swing.JFrame {
         txtFecha = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonSearchNom = new javax.swing.JButton();
+        jButtonSearchDni = new javax.swing.JButton();
+        jButtonSearchApe = new javax.swing.JButton();
+        jButtonSearchCorr = new javax.swing.JButton();
+        jButtonSearchDire = new javax.swing.JButton();
+        jButtonSearchFec = new javax.swing.JButton();
+        jButtonSearchTel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestion De Clientes");
@@ -333,13 +339,73 @@ public class frmClientsC extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText(">");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSearchNom.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchNom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchNom.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchNom.setText("BUSCAR");
+        jButtonSearchNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonSearchNomActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchDni.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchDni.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchDni.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchDni.setText("BUSCAR");
+        jButtonSearchDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchDniActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchApe.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchApe.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchApe.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchApe.setText("BUSCAR");
+        jButtonSearchApe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchApeActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchCorr.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchCorr.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchCorr.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchCorr.setText("BUSCAR");
+        jButtonSearchCorr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchCorrActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchDire.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchDire.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchDire.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchDire.setText("BUSCAR");
+        jButtonSearchDire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchDireActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchFec.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchFec.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchFec.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchFec.setText("BUSCAR");
+        jButtonSearchFec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchFecActionPerformed(evt);
+            }
+        });
+
+        jButtonSearchTel.setBackground(new java.awt.Color(0, 0, 255));
+        jButtonSearchTel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jButtonSearchTel.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearchTel.setText("BUSCAR");
+        jButtonSearchTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchTelActionPerformed(evt);
             }
         });
 
@@ -347,46 +413,48 @@ public class frmClientsC extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(385, 385, 385)
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(385, 385, 385)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonSearchDni, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addComponent(lblErrorDni))
+                            .addComponent(txtDni, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel1)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblErrorNombre)
+                                    .addComponent(jLabel3))
+                                .addGap(3, 3, 3))
+                            .addComponent(txtNombre)
+                            .addComponent(jButtonSearchNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(lblErrorNombre)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,35 +463,42 @@ public class frmClientsC extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblErrorApellido)
                                         .addGap(30, 30, 30)
-                                        .addComponent(lblErrorCorreo))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel2)
+                                        .addComponent(lblErrorCorreo))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel6)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(lblErrorDireccion))
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(lblErrorDireccion))
+                                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(12, 12, 12))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonSearchApe, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonSearchCorr, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonSearchDire, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(lblErrorFecha))
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jButtonSearchFec, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonSearchTel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblErrorTelefono))
-                        .addGap(23, 23, 23))))
+                        .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,16 +513,14 @@ public class frmClientsC extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblErrorDni)
@@ -457,6 +530,15 @@ public class frmClientsC extends javax.swing.JFrame {
                     .addComponent(lblErrorDireccion)
                     .addComponent(lblErrorFecha)
                     .addComponent(lblErrorTelefono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSearchDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchNom, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchApe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchCorr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchDire, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchFec)
+                    .addComponent(jButtonSearchTel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -473,18 +555,18 @@ public class frmClientsC extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(173, 173, 173))
+                .addGap(135, 135, 135))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1398, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1299, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -591,22 +673,77 @@ public class frmClientsC extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Dni = txtDni.getText();
+    private void jButtonSearchNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchNomActionPerformed
+        String Nombre = txtNombre.getText();
+
+        if (!Nombre.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Nombre LIKE'%" + Nombre + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtNombre.setText("");
+                    txtNombre.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Nombre para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorNombre.setVisible(false);
+            txtNombre.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchNomActionPerformed
+
+    private void jButtonSearchDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDniActionPerformed
+         String Dni = txtDni.getText();
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni='" + Dni + "'";
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni LIKE'%" + Dni + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    txtNombre.setText(RS.getString("Nombre"));
-                    txtApellido.setText(RS.getString("Apellido"));
-                    txtCorreo.setText(RS.getString("Correo"));
-                    txtTelefono.setText(RS.getString("Telefono"));
-                    txtDireccion.setText(RS.getString("Direccion"));
-                    txtFecha.setText(RS.getString("Fecha"));
-                  
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
 
                 } else {
                     JOptionPane.showMessageDialog(rootPane,
@@ -618,19 +755,259 @@ public class frmClientsC extends javax.swing.JFrame {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
-                        "Error en el consulta:" + e.getMessage(),
+                        "Error en la consulta:" + e.getMessage(),
                         "¡Error!",
                         JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un DNI para validar",
+                    "Debe ingresar un Dni para validar",
                     "¡Error!",
                     JOptionPane.ERROR_MESSAGE);
             lblErrorDni.setVisible(false);
             txtDni.requestFocus();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonSearchDniActionPerformed
+
+    private void jButtonSearchApeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchApeActionPerformed
+       String Apellido = txtApellido.getText();
+
+        if (!Apellido.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Apellido LIKE'%" + Apellido + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtApellido.setText("");
+                    txtApellido.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Apellido para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorApellido.setVisible(false);
+            txtApellido.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchApeActionPerformed
+
+    private void jButtonSearchCorrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCorrActionPerformed
+        String Correo = txtCorreo.getText();
+
+        if (!Correo.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Correo LIKE'%" + Correo + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtCorreo.setText("");
+                    txtCorreo.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Correo para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorCorreo.setVisible(false);
+            txtCorreo.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchCorrActionPerformed
+
+    private void jButtonSearchDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDireActionPerformed
+           String Direccion = txtDireccion.getText();
+
+        if (!Direccion.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Direccion LIKE'%" + Direccion + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtDireccion.setText("");
+                    txtDireccion.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar una Direccion para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorDireccion.setVisible(false);
+            txtDireccion.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchDireActionPerformed
+
+    private void jButtonSearchFecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchFecActionPerformed
+           String Fecha = txtFecha.getText();
+
+        if (!Fecha.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Fecha LIKE'%" + Fecha + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtFecha.setText("");
+                    txtFecha.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar una Fecha para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorFecha.setVisible(false);
+            txtFecha.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchFecActionPerformed
+
+    private void jButtonSearchTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchTelActionPerformed
+        String Telefono = txtTelefono.getText();
+
+        if (!Telefono.equalsIgnoreCase("")) {
+            try {
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("DNI");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
+                modelo.addColumn("CORREO ELECTRONICO    ");
+                modelo.addColumn("DIRECCION      ");
+                modelo.addColumn("TELEFONO");
+                modelo.addColumn("FECHA DE NACIMIENTO");
+                
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Telefono LIKE'%" + Telefono + "%'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if(RS.next()) {
+                    do{Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
+                        modelo.addRow(Lista);}
+
+                    while (RS.next()) ;
+                    tbListClients.setModel(modelo);
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el CLiente en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtTelefono.setText("");
+                    txtTelefono.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Telefono para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorTelefono.setVisible(false);
+            txtTelefono.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonSearchTelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -675,7 +1052,13 @@ public class frmClientsC extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonSearchApe;
+    private javax.swing.JButton jButtonSearchCorr;
+    private javax.swing.JButton jButtonSearchDire;
+    private javax.swing.JButton jButtonSearchDni;
+    private javax.swing.JButton jButtonSearchFec;
+    private javax.swing.JButton jButtonSearchNom;
+    private javax.swing.JButton jButtonSearchTel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

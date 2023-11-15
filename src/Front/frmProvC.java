@@ -25,6 +25,7 @@ public class frmProvC extends javax.swing.JFrame {
         CON = new ClsConexion();
         CN = CON.getConnection();
         ListarTabla();
+        Limpiar();
     }
 
     private String SElDias() {
@@ -66,8 +67,8 @@ public class frmProvC extends javax.swing.JFrame {
         txtNit.setText("");
         txtEmpresa.setText("");
         txtTelefono.setText("");
-        txtCantiD.setText("");
-        txtPorceD.setText("");
+        txtCantiD.setText("0");
+        txtPorceD.setText("0");
         LUNES.setSelected(false);
         MARTES.setSelected(false);
         MIERCOLES.setSelected(false);
@@ -649,12 +650,7 @@ public class frmProvC extends javax.swing.JFrame {
         } else if (Telefono.equals("")) {
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        } else if (CantiD == 0) {
-            lblErrorCantiD.setVisible(true);
-            txtCantiD.requestFocus();
-        } else if (PorceD == 0) {
-            lblErrorPorceD.setVisible(true);
-            txtPorceD.requestFocus();
+
 
         } else {
             try {

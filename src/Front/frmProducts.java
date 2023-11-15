@@ -28,6 +28,7 @@ public class frmProducts extends javax.swing.JFrame {
         CON = new ClsConexion();
         CN = CON.getConnection();
         ListarTabla();
+        Limpiar();
     }
 
     private void Limpiar() {
@@ -35,11 +36,11 @@ public class frmProducts extends javax.swing.JFrame {
         txtCodigo.setText("");
         txtNombre.setText("");
         txtApodo.setText("");
-        txtCantidadP.setText("");
-        txtCantidadV.setText("");
-        txtValorV.setText("");
-        txtValorC.setText("");
-        txtValorD.setText("");
+        txtCantidadP.setText("0");
+        txtCantidadV.setText("0");
+        txtValorV.setText("0");
+        txtValorC.setText("0");
+        txtValorD.setText("0");
 
         // Se ocultan todos los errores
         lblErrorCodigo.setVisible(false);
@@ -107,9 +108,7 @@ public class frmProducts extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListProducts = new javax.swing.JTable();
-        btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -148,6 +147,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(555, 361));
+        jPanel1.setLayout(null);
 
         txtCodigo.setBackground(new java.awt.Color(0, 153, 255));
         txtCodigo.setForeground(new java.awt.Color(51, 0, 51));
@@ -158,6 +158,8 @@ public class frmProducts extends javax.swing.JFrame {
                 txtCodigoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCodigo);
+        txtCodigo.setBounds(19, 50, 186, 40);
 
         btnRegistrar.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -168,26 +170,36 @@ public class frmProducts extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRegistrar);
+        btnRegistrar.setBounds(20, 355, 203, 40);
 
         lblErrorCodigo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCodigo.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorCodigo.setText("* Error, ingrese Codigo válido");
         lblErrorCodigo.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorCodigo);
+        lblErrorCodigo.setBounds(35, 91, 142, 20);
 
         lblErrorApodo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorApodo.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorApodo.setText("* Error, ingrese Apodo válido");
         lblErrorApodo.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorApodo);
+        lblErrorApodo.setBounds(410, 90, 139, 13);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("CODIGO DEL PRODUCTO");
         jLabel1.setAlignmentY(10.0F);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(33, 26, 172, 30);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("APODO DEL PRODUCTO");
         jLabel2.setAlignmentY(10.0F);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(410, 30, 166, 18);
 
         tbListProducts.setAutoCreateRowSorter(true);
         tbListProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -208,15 +220,8 @@ public class frmProducts extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbListProducts);
 
-        btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
-        btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("ELIMINAR PRODUCTO");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(240, 215, 1210, 350);
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -227,16 +232,8 @@ public class frmProducts extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-
-        btnModificar.setBackground(new java.awt.Color(0, 0, 255));
-        btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setText("MODIFICAR PRODUCTO");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
+        jPanel1.add(btnCancelar);
+        btnCancelar.setBounds(20, 520, 203, 40);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -247,6 +244,8 @@ public class frmProducts extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnActualizar);
+        btnActualizar.setBounds(20, 460, 203, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -257,54 +256,76 @@ public class frmProducts extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLimpiar);
+        btnLimpiar.setBounds(20, 410, 203, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PRODUCTOS");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(690, 175, 272, 30);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("CANTIDAD DEL PRODUCTO");
         jLabel6.setAlignmentY(10.0F);
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(590, 30, 188, 18);
 
         lblErrorCantidadP.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCantidadP.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorCantidadP.setText("* Error, ingrese Cantidad válida");
         lblErrorCantidadP.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorCantidadP);
+        lblErrorCantidadP.setBounds(590, 90, 152, 13);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("CANTIDAD VENDIDA");
         jLabel7.setAlignmentY(10.0F);
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(790, 30, 139, 18);
 
         lblErrorCantidadV.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCantidadV.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorCantidadV.setText("* Error, ingrese Cantidad válida");
         lblErrorCantidadV.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorCantidadV);
+        lblErrorCantidadV.setBounds(790, 90, 152, 13);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setText("VALOR DE COMPRA");
         jLabel8.setAlignmentY(10.0F);
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(960, 30, 138, 18);
 
         lblErrorValorC.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValorC.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValorC.setText("* Error, ingrese valor válido");
         lblErrorValorC.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorValorC);
+        lblErrorValorC.setBounds(960, 90, 132, 13);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setText("VALOR DE VENTA");
         jLabel9.setAlignmentY(10.0F);
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(1110, 30, 122, 18);
 
         lblErrorValorV.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValorV.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValorV.setText("* Error, ingrese valor valido");
         lblErrorValorV.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorValorV);
+        lblErrorValorV.setBounds(1110, 90, 132, 13);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("NOMBRE DEL PRODUCTO");
         jLabel3.setAlignmentY(10.0F);
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(220, 30, 178, 18);
 
         txtApodo.setBackground(new java.awt.Color(0, 153, 255));
         txtApodo.setForeground(new java.awt.Color(51, 0, 51));
@@ -315,11 +336,15 @@ public class frmProducts extends javax.swing.JFrame {
                 txtApodoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtApodo);
+        txtApodo.setBounds(410, 50, 166, 35);
 
         lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorNombre.setText("* Error, ingrese Nombre válido");
         lblErrorNombre.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorNombre);
+        lblErrorNombre.setBounds(220, 90, 146, 13);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -330,6 +355,8 @@ public class frmProducts extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNombre);
+        txtNombre.setBounds(220, 50, 178, 35);
 
         txtCantidadP.setBackground(new java.awt.Color(0, 153, 255));
         txtCantidadP.setForeground(new java.awt.Color(51, 0, 51));
@@ -340,6 +367,8 @@ public class frmProducts extends javax.swing.JFrame {
                 txtCantidadPActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCantidadP);
+        txtCantidadP.setBounds(590, 50, 188, 35);
 
         txtCantidadV.setBackground(new java.awt.Color(0, 153, 255));
         txtCantidadV.setForeground(new java.awt.Color(51, 0, 51));
@@ -350,6 +379,8 @@ public class frmProducts extends javax.swing.JFrame {
                 txtCantidadVActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCantidadV);
+        txtCantidadV.setBounds(790, 50, 152, 35);
 
         txtValorC.setBackground(new java.awt.Color(0, 153, 255));
         txtValorC.setForeground(new java.awt.Color(51, 0, 51));
@@ -360,6 +391,8 @@ public class frmProducts extends javax.swing.JFrame {
                 txtValorCActionPerformed(evt);
             }
         });
+        jPanel1.add(txtValorC);
+        txtValorC.setBounds(960, 50, 138, 35);
 
         txtValorD.setBackground(new java.awt.Color(0, 153, 255));
         txtValorD.setForeground(new java.awt.Color(51, 0, 51));
@@ -370,13 +403,19 @@ public class frmProducts extends javax.swing.JFrame {
                 txtValorDActionPerformed(evt);
             }
         });
+        jPanel1.add(txtValorD);
+        txtValorD.setBounds(1260, 50, 182, 35);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(60, 185, 168, 160);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setText("VALOR CON DESCUENTO");
         jLabel10.setAlignmentY(10.0F);
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(1260, 30, 182, 18);
 
         txtValorV.setBackground(new java.awt.Color(0, 153, 255));
         txtValorV.setForeground(new java.awt.Color(51, 0, 51));
@@ -387,11 +426,15 @@ public class frmProducts extends javax.swing.JFrame {
                 txtValorVActionPerformed(evt);
             }
         });
+        jPanel1.add(txtValorV);
+        txtValorV.setBounds(1110, 50, 132, 35);
 
         lblErrorValorD.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValorD.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValorD.setText("* Error, ingrese valor valido");
         lblErrorValorD.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorValorD);
+        lblErrorValorD.setBounds(1260, 90, 132, 13);
 
         jButtonSearchCod.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchCod.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -402,6 +445,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchCodActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchCod);
+        jButtonSearchCod.setBounds(19, 117, 186, 40);
 
         jButtonSearchApo.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchApo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -412,6 +457,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchApoActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchApo);
+        jButtonSearchApo.setBounds(410, 117, 166, 40);
 
         jButtonSearchNom.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchNom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -422,6 +469,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchNomActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchNom);
+        jButtonSearchNom.setBounds(217, 117, 181, 40);
 
         jButtonSearchCP.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchCP.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -432,6 +481,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchCPActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchCP);
+        jButtonSearchCP.setBounds(588, 117, 190, 40);
 
         jButtonSearchCV.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchCV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -442,6 +493,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchCVActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchCV);
+        jButtonSearchCV.setBounds(790, 117, 152, 40);
 
         jButtonSearchVC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchVC.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -452,6 +505,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchVCActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchVC);
+        jButtonSearchVC.setBounds(960, 117, 138, 40);
 
         jButtonSearchVV.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchVV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -462,6 +517,8 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchVVActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchVV);
+        jButtonSearchVV.setBounds(1110, 117, 138, 40);
 
         jButtonSearchVD.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchVD.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -472,211 +529,22 @@ public class frmProducts extends javax.swing.JFrame {
                 jButtonSearchVDActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lblErrorCodigo)
-                        .addGap(43, 43, 43)
-                        .addComponent(lblErrorNombre)
-                        .addGap(44, 44, 44)
-                        .addComponent(lblErrorApodo)
-                        .addGap(41, 41, 41)
-                        .addComponent(lblErrorCantidadP)
-                        .addGap(48, 48, 48)
-                        .addComponent(lblErrorCantidadV)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblErrorValorC)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblErrorValorV)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblErrorValorD))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonSearchCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel1))
-                            .addComponent(txtCodigo))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonSearchNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtApodo)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonSearchApo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtCantidadP, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonSearchCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txtCantidadV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(txtValorC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonSearchCV, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonSearchVC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(txtValorV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtValorD, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonSearchVV, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonSearchVD, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificar)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(462, 462, 462)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel3)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel2)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtApodo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel6)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtCantidadP, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel7)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtCantidadV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel8)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtValorC, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel9)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtValorV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel10)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtValorD, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblErrorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblErrorNombre)
-                    .addComponent(lblErrorApodo)
-                    .addComponent(lblErrorCantidadP)
-                    .addComponent(lblErrorCantidadV)
-                    .addComponent(lblErrorValorC)
-                    .addComponent(lblErrorValorV)
-                    .addComponent(lblErrorValorD))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSearchCod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchNom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchApo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchCP, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchCV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchVC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchVV, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchVD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+        jPanel1.add(jButtonSearchVD);
+        jButtonSearchVD.setBounds(1260, 117, 182, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1464, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1459, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -691,108 +559,9 @@ public class frmProducts extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        String Codigo = txtCodigo.getText();
-        String Nombre = txtNombre.getText();
-        String Apodo = txtApodo.getText();
-        int CantidadP = Integer.parseInt(txtCantidadP.getText());
-        int CantidadV = Integer.parseInt(txtCantidadV.getText());
-        double ValorD = Double.parseDouble(txtValorD.getText());
-        double ValorC = Double.parseDouble(txtValorC.getText());
-        double ValorV = Double.parseDouble(txtValorV.getText());
-
-        if (Codigo.equals("")) {
-            lblErrorCodigo.setVisible(true);
-            txtCodigo.requestFocus();
-        } else if (Nombre.equals("")) {
-            lblErrorNombre.setVisible(true);
-            txtNombre.requestFocus();
-        } else if (Apodo.equals("")) {
-            lblErrorApodo.setVisible(true);
-            txtApodo.requestFocus();
-        } else if (CantidadP == 0) {
-            lblErrorCantidadP.setVisible(true);
-            txtCantidadP.requestFocus();
-        } else if (CantidadV == 0) {
-            lblErrorCantidadV.setVisible(true);
-            txtCantidadV.requestFocus();
-        } else if (ValorV == 0) {
-            lblErrorValorV.setVisible(true);
-            txtValorV.requestFocus();
-        } else if (ValorC == 0) {
-            lblErrorValorC.setVisible(true);
-            txtValorC.requestFocus();
-        } else if (ValorD == 0) {
-            lblErrorValorD.setVisible(true);
-            txtValorD.requestFocus();
-        } else {
-            try {
-                String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ValCodigo);
-                ResultSet RS = PS.executeQuery();
-                if (!RS.next()) {
-                    JOptionPane.showMessageDialog(rootPane, "¡Error! el Producto NO existe en la BD");
-                } else {
-                    String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
-                            + "' WHERE Codigo='" + Codigo + "'";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
-                    PS1.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Producto modificado con éxito");
-                    Limpiar();
-                    txtCodigo.requestFocus();
-                    ListarTabla();
-                }
-            } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en el registro: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String Codigo = txtCodigo.getText();
-
-        if (!Codigo.equalsIgnoreCase("")) {
-            try {
-                String ConsBuscar = "SELECT * FROM tblProducts WHERE Codigo='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    String ConsEliminar = "DELETE FROM tblProducts WHERE Codigo='" + Codigo + "'";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
-                    PS1.executeUpdate();
-                    Limpiar();
-                    JOptionPane.showMessageDialog(rootPane, "Producto eliminado con éxito");
-                    ListarTabla();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Producto en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtCodigo.setText("");
-                    txtCodigo.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un Producto para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorCodigo.setVisible(false);
-            txtCodigo.requestFocus();
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String Codigo = txtCodigo.getText();
@@ -816,18 +585,12 @@ public class frmProducts extends javax.swing.JFrame {
         } else if (CantidadP == 0) {
             lblErrorCantidadP.setVisible(true);
             txtCantidadP.requestFocus();
-        } else if (CantidadV == 0) {
-            lblErrorCantidadV.setVisible(true);
-            txtCantidadV.requestFocus();
         } else if (ValorV == 0) {
-            lblErrorValorV.setVisible(true);
-            txtValorV.requestFocus();
-        } else if (ValorC == 0) {
             lblErrorValorC.setVisible(true);
             txtValorC.requestFocus();
-        } else if (ValorD == 0) {
-            lblErrorValorD.setVisible(true);
-            txtValorD.requestFocus();
+        } else if (ValorC == 0) {
+            lblErrorValorV.setVisible(true);
+            txtValorV.requestFocus();
         } else {
             try {
                 String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
@@ -841,8 +604,8 @@ public class frmProducts extends javax.swing.JFrame {
                             + " Apodo,"
                             + " CantidadP,"
                             + " CantidadV,"
-                            + " ValorD,"
-                            + " ValorC,ValorV ) "
+                            + " ValorV,"
+                            + " ValorC,ValorD ) "
                             + "VALUES ('" + Codigo + "','" + Nombre + "','" + Apodo + "','" + CantidadP + "','" + CantidadV + "','" + ValorV + "','" + ValorC + "','" + ValorD + "')";
                     PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                     PS1.executeUpdate();
@@ -1354,9 +1117,7 @@ public class frmProducts extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButtonSearchApo;
     private javax.swing.JButton jButtonSearchCP;

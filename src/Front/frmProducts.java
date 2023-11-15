@@ -108,7 +108,9 @@ public class frmProducts extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbListProducts = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -221,7 +223,19 @@ public class frmProducts extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbListProducts);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(240, 215, 1210, 350);
+        jScrollPane1.setBounds(240, 215, 1210, 484);
+
+        btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
+        btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("ELIMINAR PRODUCTO");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar);
+        btnEliminar.setBounds(20, 475, 203, 40);
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -233,7 +247,19 @@ public class frmProducts extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar);
-        btnCancelar.setBounds(20, 520, 203, 40);
+        btnCancelar.setBounds(20, 645, 203, 40);
+
+        btnModificar.setBackground(new java.awt.Color(0, 0, 255));
+        btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("MODIFICAR PRODUCTO");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnModificar);
+        btnModificar.setBounds(20, 415, 203, 40);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -245,7 +271,7 @@ public class frmProducts extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(20, 460, 203, 40);
+        btnActualizar.setBounds(20, 595, 203, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -257,7 +283,7 @@ public class frmProducts extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnLimpiar);
-        btnLimpiar.setBounds(20, 410, 203, 40);
+        btnLimpiar.setBounds(20, 535, 203, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PRODUCTOS");
@@ -367,6 +393,11 @@ public class frmProducts extends javax.swing.JFrame {
                 txtCantidadPActionPerformed(evt);
             }
         });
+        txtCantidadP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadPKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCantidadP);
         txtCantidadP.setBounds(590, 50, 188, 35);
 
@@ -377,6 +408,11 @@ public class frmProducts extends javax.swing.JFrame {
         txtCantidadV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadVActionPerformed(evt);
+            }
+        });
+        txtCantidadV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantidadVKeyTyped(evt);
             }
         });
         jPanel1.add(txtCantidadV);
@@ -391,6 +427,11 @@ public class frmProducts extends javax.swing.JFrame {
                 txtValorCActionPerformed(evt);
             }
         });
+        txtValorC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorCKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtValorC);
         txtValorC.setBounds(960, 50, 138, 35);
 
@@ -401,6 +442,11 @@ public class frmProducts extends javax.swing.JFrame {
         txtValorD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorDActionPerformed(evt);
+            }
+        });
+        txtValorD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorDKeyTyped(evt);
             }
         });
         jPanel1.add(txtValorD);
@@ -424,6 +470,11 @@ public class frmProducts extends javax.swing.JFrame {
         txtValorV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorVActionPerformed(evt);
+            }
+        });
+        txtValorV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtValorVKeyTyped(evt);
             }
         });
         jPanel1.add(txtValorV);
@@ -536,15 +587,11 @@ public class frmProducts extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1459, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1464, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 719, Short.MAX_VALUE)
         );
 
         pack();
@@ -559,9 +606,103 @@ public class frmProducts extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        String Codigo = txtCodigo.getText();
+        String Nombre = txtNombre.getText();
+        String Apodo = txtApodo.getText();
+        int CantidadP = Integer.parseInt(txtCantidadP.getText());
+        int CantidadV = Integer.parseInt(txtCantidadV.getText());
+        double ValorD = Double.parseDouble(txtValorD.getText());
+        double ValorC = Double.parseDouble(txtValorC.getText());
+        double ValorV = Double.parseDouble(txtValorV.getText());
+
+        if (Codigo.equals("")) {
+            lblErrorCodigo.setVisible(true);
+            txtCodigo.requestFocus();
+        } else if (Nombre.equals("")) {
+            lblErrorNombre.setVisible(true);
+            txtNombre.requestFocus();
+        } else if (Apodo.equals("")) {
+            lblErrorApodo.setVisible(true);
+            txtApodo.requestFocus();
+        } else if (CantidadP == 0) {
+            lblErrorCantidadP.setVisible(true);
+            txtCantidadP.requestFocus();
+        } else if (ValorV == 0) {
+            lblErrorValorV.setVisible(true);
+            txtValorV.requestFocus();
+        } else if (ValorC == 0) {
+            lblErrorValorC.setVisible(true);
+            txtValorC.requestFocus();
+    
+        } else {
+            try {
+                String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
+                PreparedStatement PS = CN.prepareStatement(ValCodigo);
+                ResultSet RS = PS.executeQuery();
+                if (!RS.next()) {
+                    JOptionPane.showMessageDialog(rootPane, "¡Error! el Producto NO existe en la BD");
+                } else {
+                    String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
+                            + "' WHERE Codigo='" + Codigo + "'";
+                    PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
+                    PS1.executeUpdate();
+                    JOptionPane.showMessageDialog(rootPane, "Producto modificado con éxito");
+                    Limpiar();
+                    txtCodigo.requestFocus();
+                    ListarTabla();
+                }
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en el registro: " + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        String Codigo = txtCodigo.getText();
+
+        if (!Codigo.equalsIgnoreCase("")) {
+            try {
+                String ConsBuscar = "SELECT * FROM tblProducts WHERE Codigo='" + Codigo + "'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+                if (RS.next()) {
+                    String ConsEliminar = "DELETE FROM tblProducts WHERE Codigo='" + Codigo + "'";
+                    PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
+                    PS1.executeUpdate();
+                    Limpiar();
+                    JOptionPane.showMessageDialog(rootPane, "Producto eliminado con éxito");
+                    ListarTabla();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "¡¡No existe el Producto en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
+                    txtCodigo.setText("");
+                    txtCodigo.requestFocus();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,
+                        "Error en la consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Producto para validar",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorCodigo.setVisible(false);
+            txtCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         String Codigo = txtCodigo.getText();
@@ -1076,6 +1217,56 @@ public class frmProducts extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_jButtonSearchVDActionPerformed
 
+    private void txtCantidadPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadPKeyTyped
+          int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtCantidadPKeyTyped
+
+    private void txtCantidadVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVKeyTyped
+    int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtCantidadVKeyTyped
+
+    private void txtValorCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorCKeyTyped
+           int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtValorCKeyTyped
+
+    private void txtValorVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorVKeyTyped
+            int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtValorVKeyTyped
+
+    private void txtValorDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorDKeyTyped
+            int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtValorDKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1105,6 +1296,34 @@ public class frmProducts extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1117,7 +1336,9 @@ public class frmProducts extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButtonSearchApo;
     private javax.swing.JButton jButtonSearchCP;

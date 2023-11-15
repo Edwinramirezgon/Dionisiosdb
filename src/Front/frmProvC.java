@@ -325,6 +325,11 @@ public class frmProvC extends javax.swing.JFrame {
                 txtCantiDActionPerformed(evt);
             }
         });
+        txtCantiD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantiDKeyTyped(evt);
+            }
+        });
 
         txtPorceD.setBackground(new java.awt.Color(0, 153, 255));
         txtPorceD.setForeground(new java.awt.Color(51, 0, 51));
@@ -333,6 +338,11 @@ public class frmProvC extends javax.swing.JFrame {
         txtPorceD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPorceDActionPerformed(evt);
+            }
+        });
+        txtPorceD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPorceDKeyTyped(evt);
             }
         });
 
@@ -986,6 +996,26 @@ public class frmProvC extends javax.swing.JFrame {
     private void DOMINGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOMINGOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DOMINGOActionPerformed
+
+    private void txtCantiDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantiDKeyTyped
+           int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtCantiDKeyTyped
+
+    private void txtPorceDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPorceDKeyTyped
+         int key =evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+        
+        if (!numero) {
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_txtPorceDKeyTyped
 
     /**
      * @param args the command line arguments

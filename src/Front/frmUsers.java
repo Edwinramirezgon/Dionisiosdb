@@ -24,50 +24,51 @@ public class frmUsers extends javax.swing.JFrame {
         CN = CON.getConnection();
         ListarTabla();
     }
-    
-    private void Limpiar(){
+
+    private void Limpiar() {
         // Se limpian todos los campos
         txtUser.setText("");
         txtPass.setText("");
         cbRol.setSelectedIndex(0);
-        
+
         // Se ocultan todos los errores
         lblErrorUser.setVisible(false);
         lblErrorPass.setVisible(false);
         lblErrorRol.setVisible(false);
     }
-    
-    private void ListarTabla(){
-        
+
+    private void ListarTabla() {
+
         // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Nombre");       
+        DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        modelo.addColumn("Nombre");
         modelo.addColumn("ROL");
-       
-        
-        
+
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
             String ConsLista = "SELECT * FROM tblUsers";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
-            
+
             // Recorer los resultados y cargalos a una lista
-            while(RS.next()){
-                Object [] Lista = {RS.getString(1),  RS.getString(3)};
+            while (RS.next()) {
+                Object[] Lista = {RS.getString(1), RS.getString(3)};
                 modelo.addRow(Lista);
             }
             tbListUsers.setModel(modelo);
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, 
-                "Error al listar los datos: " + e.getMessage(),
-                "¡Error!",
-                JOptionPane.ERROR_MESSAGE);            
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error al listar los datos: " + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        
-        
+
     }
 
     /**
@@ -100,13 +101,14 @@ public class frmUsers extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Usuarios");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setAutoscrolls(true);
         jPanel1.setPreferredSize(new java.awt.Dimension(555, 361));
+        jPanel1.setLayout(null);
 
         txtUser.setBackground(new java.awt.Color(0, 153, 255));
         txtUser.setForeground(new java.awt.Color(51, 0, 51));
@@ -116,6 +118,8 @@ public class frmUsers extends javax.swing.JFrame {
                 txtUserActionPerformed(evt);
             }
         });
+        jPanel1.add(txtUser);
+        txtUser.setBounds(39, 206, 160, 35);
 
         btnRegistrar.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -126,6 +130,8 @@ public class frmUsers extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRegistrar);
+        btnRegistrar.setBounds(263, 30, 181, 40);
 
         cbRol.setBackground(new java.awt.Color(0, 153, 255));
         cbRol.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
@@ -136,32 +142,48 @@ public class frmUsers extends javax.swing.JFrame {
                 cbRolActionPerformed(evt);
             }
         });
+        jPanel1.add(cbRol);
+        cbRol.setBounds(24, 392, 216, 23);
 
         lblErrorUser.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorUser.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorUser.setText("* Error, ingrese Nombre válido");
+        jPanel1.add(lblErrorUser);
+        lblErrorUser.setBounds(39, 247, 146, 13);
 
         lblErrorPass.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorPass.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorPass.setText("* Error, ingrese Contraseña válida");
+        jPanel1.add(lblErrorPass);
+        lblErrorPass.setBounds(40, 343, 164, 13);
 
         lblErrorRol.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorRol.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorRol.setText("* Error, Por favor elija una opcion");
+        jPanel1.add(lblErrorRol);
+        lblErrorRol.setBounds(44, 421, 161, 13);
 
         txtPass.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(txtPass);
+        txtPass.setBounds(40, 302, 160, 35);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("NOMBRE DEL USUARIO");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(39, 176, 162, 18);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("CONTRASENA DEL USUARIO");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(24, 272, 197, 18);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("ROL DEL USUARIO");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(57, 368, 128, 18);
 
         tbListUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,9 +196,15 @@ public class frmUsers extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbListUsers.setEnabled(false);
-        tbListUsers.setRowSelectionAllowed(false);
+        tbListUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbListUsersMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbListUsers);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(477, 60, 452, 336);
 
         btnEliminar.setBackground(new java.awt.Color(0, 0, 255));
         btnEliminar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -187,6 +215,8 @@ public class frmUsers extends javax.swing.JFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEliminar);
+        btnEliminar.setBounds(263, 146, 184, 40);
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -197,6 +227,8 @@ public class frmUsers extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCancelar);
+        btnCancelar.setBounds(263, 320, 184, 40);
 
         btnModificar.setBackground(new java.awt.Color(0, 0, 255));
         btnModificar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -207,6 +239,8 @@ public class frmUsers extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnModificar);
+        btnModificar.setBounds(263, 88, 184, 40);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -217,6 +251,8 @@ public class frmUsers extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnActualizar);
+        btnActualizar.setBounds(263, 262, 184, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -227,107 +263,17 @@ public class frmUsers extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLimpiar);
+        btnLimpiar.setBounds(263, 204, 184, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE USUARIOS");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(554, 18, 243, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblErrorPass)
-                                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblErrorUser)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistrar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel4)))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblErrorRol)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblErrorUser)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblErrorPass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblErrorRol)
-                        .addGap(6, 6, 6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(39, 6, 168, 164);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,7 +284,7 @@ public class frmUsers extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -359,24 +305,24 @@ public class frmUsers extends javax.swing.JFrame {
         String Pass = txtPass.getText();
         String Rol = (String) cbRol.getSelectedItem();
 
-        if(User.equals("")){
+        if (User.equals("")) {
             lblErrorUser.setVisible(true);
             txtUser.requestFocus();
-        }else if(Pass.equals("")){
+        } else if (Pass.equals("")) {
             lblErrorPass.setVisible(true);
             txtPass.requestFocus();
-        }else if(Rol.equalsIgnoreCase("Seleccione una opción")){
+        } else if (Rol.equalsIgnoreCase("Seleccione una opción")) {
             lblErrorRol.setVisible(true);
-        }else{
+        } else {
             try {
-                String ValUser = "SELECT * FROM TblUsers WHERE User='"+User+"'";
+                String ValUser = "SELECT * FROM TblUsers WHERE User='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ValUser);
                 ResultSet RS = PS.executeQuery();
-                if(!RS.next()){
+                if (!RS.next()) {
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario NO existe en la BD");
-                }else{
-                    String ConsUpdate = "UPDATE TblUsers SET Pass='"+Pass+"',Rol='"+Rol+
-                    "' WHERE User='"+User+"'";
+                } else {
+                    String ConsUpdate = "UPDATE TblUsers SET Pass='" + Pass + "',Rol='" + Rol
+                            + "' WHERE User='" + User + "'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
                     PS1.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Usuario modificado con éxito");
@@ -386,9 +332,9 @@ public class frmUsers extends javax.swing.JFrame {
                 }
             } catch (HeadlessException | SQLException e) {
                 JOptionPane.showMessageDialog(rootPane,
-                    "Error en el registro: " + e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
+                        "Error en el registro: " + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -400,37 +346,37 @@ public class frmUsers extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         String User = txtUser.getText();
 
-        if(!User.equalsIgnoreCase("")){
+        if (!User.equalsIgnoreCase("")) {
             try {
-                String ConsBuscar = "SELECT * FROM tblUsers WHERE User='"+User+"'";
+                String ConsBuscar = "SELECT * FROM tblUsers WHERE User='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()){
-                    String ConsEliminar = "DELETE FROM tblUsers WHERE User='"+User+"'";
+                if (RS.next()) {
+                    String ConsEliminar = "DELETE FROM tblUsers WHERE User='" + User + "'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
                     PS1.executeUpdate();
                     Limpiar();
                     JOptionPane.showMessageDialog(rootPane, "Usuario eliminado con éxito");
                     ListarTabla();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(rootPane,
-                        "¡¡No existe el usuario en la base de datos!!",
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
+                            "¡¡No existe el usuario en la base de datos!!",
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
                     txtUser.setText("");
                     txtUser.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
-                    "Error en el consulta:" + e.getMessage(),
+                        "Error en el consulta:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Debe ingresar un Usuario para validar",
                     "¡Error!",
                     JOptionPane.ERROR_MESSAGE);
-            }
-        }else{
-            JOptionPane.showMessageDialog(rootPane,
-                "Debe ingresar un Usuario para validar",
-                "¡Error!",
-                JOptionPane.ERROR_MESSAGE);
             lblErrorUser.setVisible(false);
             txtUser.requestFocus();
         }
@@ -445,25 +391,25 @@ public class frmUsers extends javax.swing.JFrame {
         String Pass = txtPass.getText();
         String Rol = (String) cbRol.getSelectedItem();
 
-        if(User.equals("")){
+        if (User.equals("")) {
             lblErrorUser.setVisible(true);
             txtUser.requestFocus();
-        }else if(Pass.equals("")){
+        } else if (Pass.equals("")) {
             lblErrorPass.setVisible(true);
             txtPass.requestFocus();
-        }else if(Rol.equalsIgnoreCase("Seleccione una opción")){
+        } else if (Rol.equalsIgnoreCase("Seleccione una opción")) {
             lblErrorRol.setVisible(true);
-        }else{
+        } else {
             try {
-                String ValUser = "SELECT * FROM tblUsers WHERE User='"+User+"'";
+                String ValUser = "SELECT * FROM tblUsers WHERE User='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ValUser);
                 ResultSet RS = PS.executeQuery();
-                if(RS.next()){
+                if (RS.next()) {
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario ya existe en la BD");
-                }else{
+                } else {
                     String ConsInser = "INSERT INTO tblUsers(User,"
-                    + " Pass, Rol) "
-                    + "VALUES ('"+ User +"','"+Pass+"','"+Rol+"')";
+                            + " Pass, Rol) "
+                            + "VALUES ('" + User + "','" + Pass + "','" + Rol + "')";
                     PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                     PS1.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Usuario registrado con éxito");
@@ -472,9 +418,9 @@ public class frmUsers extends javax.swing.JFrame {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
-                    "Error en el registro:"+e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
+                        "Error en el registro:" + e.getMessage(),
+                        "¡Error!",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -482,6 +428,30 @@ public class frmUsers extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
+
+    private void tbListUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListUsersMouseClicked
+        try {
+            int row = this.tbListUsers.getSelectedRow();
+            this.txtUser.setText(String.valueOf(this.tbListUsers.getValueAt(row, 0)));
+            //this.txtPass.setText(String.valueOf(this.tbListUsers.getValueAt(row, 1)));
+            String Rol = String.valueOf(this.tbListUsers.getValueAt(row, 1));
+            int rol = 0;
+            if (Rol.equalsIgnoreCase("MENSAJERO")) {
+                rol = 2;
+
+            } else if (Rol.equalsIgnoreCase("CAJERO")) {
+                rol = 1;
+
+            }
+            this.cbRol.setSelectedIndex(rol);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error en la consulta:" + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_tbListUsersMouseClicked
 
     /**
      * @param args the command line arguments

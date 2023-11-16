@@ -89,7 +89,13 @@ public class frmProv extends javax.swing.JFrame {
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel();
+               DefaultTableModel modelo = new DefaultTableModel(){
+
+ public boolean isCellEditable(int row, int column)
+ {
+     return false;
+ }
+  };        
         modelo.addColumn("Nit");
         modelo.addColumn("Empresa");
         modelo.addColumn("Telefono");
@@ -169,7 +175,7 @@ public class frmProv extends javax.swing.JFrame {
         SABADO = new javax.swing.JCheckBox();
         DOMINGO = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Proveedores");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -418,7 +424,7 @@ public class frmProv extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(58, 186, 168, 160);
+        jLabel5.setBounds(40, 180, 168, 164);
 
         jButtonSearchNit.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchNit.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -734,7 +740,13 @@ public class frmProv extends javax.swing.JFrame {
 
         if (!Nit.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                       DefaultTableModel modelo = new DefaultTableModel(){
+
+ public boolean isCellEditable(int row, int column)
+ {
+     return false;
+ }
+  };        
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -782,7 +794,7 @@ public class frmProv extends javax.swing.JFrame {
 
         if (!Telefono.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -830,7 +842,7 @@ public class frmProv extends javax.swing.JFrame {
 
         if (!Empresa.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -895,7 +907,7 @@ public class frmProv extends javax.swing.JFrame {
 
         if (CantiD != 0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -943,7 +955,7 @@ public class frmProv extends javax.swing.JFrame {
 
         if (PorceD != 0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");

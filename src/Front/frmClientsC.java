@@ -52,7 +52,7 @@ public class frmClientsC extends javax.swing.JFrame {
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel();
+                DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
         modelo.addColumn("DNI");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("APELLIDO");
@@ -131,7 +131,7 @@ public class frmClientsC extends javax.swing.JFrame {
         jButtonSearchFec = new javax.swing.JButton();
         jButtonSearchTel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Clientes");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -681,7 +681,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -730,7 +730,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -779,7 +779,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Apellido.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -828,7 +828,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Correo.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -877,7 +877,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Direccion.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -926,7 +926,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Fecha.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -975,7 +975,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Telefono.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");

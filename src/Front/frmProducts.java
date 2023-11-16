@@ -57,7 +57,7 @@ public class frmProducts extends javax.swing.JFrame {
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel();
+                DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apodo");
@@ -143,7 +143,7 @@ public class frmProducts extends javax.swing.JFrame {
         jButtonSearchVV = new javax.swing.JButton();
         jButtonSearchVD = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Productos");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -454,7 +454,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(60, 185, 168, 160);
+        jLabel5.setBounds(40, 190, 168, 164);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -800,7 +800,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Codigo.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -850,7 +850,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Apodo.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -900,7 +900,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -970,7 +970,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (CantidadP!=0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1020,7 +1020,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (CantidadV!=0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1070,7 +1070,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (ValorC!=0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1121,7 +1121,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (ValorV!=0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1172,7 +1172,7 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (ValorD!=0) {
             try {
-                DefaultTableModel modelo = new DefaultTableModel();
+                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");

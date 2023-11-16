@@ -637,12 +637,13 @@ public class frmClients extends javax.swing.JFrame {
         } else if (Direccion.equals("")) {
             lblErrorDireccion.setVisible(true);
             txtDireccion.requestFocus();
+            } else if (Fecha.equals("")) {
+            lblErrorFecha.setVisible(true);
+            txtFecha.requestFocus();
         } else if (Telefono.equals("")) {
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        } else if (Fecha.equals("")) {
-            lblErrorFecha.setVisible(true);
-            txtFecha.requestFocus();
+        
         } else {
             try {
                 String ValDni = "SELECT * FROM TblClients WHERE DNI='" + Dni + "'";
@@ -651,7 +652,7 @@ public class frmClients extends javax.swing.JFrame {
                 if (!RS.next()) {
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el Cliente NO existe en la BD");
                 } else {
-                    String ConsUpdate = "UPDATE TblClients SET Nombre='" + Nombre + "', Apellido='" + Apellido + "',Correo='" + Correo + "',Direccion='" + Direccion + "',Telefono='" + Telefono + "',Fecha='" + Fecha
+                    String ConsUpdate = "UPDATE TblClients SET Nombre='" + Nombre + "', Apellido='" + Apellido + "',Correo='" + Correo + "',Direccion='" + Direccion  + "',Fecha='" + Fecha + "',Telefono='" + Telefono
                             + "' WHERE Dni='" + Dni + "'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
                     PS1.executeUpdate();
@@ -736,12 +737,13 @@ public class frmClients extends javax.swing.JFrame {
         } else if (Direccion.equals("")) {
             lblErrorDireccion.setVisible(true);
             txtDireccion.requestFocus();
+            } else if (Fecha.equals("")) {
+            lblErrorFecha.setVisible(true);
+            txtFecha.requestFocus();
         } else if (Telefono.equals("")) {
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        } else if (Fecha.equals("")) {
-            lblErrorFecha.setVisible(true);
-            txtFecha.requestFocus();
+        
         } else {
             try {
                 String ValDni = "SELECT * FROM tblClients WHERE Dni='" + Dni + "'";
@@ -755,8 +757,8 @@ public class frmClients extends javax.swing.JFrame {
                             + " Apellido,"
                             + " Correo,"
                             + " Direccion,"
-                            + " Telefono,Fecha ) "
-                            + "VALUES ('" + Dni + "','" + Nombre + "','" + Apellido + "','" + Correo + "','" + Direccion + "','" + Telefono + "','" + Fecha + "')";
+                            + " Fecha,Telefono ) "
+                            + "VALUES ('" + Dni + "','" + Nombre + "','" + Apellido + "','" + Correo + "','" + Direccion + "','" + Fecha + "','" + Telefono + "')";
                     PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                     PS1.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Cliente registrado con éxito");
@@ -1153,8 +1155,8 @@ public class frmClients extends javax.swing.JFrame {
             this.txtApellido.setText(String.valueOf(this.tbListClients.getValueAt(row, 2)));
             this.txtCorreo.setText(String.valueOf(this.tbListClients.getValueAt(row, 3)));
             this.txtDireccion.setText(String.valueOf(this.tbListClients.getValueAt(row, 4)));
-            this.txtFecha.setText(String.valueOf(this.tbListClients.getValueAt(row, 5)));
-            this.txtTelefono.setText(String.valueOf(this.tbListClients.getValueAt(row, 6)));
+            this.txtFecha.setText(String.valueOf(this.tbListClients.getValueAt(row, 6)));
+            this.txtTelefono.setText(String.valueOf(this.tbListClients.getValueAt(row, 5)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane,
                     "Error en la consulta:" + e.getMessage(),

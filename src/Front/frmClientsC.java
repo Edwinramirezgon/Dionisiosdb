@@ -1027,8 +1027,8 @@ public class frmClientsC extends javax.swing.JFrame {
             this.txtApellido.setText(String.valueOf(this.tbListClients.getValueAt(row, 2)));
             this.txtCorreo.setText(String.valueOf(this.tbListClients.getValueAt(row, 3)));
             this.txtDireccion.setText(String.valueOf(this.tbListClients.getValueAt(row, 4)));
-            this.txtFecha.setText(String.valueOf(this.tbListClients.getValueAt(row, 5)));
-            this.txtTelefono.setText(String.valueOf(this.tbListClients.getValueAt(row, 6)));
+            this.txtFecha.setText(String.valueOf(this.tbListClients.getValueAt(row, 6)));
+            this.txtTelefono.setText(String.valueOf(this.tbListClients.getValueAt(row, 5)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane,
                     "Error en la consulta:" + e.getMessage(),

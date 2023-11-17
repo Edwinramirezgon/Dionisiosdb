@@ -15,8 +15,6 @@ public class frmVentas extends javax.swing.JFrame {
     Connection CN;
     DefaultTableModel Carrito;
 
-
-
     public frmVentas() {
         initComponents();
         lblErrorNombre.setVisible(false);
@@ -26,7 +24,7 @@ public class frmVentas extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         CON = new ClsConexion();
         CN = CON.getConnection();
-        ListarTablaP();
+         ListarTablaP();        
         CrearTablaCar();
         Limpiar();
     }
@@ -37,7 +35,8 @@ public class frmVentas extends javax.swing.JFrame {
         txtAnadirC.setText("0");
         txtElimi.setText("0");
         txtDni.setText("");
-        
+              
+
 
         // Se ocultan todos los errores
         lblErrorNombre.setVisible(false);
@@ -63,38 +62,80 @@ public class frmVentas extends javax.swing.JFrame {
 
         tbListCar.setModel(Carrito);
 
-    }private void Total() {
+    }
 
-        int total=0;
-        
-            try {                
-                for (int row = 0; row < Carrito.getRowCount(); row++) {
-                   
+    private void Total() {
 
-                        total+= Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 4)));                      
+        int total = 0;
 
-                    } 
-                
-                txtTotal.setText(total+"");
-                
+        try {
+            for (int row = 0; row < Carrito.getRowCount(); row++) {
 
-                
-            
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error al listar los datos: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
+                total += Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 4)));
+
             }
-        
-       
-       
+
+            txtTotal.setText(total + "");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error al listar los datos: " + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    private void Pagar() {
+
+        try {
+
+            for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
+                String Codigo = (String) Carrito.getValueAt(rowC, 0);
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
+                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                ResultSet RS = PS.executeQuery();
+
+                while (RS.next()) {
+                    String Code = RS.getString(1);
+                    if (Codigo.equals(Code)) {
+                        int CantidadP=0;
+                        int CantidadV=0;
+                        int Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
+                        String Nombre = RS.getString(2);
+                        CantidadP = (Integer.parseInt(RS.getString(4)) - Cantidad);
+                        CantidadV = (Integer.parseInt(RS.getString(5))+Cantidad);
+                        String Apodo = RS.getString(2);
+                        double ValorV = (Double.parseDouble(RS.getString(6)));
+                        double ValorC = (Double.parseDouble(RS.getString(7)));
+                        double ValorD = (Double.parseDouble(RS.getString(8)));
+                        String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
+                                + "' WHERE Codigo='" + Codigo + "'";
+                        PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
+                        PS1.executeUpdate();
+
+                    }
+                }
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Error al listar los datos: " + e.getMessage(),
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+        Limpiar();      
+        Total();
+        ListarTablaP();
+
     }
 
     private void anadirTablaCar() {
 
         int Cantidad = Integer.parseInt(txtAnadirC.getText());
         int row = this.tbListProducts.getSelectedRow();
+        int inventario = Integer.parseInt(String.valueOf(this.tbListProducts.getValueAt(row, 2)));
 
         if (row == -1) {
 
@@ -107,6 +148,14 @@ public class frmVentas extends javax.swing.JFrame {
         } else if (Cantidad <= 0) {
             JOptionPane.showMessageDialog(rootPane,
                     "Debe ingresar una cantidad de producto valida",
+                    "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
+            lblErrorAnadirC.setVisible(false);
+            txtAnadirC.requestFocus();
+
+        } else if (Cantidad > inventario) {
+            JOptionPane.showMessageDialog(rootPane,
+                    "Inventario insuficiente",
                     "¡Error!",
                     JOptionPane.ERROR_MESSAGE);
             lblErrorAnadirC.setVisible(false);
@@ -154,15 +203,13 @@ public class frmVentas extends javax.swing.JFrame {
         }
         Limpiar();
         Total();
-        
+
     }
 
     private void EliminarTablaCar() {
 
         int row = this.tbListCar.getSelectedRow();
-        int Cantidad =Integer.parseInt(txtElimi.getText()); 
-                
-       
+        int Cantidad = Integer.parseInt(txtElimi.getText());
 
         if (row == -1) {
 
@@ -185,7 +232,7 @@ public class frmVentas extends javax.swing.JFrame {
             try {
                 String Codigo = (String.valueOf(this.tbListProducts.getValueAt(row, 0)));
 
-                Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2)))-Cantidad;
+                Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2))) - Cantidad;
                 Carrito.removeRow(row);
 
                 String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
@@ -195,9 +242,8 @@ public class frmVentas extends javax.swing.JFrame {
                 // Recorer los resultados y cargalos a una lista
                 if (Cantidad <= 0) {
                     Carrito.removeRow(row);
-                    
-                }
-                else if (Cantidad <= 10) {
+
+                } else if (Cantidad <= 10) {
                     while (RS.next()) {
                         Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
                         Carrito.addRow(Lista);
@@ -220,7 +266,7 @@ public class frmVentas extends javax.swing.JFrame {
         }
         Limpiar();
         Total();
-        
+
     }
 
     private void ListarTablaP() {
@@ -792,7 +838,7 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtElimiActionPerformed
 
     private void txtElimiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtElimiKeyTyped
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
 
         if (!numero) {
@@ -806,7 +852,7 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEliminarCActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
- 
+        Pagar();
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
@@ -853,8 +899,8 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTotalActionPerformed
 
     private void txtTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotalKeyTyped
-                int key = evt.getKeyChar();
-        boolean numero = key ==255;
+        int key = evt.getKeyChar();
+        boolean numero = key == 255;
 
         if (!numero) {
             evt.consume();
@@ -876,16 +922,24 @@ public class frmVentas extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVentas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVentas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVentas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmVentas.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

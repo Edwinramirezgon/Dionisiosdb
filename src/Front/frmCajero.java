@@ -136,7 +136,8 @@ public class frmCajero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
-
+                 frmVentas objVentas = new frmVentas();
+        objVentas.setVisible(true);
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnGestionCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionCActionPerformed

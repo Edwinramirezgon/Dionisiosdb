@@ -5,13 +5,16 @@ import Conexion.ClsConexion;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import GeneralClass.ClsGeneral;
 
 public class frmLogin extends javax.swing.JFrame {
 
     ClsConexion CON;
     Connection CN;
+    ClsGeneral objGeneral;
 
     public frmLogin() {
+        objGeneral = new ClsGeneral();
         initComponents();
         this.setLocationRelativeTo(this);
         CON = new ClsConexion();
@@ -153,6 +156,7 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+
         String User = txtUser.getText();
         String Pass = txtPass.getText();
 
@@ -179,17 +183,32 @@ public class frmLogin extends javax.swing.JFrame {
                     if (RS.next()) {
                         String TipoRol = RS.getString("Rol");
                         if (TipoRol.equalsIgnoreCase("ADMIN")) {
+                            String ConsInser = "INSERT INTO TblLogin(User,"
+                                    + " Rol) "
+                                    + "VALUES ('" + User + "','" + TipoRol + "')";
+                            PreparedStatement PS1 = CN.prepareStatement(ConsInser);
+                            PS1.executeUpdate();
                             JOptionPane.showMessageDialog(rootPane, "Bienvenido Administrador");
                             frmAdmins objAdmin = new frmAdmins();
                             objAdmin.setVisible(true);
                             dispose();
                         } else if (TipoRol.equalsIgnoreCase("CAJERO")) {
+                            String ConsInser = "INSERT INTO TblLogin(User,"
+                                    + " Rol) "
+                                    + "VALUES ('" + User + "','" + TipoRol + "')";
+                            PreparedStatement PS1 = CN.prepareStatement(ConsInser);
+                            PS1.executeUpdate();
                             JOptionPane.showMessageDialog(rootPane, "Bienvenido Cajero");
 
                             frmCajero objCajero = new frmCajero();
                             objCajero.setVisible(true);
                             dispose();
                         } else if (TipoRol.equalsIgnoreCase("MENSAJERO")) {
+                            String ConsInser = "INSERT INTO TblLogin(User,"
+                                    + " Rol) "
+                                    + "VALUES ('" + User + "','" + TipoRol + "')";
+                            PreparedStatement PS1 = CN.prepareStatement(ConsInser);
+                            PS1.executeUpdate();
                             JOptionPane.showMessageDialog(rootPane, "Bienvenido Mensajero");
 
                             frmMensajero objMensajero = new frmMensajero();

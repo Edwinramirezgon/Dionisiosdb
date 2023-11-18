@@ -9,13 +9,13 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class frmFacturas extends javax.swing.JFrame {
+public class frmFacturasC extends javax.swing.JFrame {
 
     ClsConexion CON;
     Connection CN;
     DefaultTableModel Carrito;
 
-    public frmFacturas() {
+    public frmFacturasC() {
         initComponents();
         lblErrorDni.setVisible(false);
         lblErrorNombre.setVisible(false);
@@ -60,7 +60,7 @@ public class frmFacturas extends javax.swing.JFrame {
         lblErrorDni.setVisible(false);
         lblErrorNombre.setVisible(false);
         lblErrorFecha.setVisible(false);
-        txtDni.setText("");
+        txtNit.setText("");
         txtNombre.setText("");
         txtFecha.setText("");
         Total();
@@ -103,22 +103,22 @@ public class frmFacturas extends javax.swing.JFrame {
             }
         };
                 modelo.addColumn("FACTURA");
-                modelo.addColumn("DNI");
-                modelo.addColumn("NOMBRE");
-                modelo.addColumn("APELLIDO");
+                modelo.addColumn("NIT");
+                modelo.addColumn("EMPRESA");
+                modelo.addColumn("CAJERO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblFactV";
+            String ConsLista = "SELECT * FROM tblFactC";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -150,12 +150,12 @@ public class frmFacturas extends javax.swing.JFrame {
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblVentas WHERE Factura = '" + fact + "'";
+            String ConsLista = "SELECT * FROM tblCompras WHERE Factura = '" + fact + "'";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9), RS.getString(10),};
+                    Object[] Lista = {RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9),};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -198,7 +198,7 @@ public class frmFacturas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnCancelar1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        txtDni = new javax.swing.JTextField();
+        txtNit = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jButtonSearchNombre = new javax.swing.JButton();
@@ -211,7 +211,7 @@ public class frmFacturas extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("FACTURAS DE VENTA");
+        setTitle("FACTURAS DE COMPRA");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -268,16 +268,16 @@ public class frmFacturas extends javax.swing.JFrame {
         jLabel5.setBounds(420, 380, 114, 30);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        jLabel4.setText("LISTA DE FACTURAS DE VENTA");
+        jLabel4.setText("LISTA DE FACTURAS DE COMPRA");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(298, 10, 374, 30);
+        jLabel4.setBounds(298, 10, 430, 30);
 
         lblErrorDni.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorDni.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorDni.setText("* Error, ingrese Dni válido");
+        lblErrorDni.setText("* Error, ingrese Nit válido");
         lblErrorDni.setAlignmentY(10.0F);
         jPanel1.add(lblErrorDni);
-        lblErrorDni.setBounds(946, 100, 124, 13);
+        lblErrorDni.setBounds(946, 100, 122, 13);
 
         jButtonSearchDni.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchDni.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -304,9 +304,9 @@ public class frmFacturas extends javax.swing.JFrame {
         btnActualizar.setBounds(940, 420, 250, 40);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel1.setText("BUSCAR POR DNI");
+        jLabel1.setText("BUSCAR POR NIT");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(950, 40, 121, 18);
+        jLabel1.setBounds(950, 40, 120, 18);
 
         btnCancelar1.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -324,22 +324,22 @@ public class frmFacturas extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(980, 540, 160, 164);
 
-        txtDni.setBackground(new java.awt.Color(0, 153, 255));
-        txtDni.setForeground(new java.awt.Color(51, 0, 51));
-        txtDni.setToolTipText("");
-        txtDni.setAlignmentY(10.0F);
-        txtDni.addActionListener(new java.awt.event.ActionListener() {
+        txtNit.setBackground(new java.awt.Color(0, 153, 255));
+        txtNit.setForeground(new java.awt.Color(51, 0, 51));
+        txtNit.setToolTipText("");
+        txtNit.setAlignmentY(10.0F);
+        txtNit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDniActionPerformed(evt);
+                txtNitActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDni);
-        txtDni.setBounds(946, 58, 170, 40);
+        jPanel1.add(txtNit);
+        txtNit.setBounds(946, 58, 170, 40);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel2.setText("BUSCAR POR NOMBRE");
+        jLabel2.setText("BUSCAR POR EMPRESA");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(950, 130, 160, 18);
+        jLabel2.setBounds(950, 130, 166, 18);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -367,10 +367,10 @@ public class frmFacturas extends javax.swing.JFrame {
 
         lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorNombre.setText("* Error, ingrese Nombre válido");
+        lblErrorNombre.setText("* Error, ingrese Empresa válida");
         lblErrorNombre.setAlignmentY(10.0F);
         jPanel1.add(lblErrorNombre);
-        lblErrorNombre.setBounds(950, 190, 146, 13);
+        lblErrorNombre.setBounds(950, 190, 149, 13);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("BUSCAR POR FECHA");
@@ -448,9 +448,9 @@ public class frmFacturas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSearchDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchDniActionPerformed
-        String Dni = txtDni.getText();
+        String Nit = txtNit.getText();
 
-        if (!Dni.equalsIgnoreCase("")) {
+        if (!Nit.equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
                     public boolean isCellEditable(int row, int column) {
@@ -458,18 +458,18 @@ public class frmFacturas extends javax.swing.JFrame {
                     }
                 };
                 modelo.addColumn("FACTURA");
-                modelo.addColumn("DNI");
-                modelo.addColumn("NOMBRE");
-                modelo.addColumn("APELLIDO");
+                modelo.addColumn("NIT");
+                modelo.addColumn("EMPRESA");
+                modelo.addColumn("CAJERO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Dni LIKE'%" + Dni + "%'";
+                String ConsLista = "SELECT * FROM tblFactV WHERE Nit LIKE'%" + Nit + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+               Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -480,8 +480,8 @@ public class frmFacturas extends javax.swing.JFrame {
                             "¡Error!",
                             JOptionPane.ERROR_MESSAGE);
                     Limpiare();
-                    txtDni.setText("");
-                    txtDni.requestFocus();
+                    txtNit.setText("");
+                    txtNit.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
@@ -496,7 +496,7 @@ public class frmFacturas extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             Limpiar();
             lblErrorDni.setVisible(false);
-            txtDni.requestFocus();
+            txtNit.requestFocus();
         }
         Limpiar();
 
@@ -539,37 +539,37 @@ public class frmFacturas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
-    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+    private void txtNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDniActionPerformed
+    }//GEN-LAST:event_txtNitActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void jButtonSearchNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchNombreActionPerformed
-        String Nombre = txtNombre.getText();
+        String Empresa = txtNombre.getText();
 
-        if (!Nombre.equalsIgnoreCase("")) {
+        if (!Empresa.equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
                     public boolean isCellEditable(int row, int column) {
                         return false;
                     }
                 };
-                modelo.addColumn("CODIGO");
-                modelo.addColumn("DNI");
-                modelo.addColumn("NOMBRE");
-                modelo.addColumn("APELLIDO");
+                modelo.addColumn("FACTURA");
+                modelo.addColumn("NIT");
+                modelo.addColumn("EMPRESA");
+                modelo.addColumn("CAJERO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsLista = "SELECT * FROM tblFactC WHERE Empresa LIKE'%" + Empresa + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -580,8 +580,8 @@ public class frmFacturas extends javax.swing.JFrame {
                             "¡Error!",
                             JOptionPane.ERROR_MESSAGE);
                     Limpiare();
-                    txtDni.setText("");
-                    txtDni.requestFocus();
+                    txtNit.setText("");
+                    txtNit.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
@@ -596,7 +596,7 @@ public class frmFacturas extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             Limpiar();
             lblErrorDni.setVisible(false);
-            txtDni.requestFocus();
+            txtNit.requestFocus();
         }
         Limpiar();
 
@@ -617,18 +617,18 @@ public class frmFacturas extends javax.swing.JFrame {
                     }
                 };
                 modelo.addColumn("FACTURA");
-                modelo.addColumn("DNI");
-                modelo.addColumn("NOMBRE");
-                modelo.addColumn("APELLIDO");
+                modelo.addColumn("NIT");
+                modelo.addColumn("EMPRESA");
+                modelo.addColumn("CAJERO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Fecha LIKE'%" + Fecha + "%'";
+                String ConsLista = "SELECT * FROM tblFactC WHERE Fecha LIKE'%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -639,8 +639,8 @@ public class frmFacturas extends javax.swing.JFrame {
                             "¡Error!",
                             JOptionPane.ERROR_MESSAGE);
                     Limpiare();
-                    txtDni.setText("");
-                    txtDni.requestFocus();
+                    txtNit.setText("");
+                    txtNit.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,
@@ -655,7 +655,7 @@ public class frmFacturas extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             Limpiar();
             lblErrorDni.setVisible(false);
-            txtDni.requestFocus();
+            txtNit.requestFocus();
         }
         Limpiar();
     }//GEN-LAST:event_jButtonSearchFechaActionPerformed
@@ -692,21 +692,405 @@ public class frmFacturas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmFacturas.class
+            java.util.logging.Logger.getLogger(frmFacturasC.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmFacturas.class
+            java.util.logging.Logger.getLogger(frmFacturasC.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmFacturas.class
+            java.util.logging.Logger.getLogger(frmFacturasC.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmFacturas.class
+            java.util.logging.Logger.getLogger(frmFacturasC.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -839,7 +1223,7 @@ public class frmFacturas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmFacturas().setVisible(true);
+                new frmFacturasC().setVisible(true);
             }
         });
     }
@@ -865,8 +1249,8 @@ public class frmFacturas extends javax.swing.JFrame {
     private javax.swing.JLabel lblErrorNombre;
     private javax.swing.JTable tbListCar;
     private javax.swing.JTable tbListProducts;
-    private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables

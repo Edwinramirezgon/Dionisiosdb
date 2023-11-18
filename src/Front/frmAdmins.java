@@ -194,7 +194,8 @@ public class frmAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFActurasvActionPerformed
 
     private void btnFacturasCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasCActionPerformed
-        // TODO add your handling code here:
+               frmFacturasC venfactC = new frmFacturasC();
+        venfactC.setVisible(true);
     }//GEN-LAST:event_btnFacturasCActionPerformed
 
     /**

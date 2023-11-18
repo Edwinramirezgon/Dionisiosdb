@@ -54,10 +54,28 @@ public class frmProducts extends javax.swing.JFrame {
 
     }
 
+    private void Limpiare() {
+
+        // Se ocultan todos los errores
+        lblErrorCodigo.setVisible(false);
+        lblErrorNombre.setVisible(false);
+        lblErrorApodo.setVisible(false);
+        lblErrorCantidadP.setVisible(false);
+        lblErrorCantidadV.setVisible(false);
+        lblErrorValorV.setVisible(false);
+        lblErrorValorC.setVisible(false);
+        lblErrorValorD.setVisible(false);
+
+    }
+
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-                DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+        DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apodo");
@@ -617,48 +635,56 @@ public class frmProducts extends javax.swing.JFrame {
         double ValorV = Double.parseDouble(txtValorV.getText());
 
         if (Codigo.equals("")) {
+            Limpiare();
             lblErrorCodigo.setVisible(true);
             txtCodigo.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
+
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apodo.equals("")) {
+            Limpiare();
+
             lblErrorApodo.setVisible(true);
             txtApodo.requestFocus();
-        } else if (CantidadP == 0) {
-            lblErrorCantidadP.setVisible(true);
-            txtCantidadP.requestFocus();
+
         } else if (ValorV == 0) {
+            Limpiare();
+
             lblErrorValorV.setVisible(true);
             txtValorV.requestFocus();
-        } else if (ValorC == 0) {
-            lblErrorValorC.setVisible(true);
-            txtValorC.requestFocus();
-    
+        } else if (ValorD == 0) {
+            Limpiare();
+
+            lblErrorValorD.setVisible(true);
+            txtValorD.requestFocus();
         } else {
-            try {
-                String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ValCodigo);
-                ResultSet RS = PS.executeQuery();
-                if (!RS.next()) {
-                    JOptionPane.showMessageDialog(rootPane, "¡Error! el Producto NO existe en la BD");
-                } else {
-                    String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
-                            + "' WHERE Codigo='" + Codigo + "'";
-                    PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
-                    PS1.executeUpdate();
-                    JOptionPane.showMessageDialog(rootPane, "Producto modificado con éxito");
-                    Limpiar();
-                    txtCodigo.requestFocus();
-                    ListarTabla();
+            
+                try {
+                    String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
+                    PreparedStatement PS = CN.prepareStatement(ValCodigo);
+                    ResultSet RS = PS.executeQuery();
+                    if (!RS.next()) {
+                        Limpiare();
+                        JOptionPane.showMessageDialog(rootPane, "¡Error! el Producto NO existe en la BD");
+                    } else {
+                        String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
+                                + "' WHERE Codigo='" + Codigo + "'";
+                        PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
+                        PS1.executeUpdate();
+                        JOptionPane.showMessageDialog(rootPane, "Producto modificado con éxito");
+                        Limpiar();
+                        txtCodigo.requestFocus();
+                        ListarTabla();
+                    }
+                } catch (HeadlessException | SQLException e) {
+                    JOptionPane.showMessageDialog(rootPane,
+                            "Error en el registro: " + e.getMessage(),
+                            "¡Error!",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (HeadlessException | SQLException e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en el registro: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
             }
-        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -715,23 +741,30 @@ public class frmProducts extends javax.swing.JFrame {
         double ValorV = Double.parseDouble(txtValorV.getText());
 
         if (Codigo.equals("")) {
+            Limpiare();
             lblErrorCodigo.setVisible(true);
             txtCodigo.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
+
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apodo.equals("")) {
+            Limpiare();
+
             lblErrorApodo.setVisible(true);
             txtApodo.requestFocus();
-        } else if (CantidadP == 0) {
-            lblErrorCantidadP.setVisible(true);
-            txtCantidadP.requestFocus();
+
         } else if (ValorV == 0) {
-            lblErrorValorC.setVisible(true);
-            txtValorC.requestFocus();
-        } else if (ValorC == 0) {
+            Limpiare();
+
             lblErrorValorV.setVisible(true);
             txtValorV.requestFocus();
+        } else if (ValorD == 0) {
+            Limpiare();
+
+            lblErrorValorD.setVisible(true);
+            txtValorD.requestFocus();
         } else {
             try {
                 String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
@@ -800,7 +833,11 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Codigo.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -850,7 +887,11 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Apodo.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -900,7 +941,11 @@ public class frmProducts extends javax.swing.JFrame {
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -966,11 +1011,15 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_TblProductsMouseClick
 
     private void jButtonSearchCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCPActionPerformed
-   int CantidadP = Integer.parseInt(txtCantidadP.getText());
+        int CantidadP = Integer.parseInt(txtCantidadP.getText());
 
-        if (CantidadP!=0) {
+        if (CantidadP != 0) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1016,11 +1065,15 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchCPActionPerformed
 
     private void jButtonSearchCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCVActionPerformed
-       int CantidadV = Integer.parseInt(txtCantidadV.getText());
+        int CantidadV = Integer.parseInt(txtCantidadV.getText());
 
-        if (CantidadV!=0) {
+        if (CantidadV != 0) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1066,11 +1119,15 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchCVActionPerformed
 
     private void jButtonSearchVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVCActionPerformed
-       int ValorC = Integer.parseInt(txtValorC.getText());
+        int ValorC = Integer.parseInt(txtValorC.getText());
 
-        if (ValorC!=0) {
+        if (ValorC != 0) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1116,12 +1173,15 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchVCActionPerformed
 
     private void jButtonSearchVVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVVActionPerformed
-              int ValorV = Integer.parseInt(txtValorV.getText());
+        int ValorV = Integer.parseInt(txtValorV.getText());
 
-
-        if (ValorV!=0) {
+        if (ValorV != 0) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1167,12 +1227,15 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchVVActionPerformed
 
     private void jButtonSearchVDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVDActionPerformed
-           int ValorD = Integer.parseInt(txtValorD.getText());
+        int ValorD = Integer.parseInt(txtValorD.getText());
 
-
-        if (ValorD!=0) {
+        if (ValorD != 0) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Codigo");
                 modelo.addColumn("Nombre");
                 modelo.addColumn("Apodo");
@@ -1218,52 +1281,52 @@ public class frmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchVDActionPerformed
 
     private void txtCantidadPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadPKeyTyped
-          int key =evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
-        
+
         if (!numero) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtCantidadPKeyTyped
 
     private void txtCantidadVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVKeyTyped
-    int key =evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
-        
+
         if (!numero) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtCantidadVKeyTyped
 
     private void txtValorCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorCKeyTyped
-           int key =evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
-        
+
         if (!numero) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtValorCKeyTyped
 
     private void txtValorVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorVKeyTyped
-            int key =evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
-        
+
         if (!numero) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtValorVKeyTyped
 
     private void txtValorDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorDKeyTyped
-            int key =evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
-        
+
         if (!numero) {
             evt.consume();
-            
+
         }
     }//GEN-LAST:event_txtValorDKeyTyped
 

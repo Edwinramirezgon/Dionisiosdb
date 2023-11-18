@@ -49,10 +49,26 @@ public class frmClientsC extends javax.swing.JFrame {
         lblErrorFecha.setVisible(false);
     }
 
+    private void Limpiare() {
+
+        // Se ocultan todos los errores
+        lblErrorDni.setVisible(false);
+        lblErrorNombre.setVisible(false);
+        lblErrorApellido.setVisible(false);
+        lblErrorCorreo.setVisible(false);
+        lblErrorDireccion.setVisible(false);
+        lblErrorTelefono.setVisible(false);
+        lblErrorFecha.setVisible(false);
+    }
+
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-                DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+        DefaultTableModel modelo = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modelo.addColumn("DNI");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("APELLIDO");
@@ -137,6 +153,7 @@ public class frmClientsC extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(555, 361));
+        jPanel1.setLayout(null);
 
         txtDni.setBackground(new java.awt.Color(0, 153, 255));
         txtDni.setForeground(new java.awt.Color(51, 0, 51));
@@ -147,6 +164,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtDniActionPerformed(evt);
             }
         });
+        jPanel1.add(txtDni);
+        txtDni.setBounds(19, 50, 160, 35);
 
         btnRegistrar.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -157,26 +176,36 @@ public class frmClientsC extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRegistrar);
+        btnRegistrar.setBounds(19, 347, 184, 40);
 
         lblErrorDni.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorDni.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorDni.setText("* Error, ingrese DNI válido");
         lblErrorDni.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorDni);
+        lblErrorDni.setBounds(35, 91, 125, 13);
 
         lblErrorApellido.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorApellido.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorApellido.setText("* Error, ingrese Apellido válido");
         lblErrorApellido.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorApellido);
+        lblErrorApellido.setBounds(375, 91, 148, 13);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("DNI DEL CLIENTE");
         jLabel1.setAlignmentY(10.0F);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(33, 26, 118, 18);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("APELLIDO DEL CLIENTE");
         jLabel2.setAlignmentY(10.0F);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(375, 26, 163, 18);
 
         tbListClients.setAutoCreateRowSorter(true);
         tbListClients.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,6 +226,9 @@ public class frmClientsC extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbListClients);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(232, 193, 1040, 368);
+
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,6 +238,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCancelar);
+        btnCancelar.setBounds(19, 521, 184, 40);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -216,6 +250,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnActualizar);
+        btnActualizar.setBounds(19, 463, 184, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -226,54 +262,76 @@ public class frmClientsC extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLimpiar);
+        btnLimpiar.setBounds(19, 405, 184, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE CLIENTES");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(588, 151, 236, 30);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("CORREO DEL CLIENTE");
         jLabel6.setAlignmentY(10.0F);
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(556, 26, 155, 18);
 
         lblErrorCorreo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCorreo.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorCorreo.setText("* Error, ingrese Correo válido");
         lblErrorCorreo.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorCorreo);
+        lblErrorCorreo.setBounds(553, 91, 141, 13);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("DIRECCION DEL CLIENTE");
         jLabel7.setAlignmentY(10.0F);
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(731, 26, 172, 18);
 
         lblErrorDireccion.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorDireccion.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorDireccion.setText("* Error, ingrese Direccion válida");
         lblErrorDireccion.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorDireccion);
+        lblErrorDireccion.setBounds(737, 91, 153, 13);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setText("FECHA DE NACIMIENTO");
         jLabel8.setAlignmentY(10.0F);
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(921, 26, 164, 18);
 
         lblErrorFecha.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorFecha.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorFecha.setText("* Error, ingrese fecha válida");
         lblErrorFecha.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorFecha);
+        lblErrorFecha.setBounds(927, 91, 135, 13);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setText("TELEFONO DEL CLIENTE");
         jLabel9.setAlignmentY(10.0F);
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(1112, 26, 169, 18);
 
         lblErrorTelefono.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorTelefono.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorTelefono.setText("* Error, ingrese Telefono valido");
         lblErrorTelefono.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorTelefono);
+        lblErrorTelefono.setBounds(1112, 91, 151, 13);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("NOMBRE DEL CLIENTE");
         jLabel3.setAlignmentY(10.0F);
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(197, 26, 157, 18);
 
         txtApellido.setBackground(new java.awt.Color(0, 153, 255));
         txtApellido.setForeground(new java.awt.Color(51, 0, 51));
@@ -284,11 +342,15 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtApellidoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtApellido);
+        txtApellido.setBounds(375, 50, 160, 35);
 
         lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorNombre.setText("* Error, ingrese Nombre válido");
         lblErrorNombre.setAlignmentY(10.0F);
+        jPanel1.add(lblErrorNombre);
+        lblErrorNombre.setBounds(197, 91, 146, 13);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -299,6 +361,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        jPanel1.add(txtNombre);
+        txtNombre.setBounds(197, 50, 160, 35);
 
         txtCorreo.setBackground(new java.awt.Color(0, 153, 255));
         txtCorreo.setForeground(new java.awt.Color(51, 0, 51));
@@ -309,6 +373,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtCorreoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtCorreo);
+        txtCorreo.setBounds(553, 50, 160, 35);
 
         txtDireccion.setBackground(new java.awt.Color(0, 153, 255));
         txtDireccion.setForeground(new java.awt.Color(51, 0, 51));
@@ -319,6 +385,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtDireccionActionPerformed(evt);
             }
         });
+        jPanel1.add(txtDireccion);
+        txtDireccion.setBounds(731, 50, 160, 35);
 
         txtFecha.setBackground(new java.awt.Color(0, 153, 255));
         txtFecha.setForeground(new java.awt.Color(51, 0, 51));
@@ -329,6 +397,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtFechaActionPerformed(evt);
             }
         });
+        jPanel1.add(txtFecha);
+        txtFecha.setBounds(921, 50, 160, 35);
 
         txtTelefono.setBackground(new java.awt.Color(0, 153, 255));
         txtTelefono.setForeground(new java.awt.Color(51, 0, 51));
@@ -339,8 +409,12 @@ public class frmClientsC extends javax.swing.JFrame {
                 txtTelefonoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtTelefono);
+        txtTelefono.setBounds(1112, 50, 160, 35);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(35, 169, 168, 160);
 
         jButtonSearchNom.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchNom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -351,6 +425,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchNomActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchNom);
+        jButtonSearchNom.setBounds(197, 110, 160, 35);
 
         jButtonSearchDni.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchDni.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -361,6 +437,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchDniActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchDni);
+        jButtonSearchDni.setBounds(19, 110, 160, 35);
 
         jButtonSearchApe.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchApe.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -371,6 +449,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchApeActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchApe);
+        jButtonSearchApe.setBounds(375, 110, 160, 35);
 
         jButtonSearchCorr.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchCorr.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -381,6 +461,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchCorrActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchCorr);
+        jButtonSearchCorr.setBounds(553, 110, 160, 35);
 
         jButtonSearchDire.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchDire.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -391,6 +473,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchDireActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchDire);
+        jButtonSearchDire.setBounds(731, 110, 160, 35);
 
         jButtonSearchFec.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchFec.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -401,6 +485,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchFecActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonSearchFec);
+        jButtonSearchFec.setBounds(921, 113, 160, 29);
 
         jButtonSearchTel.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchTel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -411,155 +497,8 @@ public class frmClientsC extends javax.swing.JFrame {
                 jButtonSearchTelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(385, 385, 385)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButtonSearchDni, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(lblErrorDni))
-                            .addComponent(txtDni, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblErrorNombre)
-                                    .addComponent(jLabel3))
-                                .addGap(3, 3, 3))
-                            .addComponent(txtNombre)
-                            .addComponent(jButtonSearchNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblErrorApellido)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(lblErrorCorreo))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(lblErrorDireccion))
-                                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(12, 12, 12))
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonSearchApe, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonSearchCorr, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonSearchDire, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblErrorFecha))
-                            .addComponent(jLabel8)
-                            .addComponent(jButtonSearchFec, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonSearchTel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblErrorTelefono))
-                        .addGap(18, 18, 18))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblErrorDni)
-                    .addComponent(lblErrorNombre)
-                    .addComponent(lblErrorApellido)
-                    .addComponent(lblErrorCorreo)
-                    .addComponent(lblErrorDireccion)
-                    .addComponent(lblErrorFecha)
-                    .addComponent(lblErrorTelefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSearchDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchNom, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchApe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchCorr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchDire, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchFec)
-                    .addComponent(jButtonSearchTel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(135, 135, 135))
-        );
+        jPanel1.add(jButtonSearchTel);
+        jButtonSearchTel.setBounds(1112, 113, 160, 29);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -598,27 +537,40 @@ public class frmClientsC extends javax.swing.JFrame {
         String Fecha = txtFecha.getText();
 
         if (Dni.equals("")) {
+            Limpiare();
             lblErrorDni.setVisible(true);
             txtDni.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
+
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apellido.equals("")) {
+            Limpiare();
+
             lblErrorApellido.setVisible(true);
             txtApellido.requestFocus();
         } else if (Correo.equals("")) {
+            Limpiare();
+
             lblErrorCorreo.setVisible(true);
             txtCorreo.requestFocus();
         } else if (Direccion.equals("")) {
+            Limpiare();
+
             lblErrorDireccion.setVisible(true);
             txtDireccion.requestFocus();
-        } else if (Telefono.equals("")) {
-            lblErrorTelefono.setVisible(true);
-            txtTelefono.requestFocus();
         } else if (Fecha.equals("")) {
+            Limpiare();
+
             lblErrorFecha.setVisible(true);
             txtFecha.requestFocus();
-        } else {
+        }else if (Telefono.equals("")) {
+            Limpiare();
+
+            lblErrorTelefono.setVisible(true);
+            txtTelefono.requestFocus();
+        }  else {
             try {
                 String ValDni = "SELECT * FROM tblClients WHERE Dni='" + Dni + "'";
                 PreparedStatement PS = CN.prepareStatement(ValDni);
@@ -681,7 +633,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -730,7 +686,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -779,7 +739,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Apellido.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -828,7 +792,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Correo.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -877,7 +845,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Direccion.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -926,7 +898,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Fecha.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -975,7 +951,11 @@ public class frmClientsC extends javax.swing.JFrame {
 
         if (!Telefono.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");

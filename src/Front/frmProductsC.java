@@ -19,10 +19,9 @@ public class frmProductsC extends javax.swing.JFrame {
         lblErrorCodigo.setVisible(false);
         lblErrorNombre.setVisible(false);
         lblErrorApodo.setVisible(false);
-        lblErrorCantidadP.setVisible(false);
-        lblErrorCantidadV.setVisible(false);
+
         lblErrorValorV.setVisible(false);
-        lblErrorValorC.setVisible(false);
+
         lblErrorValorD.setVisible(false);
         this.setLocationRelativeTo(this);
         CON = new ClsConexion();
@@ -30,26 +29,38 @@ public class frmProductsC extends javax.swing.JFrame {
         ListarTabla();
         Limpiar();
     }
+    
+    private void Limpiare() {
+
+        // Se ocultan todos los errores
+        lblErrorCodigo.setVisible(false);
+        lblErrorNombre.setVisible(false);
+        lblErrorApodo.setVisible(false);
+
+
+        lblErrorValorV.setVisible(false);
+
+        lblErrorValorD.setVisible(false);
+
+    }
 
     private void Limpiar() {
         // Se limpian todos los campos
         txtCodigo.setText("");
         txtNombre.setText("");
         txtApodo.setText("");
-        txtCantidadP.setText("0");
-        txtCantidadV.setText("0");
+ 
         txtValorV.setText("0");
-        txtValorC.setText("0");
+
         txtValorD.setText("0");
 
         // Se ocultan todos los errores
         lblErrorCodigo.setVisible(false);
         lblErrorNombre.setVisible(false);
         lblErrorApodo.setVisible(false);
-        lblErrorCantidadP.setVisible(false);
-        lblErrorCantidadV.setVisible(false);
+
         lblErrorValorV.setVisible(false);
-        lblErrorValorC.setVisible(false);
+
         lblErrorValorD.setVisible(false);
 
     }
@@ -118,21 +129,12 @@ public class frmProductsC extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        lblErrorCantidadP = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        lblErrorCantidadV = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lblErrorValorC = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblErrorValorV = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtApodo = new javax.swing.JTextField();
         lblErrorNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtCantidadP = new javax.swing.JTextField();
-        txtCantidadV = new javax.swing.JTextField();
-        txtValorC = new javax.swing.JTextField();
         txtValorD = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -141,9 +143,6 @@ public class frmProductsC extends javax.swing.JFrame {
         jButtonSearchCod = new javax.swing.JButton();
         jButtonSearchApo = new javax.swing.JButton();
         jButtonSearchNom = new javax.swing.JButton();
-        jButtonSearchCP = new javax.swing.JButton();
-        jButtonSearchCV = new javax.swing.JButton();
-        jButtonSearchVC = new javax.swing.JButton();
         jButtonSearchVV = new javax.swing.JButton();
         jButtonSearchVD = new javax.swing.JButton();
 
@@ -165,7 +164,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCodigo);
-        txtCodigo.setBounds(19, 50, 186, 40);
+        txtCodigo.setBounds(300, 50, 186, 40);
 
         btnRegistrar.setBackground(new java.awt.Color(0, 0, 255));
         btnRegistrar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -177,35 +176,35 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(20, 355, 203, 40);
+        btnRegistrar.setBounds(20, 220, 203, 40);
 
         lblErrorCodigo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCodigo.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorCodigo.setText("* Error, ingrese Codigo válido");
         lblErrorCodigo.setAlignmentY(10.0F);
         jPanel1.add(lblErrorCodigo);
-        lblErrorCodigo.setBounds(35, 91, 142, 20);
+        lblErrorCodigo.setBounds(310, 90, 142, 20);
 
         lblErrorApodo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorApodo.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorApodo.setText("* Error, ingrese Apodo válido");
         lblErrorApodo.setAlignmentY(10.0F);
         jPanel1.add(lblErrorApodo);
-        lblErrorApodo.setBounds(410, 90, 139, 13);
+        lblErrorApodo.setBounds(690, 90, 139, 13);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("CODIGO DEL PRODUCTO");
         jLabel1.setAlignmentY(10.0F);
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(33, 26, 172, 30);
+        jLabel1.setBounds(310, 30, 172, 30);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("APODO DEL PRODUCTO");
         jLabel2.setAlignmentY(10.0F);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(410, 30, 166, 18);
+        jLabel2.setBounds(690, 30, 166, 18);
 
         tbListProducts.setAutoCreateRowSorter(true);
         tbListProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -227,7 +226,7 @@ public class frmProductsC extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbListProducts);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(240, 215, 1210, 350);
+        jScrollPane1.setBounds(240, 215, 1200, 350);
 
         btnCancelar.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -251,7 +250,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(20, 460, 203, 40);
+        btnActualizar.setBounds(20, 420, 203, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -263,75 +262,33 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnLimpiar);
-        btnLimpiar.setBounds(20, 410, 203, 40);
+        btnLimpiar.setBounds(20, 320, 203, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PRODUCTOS");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(690, 175, 272, 30);
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel6.setText("CANTIDAD DEL PRODUCTO");
-        jLabel6.setAlignmentY(10.0F);
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(590, 30, 188, 18);
-
-        lblErrorCantidadP.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorCantidadP.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorCantidadP.setText("* Error, ingrese Cantidad válida");
-        lblErrorCantidadP.setAlignmentY(10.0F);
-        jPanel1.add(lblErrorCantidadP);
-        lblErrorCantidadP.setBounds(590, 90, 152, 13);
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel7.setText("CANTIDAD VENDIDA");
-        jLabel7.setAlignmentY(10.0F);
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(790, 30, 139, 18);
-
-        lblErrorCantidadV.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorCantidadV.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorCantidadV.setText("* Error, ingrese Cantidad válida");
-        lblErrorCantidadV.setAlignmentY(10.0F);
-        jPanel1.add(lblErrorCantidadV);
-        lblErrorCantidadV.setBounds(790, 90, 152, 13);
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel8.setText("VALOR DE COMPRA");
-        jLabel8.setAlignmentY(10.0F);
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(960, 30, 138, 18);
-
-        lblErrorValorC.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorValorC.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorValorC.setText("* Error, ingrese valor válido");
-        lblErrorValorC.setAlignmentY(10.0F);
-        jPanel1.add(lblErrorValorC);
-        lblErrorValorC.setBounds(960, 90, 132, 13);
-
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setText("VALOR DE VENTA");
         jLabel9.setAlignmentY(10.0F);
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(1110, 30, 122, 18);
+        jLabel9.setBounds(870, 30, 122, 18);
 
         lblErrorValorV.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValorV.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValorV.setText("* Error, ingrese valor valido");
         lblErrorValorV.setAlignmentY(10.0F);
         jPanel1.add(lblErrorValorV);
-        lblErrorValorV.setBounds(1110, 90, 132, 13);
+        lblErrorValorV.setBounds(870, 90, 132, 13);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("NOMBRE DEL PRODUCTO");
         jLabel3.setAlignmentY(10.0F);
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(220, 30, 178, 18);
+        jLabel3.setBounds(500, 30, 178, 18);
 
         txtApodo.setBackground(new java.awt.Color(0, 153, 255));
         txtApodo.setForeground(new java.awt.Color(51, 0, 51));
@@ -343,14 +300,14 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtApodo);
-        txtApodo.setBounds(410, 50, 166, 35);
+        txtApodo.setBounds(690, 50, 166, 35);
 
         lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorNombre.setText("* Error, ingrese Nombre válido");
         lblErrorNombre.setAlignmentY(10.0F);
         jPanel1.add(lblErrorNombre);
-        lblErrorNombre.setBounds(220, 90, 146, 13);
+        lblErrorNombre.setBounds(500, 90, 146, 13);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -362,58 +319,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNombre);
-        txtNombre.setBounds(220, 50, 178, 35);
-
-        txtCantidadP.setBackground(new java.awt.Color(0, 153, 255));
-        txtCantidadP.setForeground(new java.awt.Color(51, 0, 51));
-        txtCantidadP.setToolTipText("");
-        txtCantidadP.setAlignmentY(10.0F);
-        txtCantidadP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadPActionPerformed(evt);
-            }
-        });
-        txtCantidadP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCantidadPKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtCantidadP);
-        txtCantidadP.setBounds(590, 50, 188, 35);
-
-        txtCantidadV.setBackground(new java.awt.Color(0, 153, 255));
-        txtCantidadV.setForeground(new java.awt.Color(51, 0, 51));
-        txtCantidadV.setToolTipText("");
-        txtCantidadV.setAlignmentY(10.0F);
-        txtCantidadV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadVActionPerformed(evt);
-            }
-        });
-        txtCantidadV.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCantidadVKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtCantidadV);
-        txtCantidadV.setBounds(790, 50, 152, 35);
-
-        txtValorC.setBackground(new java.awt.Color(0, 153, 255));
-        txtValorC.setForeground(new java.awt.Color(51, 0, 51));
-        txtValorC.setToolTipText("");
-        txtValorC.setAlignmentY(10.0F);
-        txtValorC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorCActionPerformed(evt);
-            }
-        });
-        txtValorC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtValorCKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txtValorC);
-        txtValorC.setBounds(960, 50, 138, 35);
+        txtNombre.setBounds(500, 50, 178, 35);
 
         txtValorD.setBackground(new java.awt.Color(0, 153, 255));
         txtValorD.setForeground(new java.awt.Color(51, 0, 51));
@@ -430,18 +336,18 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtValorD);
-        txtValorD.setBounds(1260, 50, 182, 35);
+        txtValorD.setBounds(1020, 50, 182, 35);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(40, 180, 168, 164);
+        jLabel5.setBounds(40, 30, 168, 164);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setText("VALOR CON DESCUENTO");
         jLabel10.setAlignmentY(10.0F);
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(1260, 30, 182, 18);
+        jLabel10.setBounds(1020, 30, 182, 18);
 
         txtValorV.setBackground(new java.awt.Color(0, 153, 255));
         txtValorV.setForeground(new java.awt.Color(51, 0, 51));
@@ -458,14 +364,14 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtValorV);
-        txtValorV.setBounds(1110, 50, 132, 35);
+        txtValorV.setBounds(870, 50, 132, 35);
 
         lblErrorValorD.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValorD.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValorD.setText("* Error, ingrese valor valido");
         lblErrorValorD.setAlignmentY(10.0F);
         jPanel1.add(lblErrorValorD);
-        lblErrorValorD.setBounds(1260, 90, 132, 13);
+        lblErrorValorD.setBounds(1020, 90, 132, 13);
 
         jButtonSearchCod.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchCod.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -477,7 +383,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSearchCod);
-        jButtonSearchCod.setBounds(19, 117, 186, 40);
+        jButtonSearchCod.setBounds(300, 120, 186, 40);
 
         jButtonSearchApo.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchApo.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -489,7 +395,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSearchApo);
-        jButtonSearchApo.setBounds(410, 117, 166, 40);
+        jButtonSearchApo.setBounds(690, 120, 166, 40);
 
         jButtonSearchNom.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchNom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -501,43 +407,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSearchNom);
-        jButtonSearchNom.setBounds(217, 117, 181, 40);
-
-        jButtonSearchCP.setBackground(new java.awt.Color(0, 0, 255));
-        jButtonSearchCP.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButtonSearchCP.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSearchCP.setText("BUSCAR");
-        jButtonSearchCP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSearchCPActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonSearchCP);
-        jButtonSearchCP.setBounds(588, 117, 190, 40);
-
-        jButtonSearchCV.setBackground(new java.awt.Color(0, 0, 255));
-        jButtonSearchCV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButtonSearchCV.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSearchCV.setText("BUSCAR");
-        jButtonSearchCV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSearchCVActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonSearchCV);
-        jButtonSearchCV.setBounds(790, 117, 152, 40);
-
-        jButtonSearchVC.setBackground(new java.awt.Color(0, 0, 255));
-        jButtonSearchVC.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButtonSearchVC.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSearchVC.setText("BUSCAR");
-        jButtonSearchVC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSearchVCActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonSearchVC);
-        jButtonSearchVC.setBounds(960, 117, 138, 40);
+        jButtonSearchNom.setBounds(500, 120, 181, 40);
 
         jButtonSearchVV.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchVV.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -549,7 +419,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSearchVV);
-        jButtonSearchVV.setBounds(1110, 117, 138, 40);
+        jButtonSearchVV.setBounds(870, 120, 138, 40);
 
         jButtonSearchVD.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchVD.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -561,7 +431,7 @@ public class frmProductsC extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSearchVD);
-        jButtonSearchVD.setBounds(1260, 117, 182, 40);
+        jButtonSearchVD.setBounds(1020, 120, 182, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -598,30 +468,36 @@ public class frmProductsC extends javax.swing.JFrame {
         String Codigo = txtCodigo.getText();
         String Nombre = txtNombre.getText();
         String Apodo = txtApodo.getText();
-        int CantidadP = Integer.parseInt(txtCantidadP.getText());
-        int CantidadV = Integer.parseInt(txtCantidadV.getText());
+
         double ValorD = Double.parseDouble(txtValorD.getText());
-        double ValorC = Double.parseDouble(txtValorC.getText());
+
         double ValorV = Double.parseDouble(txtValorV.getText());
 
-        if (Codigo.equals("")) {
+         if (Codigo.equals("")) {
+            Limpiare();
             lblErrorCodigo.setVisible(true);
             txtCodigo.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
+
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apodo.equals("")) {
+            Limpiare();
+
             lblErrorApodo.setVisible(true);
             txtApodo.requestFocus();
-        } else if (CantidadP == 0) {
-            lblErrorCantidadP.setVisible(true);
-            txtCantidadP.requestFocus();
+
         } else if (ValorV == 0) {
-            lblErrorValorC.setVisible(true);
-            txtValorC.requestFocus();
-        } else if (ValorC == 0) {
+            Limpiare();
+
             lblErrorValorV.setVisible(true);
             txtValorV.requestFocus();
+        } else if (ValorD == 0) {
+            Limpiare();
+
+            lblErrorValorD.setVisible(true);
+            txtValorD.requestFocus();
         } else {
             try {
                 String ValCodigo = "SELECT * FROM TblProducts WHERE Codigo='" + Codigo + "'";
@@ -632,12 +508,10 @@ public class frmProductsC extends javax.swing.JFrame {
                 } else {
                     String ConsInser = "INSERT INTO tblProducts(Codigo,"
                             + " Nombre,"
-                            + " Apodo,"
-                            + " CantidadP,"
-                            + " CantidadV,"
+                            + " Apodo,"                       
                             + " ValorV,"
-                            + " ValorC,ValorD ) "
-                            + "VALUES ('" + Codigo + "','" + Nombre + "','" + Apodo + "','" + CantidadP + "','" + CantidadV + "','" + ValorV + "','" + ValorC + "','" + ValorD + "')";
+                            + " ValorD ) "
+                            + "VALUES ('" + Codigo + "','" + Nombre + "','" + Apodo + "','" + ValorV + "','" + ValorD + "')";
                     PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                     PS1.executeUpdate();
                     JOptionPane.showMessageDialog(rootPane, "Producto registrado con éxito");
@@ -664,18 +538,6 @@ public class frmProductsC extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtCantidadPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadPActionPerformed
-
-    private void txtCantidadVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadVActionPerformed
-
-    private void txtValorCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorCActionPerformed
 
     private void txtValorDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorDActionPerformed
         // TODO add your handling code here:
@@ -858,10 +720,7 @@ public class frmProductsC extends javax.swing.JFrame {
             int row = this.tbListProducts.getSelectedRow();
             this.txtCodigo.setText(String.valueOf(this.tbListProducts.getValueAt(row, 0)));
             this.txtNombre.setText(String.valueOf(this.tbListProducts.getValueAt(row, 1)));
-            this.txtApodo.setText(String.valueOf(this.tbListProducts.getValueAt(row, 2)));
-            this.txtCantidadP.setText(String.valueOf(this.tbListProducts.getValueAt(row, 3)));
-            this.txtCantidadV.setText(String.valueOf(this.tbListProducts.getValueAt(row, 4)));
-            this.txtValorC.setText(String.valueOf(this.tbListProducts.getValueAt(row, 5)));
+            this.txtApodo.setText(String.valueOf(this.tbListProducts.getValueAt(row, 2))); 
             this.txtValorV.setText(String.valueOf(this.tbListProducts.getValueAt(row, 6)));
             this.txtValorD.setText(String.valueOf(this.tbListProducts.getValueAt(row, 7)));
 
@@ -872,174 +731,6 @@ public class frmProductsC extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_TblProductsMouseClick
-
-    private void jButtonSearchCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCPActionPerformed
-   int CantidadP = Integer.parseInt(txtCantidadP.getText());
-
-        if (CantidadP!=0) {
-            try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
-
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
-                modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apodo");
-                modelo.addColumn("Cantidad De Productos");
-                modelo.addColumn("Cantidad Vendida");
-                modelo.addColumn("Valor De Compra");
-                modelo.addColumn("Valor De Venta");
-                modelo.addColumn("Valor Con Descuento");
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadP LIKE'%" + CantidadP + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Producto en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtCantidadP.setText("");
-                    txtCantidadP.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar una cantidad para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorCantidadP.setVisible(false);
-            txtCantidadP.requestFocus();
-        }
-        Limpiar();
-    }//GEN-LAST:event_jButtonSearchCPActionPerformed
-
-    private void jButtonSearchCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCVActionPerformed
-       int CantidadV = Integer.parseInt(txtCantidadV.getText());
-
-        if (CantidadV!=0) {
-            try {
-                      DefaultTableModel modelo = new DefaultTableModel(){
-
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
-                modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apodo");
-                modelo.addColumn("Cantidad De Productos");
-                modelo.addColumn("Cantidad Vendida");
-                modelo.addColumn("Valor De Compra");
-                modelo.addColumn("Valor De Venta");
-                modelo.addColumn("Valor Con Descuento");
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadV LIKE'%" + CantidadV + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Producto en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtCantidadV.setText("");
-                    txtCantidadV.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar una cantidad para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorCantidadV.setVisible(false);
-            txtCantidadV.requestFocus();
-        }
-        Limpiar();
-    }//GEN-LAST:event_jButtonSearchCVActionPerformed
-
-    private void jButtonSearchVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVCActionPerformed
-       int ValorC = Integer.parseInt(txtValorC.getText());
-
-        if (ValorC!=0) {
-            try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
-
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
-                modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apodo");
-                modelo.addColumn("Cantidad De Productos");
-                modelo.addColumn("Cantidad Vendida");
-                modelo.addColumn("Valor De Compra");
-                modelo.addColumn("Valor De Venta");
-                modelo.addColumn("Valor Con Descuento");
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorC LIKE'%" + ValorC + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Producto en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtValorC.setText("");
-                    txtValorC.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un valor para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorValorC.setVisible(false);
-            txtValorC.requestFocus();
-        }
-        Limpiar();
-    }//GEN-LAST:event_jButtonSearchVCActionPerformed
 
     private void jButtonSearchVVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchVVActionPerformed
               int ValorV = Integer.parseInt(txtValorV.getText());
@@ -1155,36 +846,6 @@ public class frmProductsC extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_jButtonSearchVDActionPerformed
 
-    private void txtCantidadPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadPKeyTyped
-        int key =evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-        
-        if (!numero) {
-            evt.consume();
-            
-        }
-    }//GEN-LAST:event_txtCantidadPKeyTyped
-
-    private void txtCantidadVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVKeyTyped
-           int key =evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-        
-        if (!numero) {
-            evt.consume();
-            
-        }
-    }//GEN-LAST:event_txtCantidadVKeyTyped
-
-    private void txtValorCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorCKeyTyped
-     int key =evt.getKeyChar();
-        boolean numero = key >= 48 && key <= 57;
-        
-        if (!numero) {
-            evt.consume();
-            
-        }
-    }//GEN-LAST:event_txtValorCKeyTyped
-
     private void txtValorVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorVKeyTyped
           int key =evt.getKeyChar();
         boolean numero = key >= 48 && key <= 57;
@@ -1253,11 +914,8 @@ public class frmProductsC extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton jButtonSearchApo;
-    private javax.swing.JButton jButtonSearchCP;
-    private javax.swing.JButton jButtonSearchCV;
     private javax.swing.JButton jButtonSearchCod;
     private javax.swing.JButton jButtonSearchNom;
-    private javax.swing.JButton jButtonSearchVC;
     private javax.swing.JButton jButtonSearchVD;
     private javax.swing.JButton jButtonSearchVV;
     private javax.swing.JLabel jLabel1;
@@ -1266,27 +924,18 @@ public class frmProductsC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblErrorApodo;
-    private javax.swing.JLabel lblErrorCantidadP;
-    private javax.swing.JLabel lblErrorCantidadV;
     private javax.swing.JLabel lblErrorCodigo;
     private javax.swing.JLabel lblErrorNombre;
-    private javax.swing.JLabel lblErrorValorC;
     private javax.swing.JLabel lblErrorValorD;
     private javax.swing.JLabel lblErrorValorV;
     private javax.swing.JTable tbListProducts;
     private javax.swing.JTextField txtApodo;
-    private javax.swing.JTextField txtCantidadP;
-    private javax.swing.JTextField txtCantidadV;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtValorC;
     private javax.swing.JTextField txtValorD;
     private javax.swing.JTextField txtValorV;
     // End of variables declaration//GEN-END:variables

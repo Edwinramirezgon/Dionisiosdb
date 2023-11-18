@@ -28,6 +28,20 @@ public class frmProvC extends javax.swing.JFrame {
         Limpiar();
     }
 
+    
+     private void Limpiare() {
+        // Se limpian todos los campos
+       
+
+        // Se ocultan todos los errores
+        lblErrorNit.setVisible(false);
+        lblErrorEmpresa.setVisible(false);
+        lblErrorTelefono.setVisible(false);
+        lblErrorCantiD.setVisible(false);
+        lblErrorPorceD.setVisible(false);
+
+    }
+     
     private String SElDias() {
 
         String Dias = "";
@@ -561,16 +575,21 @@ public class frmProvC extends javax.swing.JFrame {
         int CantiD = Integer.parseInt(txtCantiD.getText());
         int PorceD = Integer.parseInt(txtPorceD.getText());
 
-        if (Nit.equals("")) {
+       if (Nit.equals("")) {
+            Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
+                        Limpiare();
+
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
+                        Limpiare();
+
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-
+       
 
         } else {
             try {
@@ -578,6 +597,7 @@ public class frmProvC extends javax.swing.JFrame {
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
+                                Limpiare();
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el Proveedor ya existe en la BD");
                 } else {
                     String ConsInser = "INSERT INTO TblProv(Nit,"

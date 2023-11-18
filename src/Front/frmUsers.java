@@ -337,6 +337,7 @@ public class frmUsers extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
+        Limpiar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -380,6 +381,7 @@ public class frmUsers extends javax.swing.JFrame {
             lblErrorUser.setVisible(false);
             txtUser.requestFocus();
         }
+        Limpiar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void cbRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRolActionPerformed
@@ -423,6 +425,7 @@ public class frmUsers extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
+        Limpiar();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed

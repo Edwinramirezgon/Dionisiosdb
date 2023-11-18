@@ -49,17 +49,27 @@ public class frmClients extends javax.swing.JFrame {
         lblErrorFecha.setVisible(false);
     }
 
+    private void Limpiare() {
+
+        // Se ocultan todos los errores
+        lblErrorDni.setVisible(false);
+        lblErrorNombre.setVisible(false);
+        lblErrorApellido.setVisible(false);
+        lblErrorCorreo.setVisible(false);
+        lblErrorDireccion.setVisible(false);
+        lblErrorTelefono.setVisible(false);
+        lblErrorFecha.setVisible(false);
+    }
+
     private void ListarTabla() {
 
         // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel(){
+        DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
-
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         modelo.addColumn("DNI");
         modelo.addColumn("NOMBRE");
@@ -68,12 +78,6 @@ public class frmClients extends javax.swing.JFrame {
         modelo.addColumn("DIRECCION      ");
         modelo.addColumn("TELEFONO");
         modelo.addColumn("FECHA DE NACIMIENTO");
-        
-        
-
-
-
-
 
         // Cargado de datos a la tabla
         try {
@@ -87,8 +91,6 @@ public class frmClients extends javax.swing.JFrame {
                 Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
                 modelo.addRow(Lista);
             }
-           
-
 
             tbListClients.setModel(modelo);
 
@@ -640,36 +642,50 @@ public class frmClients extends javax.swing.JFrame {
         String Fecha = txtFecha.getText();
 
         if (Dni.equals("")) {
+            Limpiare();
             lblErrorDni.setVisible(true);
             txtDni.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
+
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apellido.equals("")) {
+            Limpiare();
+
             lblErrorApellido.setVisible(true);
             txtApellido.requestFocus();
         } else if (Correo.equals("")) {
+            Limpiare();
+
             lblErrorCorreo.setVisible(true);
             txtCorreo.requestFocus();
         } else if (Direccion.equals("")) {
+            Limpiare();
+
             lblErrorDireccion.setVisible(true);
             txtDireccion.requestFocus();
-            } else if (Fecha.equals("")) {
+        } else if (Fecha.equals("")) {
+            Limpiare();
+
             lblErrorFecha.setVisible(true);
             txtFecha.requestFocus();
         } else if (Telefono.equals("")) {
+            Limpiare();
+
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        
+
         } else {
             try {
                 String ValDni = "SELECT * FROM TblClients WHERE DNI='" + Dni + "'";
                 PreparedStatement PS = CN.prepareStatement(ValDni);
                 ResultSet RS = PS.executeQuery();
                 if (!RS.next()) {
+                    Limpiare();
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el Cliente NO existe en la BD");
                 } else {
-                    String ConsUpdate = "UPDATE TblClients SET Nombre='" + Nombre + "', Apellido='" + Apellido + "',Correo='" + Correo + "',Direccion='" + Direccion  + "',Fecha='" + Fecha + "',Telefono='" + Telefono
+                    String ConsUpdate = "UPDATE TblClients SET Nombre='" + Nombre + "', Apellido='" + Apellido + "',Correo='" + Correo + "',Direccion='" + Direccion + "',Fecha='" + Fecha + "',Telefono='" + Telefono
                             + "' WHERE Dni='" + Dni + "'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsUpdate);
                     PS1.executeUpdate();
@@ -740,27 +756,39 @@ public class frmClients extends javax.swing.JFrame {
         String Fecha = txtFecha.getText();
 
         if (Dni.equals("")) {
+            Limpiare();
             lblErrorDni.setVisible(true);
             txtDni.requestFocus();
         } else if (Nombre.equals("")) {
+            Limpiare();
             lblErrorNombre.setVisible(true);
             txtNombre.requestFocus();
         } else if (Apellido.equals("")) {
+            Limpiare();
+
             lblErrorApellido.setVisible(true);
             txtApellido.requestFocus();
         } else if (Correo.equals("")) {
+            Limpiare();
+
             lblErrorCorreo.setVisible(true);
             txtCorreo.requestFocus();
         } else if (Direccion.equals("")) {
+            Limpiare();
+
             lblErrorDireccion.setVisible(true);
             txtDireccion.requestFocus();
-            } else if (Fecha.equals("")) {
+        } else if (Fecha.equals("")) {
+            Limpiare();
+
             lblErrorFecha.setVisible(true);
             txtFecha.requestFocus();
         } else if (Telefono.equals("")) {
+            Limpiare();
+
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        
+
         } else {
             try {
                 String ValDni = "SELECT * FROM tblClients WHERE Dni='" + Dni + "'";
@@ -824,13 +852,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Nombre.equalsIgnoreCase("")) {
             try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -879,13 +906,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -934,13 +960,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Apellido.equalsIgnoreCase("")) {
             try {
-                      DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -989,13 +1014,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Correo.equalsIgnoreCase("")) {
             try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -1044,13 +1068,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Direccion.equalsIgnoreCase("")) {
             try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -1099,13 +1122,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Fecha.equalsIgnoreCase("")) {
             try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -1154,13 +1176,12 @@ public class frmClients extends javax.swing.JFrame {
 
         if (!Telefono.equalsIgnoreCase("")) {
             try {
-                      DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
                 modelo.addColumn("APELLIDO");
@@ -1205,8 +1226,7 @@ public class frmClients extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchTelActionPerformed
 
     private void tbClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientMouseClicked
-        
-   
+
         try {
             int row = this.tbListClients.getSelectedRow();
             this.txtDni.setText(String.valueOf(this.tbListClients.getValueAt(row, 0)));
@@ -1221,8 +1241,8 @@ public class frmClients extends javax.swing.JFrame {
                     "Error en la consulta:" + e.getMessage(),
                     "¡Error!",
                     JOptionPane.ERROR_MESSAGE);
-        }   
-           
+        }
+
 
     }//GEN-LAST:event_tbClientMouseClicked
 

@@ -85,6 +85,18 @@ public class frmProv extends javax.swing.JFrame {
         lblErrorPorceD.setVisible(false);
 
     }
+        private void Limpiare() {
+        // Se limpian todos los campos
+       
+
+        // Se ocultan todos los errores
+        lblErrorNit.setVisible(false);
+        lblErrorEmpresa.setVisible(false);
+        lblErrorTelefono.setVisible(false);
+        lblErrorCantiD.setVisible(false);
+        lblErrorPorceD.setVisible(false);
+
+    }
 
     private void ListarTabla() {
 
@@ -334,7 +346,7 @@ public class frmProv extends javax.swing.JFrame {
         lblErrorCantiD.setText("* Error, ingrese Cantidad válida");
         lblErrorCantiD.setAlignmentY(10.0F);
         jPanel1.add(lblErrorCantiD);
-        lblErrorCantiD.setBounds(608, 92, 152, 13);
+        lblErrorCantiD.setBounds(610, 80, 152, 13);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -348,7 +360,7 @@ public class frmProv extends javax.swing.JFrame {
         lblErrorPorceD.setText("* Error, ingrese porcentaje válido");
         lblErrorPorceD.setAlignmentY(10.0F);
         jPanel1.add(lblErrorPorceD);
-        lblErrorPorceD.setBounds(794, 91, 160, 13);
+        lblErrorPorceD.setBounds(790, 80, 160, 13);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -424,7 +436,7 @@ public class frmProv extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(40, 180, 168, 164);
+        jLabel5.setBounds(40, 180, 168, 160);
 
         jButtonSearchNit.setBackground(new java.awt.Color(0, 0, 255));
         jButtonSearchNit.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -588,22 +600,28 @@ public class frmProv extends javax.swing.JFrame {
         int PorceD = Integer.parseInt(txtPorceD.getText());
 
         if (Nit.equals("")) {
+            Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
+                        Limpiare();
+
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
+                        Limpiare();
+
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-        
+       
 
         } else {
             try {
                 String ValNit = "SELECT * FROM TblProv WHERE Nit='" + Nit + "'";
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
-                if (!RS.next()) {
+                if(!RS.next()) {
+                                Limpiare();
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el Proveedor NO existe en la BD");
                 } else {
                     String ConsUpdate = "UPDATE TblProv SET Empresa='" + Empresa + "', Telefono='" + Telefono + "', Dias='" + Dias + "',CantiD='" + CantiD + "', PorceD='" + PorceD + "' WHERE Nit='" + Nit + "'";
@@ -675,12 +693,17 @@ public class frmProv extends javax.swing.JFrame {
         int PorceD = Integer.parseInt(txtPorceD.getText());
 
         if (Nit.equals("")) {
+            Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
+                        Limpiare();
+
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
+                        Limpiare();
+
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
        
@@ -691,6 +714,7 @@ public class frmProv extends javax.swing.JFrame {
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
+                                Limpiare();
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el Proveedor ya existe en la BD");
                 } else {
                     String ConsInser = "INSERT INTO TblProv(Nit,"

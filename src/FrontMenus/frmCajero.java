@@ -4,7 +4,7 @@
  */
 package FrontMenus;
 
-import FrontProveedores.frmProvC;
+import FrontProveedores.frmProveedoresCajero;
 import FrontCompras.frmCompras;
 import FrontVentas.frmVentas;
 import FrontProductos.frmProductsCAjero;
@@ -155,7 +155,7 @@ public class frmCajero extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionCActionPerformed
 
     private void btnGestionProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionProvActionPerformed
-     frmProvC ObjProvC = new frmProvC();
+     frmProveedoresCajero ObjProvC = new frmProveedoresCajero();
         ObjProvC.setVisible(true);
     }//GEN-LAST:event_btnGestionProvActionPerformed
 

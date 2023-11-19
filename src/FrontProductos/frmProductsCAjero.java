@@ -1,6 +1,6 @@
 package FrontProductos;
 
-import BackendeProductos.BackProductosCajero;
+import BackendProductos.BackProductosCajero;
 
 public class frmProductsCAjero extends javax.swing.JFrame {
 

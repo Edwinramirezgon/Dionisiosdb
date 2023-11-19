@@ -4,9 +4,9 @@
  */
 package FrontMenus;
 
-import FrontProveedores.frmProv;
+import FrontProveedores.frmProveedoresAdmin;
 import FrontCompras.frmFacturasCompra;
-import FrontVentas.frmFacturas;
+import FrontVentas.frmFacturasVenta;
 import FrontProductos.frmProductsAdmin;
 import FrontClientes.frmClientsAdmin;
 
@@ -173,7 +173,7 @@ public class frmAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestClientActionPerformed
 
     private void btnGestProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestProvActionPerformed
-           frmProv ObjProv = new frmProv();
+           frmProveedoresAdmin ObjProv = new frmProveedoresAdmin();
         ObjProv.setVisible(true);
     }//GEN-LAST:event_btnGestProvActionPerformed
 
@@ -183,7 +183,7 @@ public class frmAdmins extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestProdActionPerformed
 
     private void btnFActurasvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFActurasvActionPerformed
-         frmFacturas ObjFact = new frmFacturas();
+         frmFacturasVenta ObjFact = new frmFacturasVenta();
         ObjFact.setVisible(true);
     }//GEN-LAST:event_btnFActurasvActionPerformed
 

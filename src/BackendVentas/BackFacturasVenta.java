@@ -1,4 +1,4 @@
-package BackendCompras;
+package BackendVentas;
 
 import Conexion.ClsConexion;
 import com.mysql.jdbc.Connection;
@@ -6,15 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static FrontCompras.frmFacturasCompra.*;
+import static FrontVentas.frmFacturasVenta.*;
 
-public class BackFacturasCompra {
+public class BackFacturasVenta {
 
     ClsConexion CON;
     Connection CN;
     DefaultTableModel Carrito;
 
-    public BackFacturasCompra() {
+    public BackFacturasVenta() {
 
         CON = new ClsConexion();
         CN = CON.getConnection();
@@ -23,16 +23,12 @@ public class BackFacturasCompra {
 
     public void Limpiar() {
         // Se limpian todos los campos
-        // Se ocultan todos los errores
-        txtNit.setText("");
+        txtDni.setText("");
         txtNombre.setText("");
         txtFecha.setText("");
-        ListarTablaP();
         Total();
 
     }
-
-
 
     public void CrearTablaCar() {
 
@@ -65,7 +61,8 @@ public class BackFacturasCompra {
             txtTotal.setText(total + "");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!",
+                    JOptionPane.ERROR_MESSAGE);
 
         }
         return total;
@@ -81,22 +78,22 @@ public class BackFacturasCompra {
             }
         };
         modelo.addColumn("FACTURA");
-        modelo.addColumn("NIT");
-        modelo.addColumn("EMPRESA");
-        modelo.addColumn("CAJERO");
+        modelo.addColumn("DNI");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
         modelo.addColumn("VALOR TOTAL");
         modelo.addColumn("FECHA");
 
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblFactC";
+            String ConsLista = "SELECT * FROM tblFactV";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -125,12 +122,12 @@ public class BackFacturasCompra {
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblCompras WHERE Factura = '" + fact + "'";
+            String ConsLista = "SELECT * FROM tblVentas WHERE Factura = '" + fact + "'";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9),};
+                    Object[] Lista = {RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9), RS.getString(10),};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -145,48 +142,47 @@ public class BackFacturasCompra {
         }
     }
 
-    public void BuscarFacturaNit() {
+    public void BuscarFacturaDni() {
 
-        String Nit = txtNit.getText();
+        String Dni = txtDni.getText();
 
-        if (!Nit.equalsIgnoreCase("")) {
+        if (!Dni.equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
                     public boolean isCellEditable(int row, int column) {
                         return false;
                     }
                 };
-                modelo.addColumn("FACTURA");
-                modelo.addColumn("NIT");
-                modelo.addColumn("EMPRESA");
-                modelo.addColumn("CAJERO");
-                modelo.addColumn("VALOR TOTAL");
-                modelo.addColumn("FECHA");
+     modelo.addColumn("FACTURA");
+        modelo.addColumn("DNI");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+        modelo.addColumn("VALOR TOTAL");
+        modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactC WHERE Nit LIKE'%" + Nit + "%'";
+                String ConsLista = "SELECT * FROM tblFactV WHERE Dni LIKE'%" + Dni + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                               Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "¡¡No existe la factura en la base de datos!!", "¡Error!", JOptionPane.ERROR_MESSAGE);
-                 
-                    txtNit.setText("");
-                    txtNit.requestFocus();
+
+                    txtDni.setText("");
+                    txtDni.requestFocus();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-          ListarTablaP();
+            ListarTablaP();
         }
         Total();
-       
 
     }
 
@@ -200,7 +196,7 @@ public class BackFacturasCompra {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
-        
+        Limpiar();
 
     }
 
@@ -212,57 +208,57 @@ public class BackFacturasCompra {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
-       
+        Limpiar();
+
     }
-    
+
     public void BuscarFactNombre() {
 
-    String Empresa = txtNombre.getText();
+        String Nombre = txtNombre.getText();
 
-        if (!Empresa.equalsIgnoreCase("")) {
+        if (!Nombre.equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
                     public boolean isCellEditable(int row, int column) {
                         return false;
                     }
                 };
-                modelo.addColumn("FACTURA");
-                modelo.addColumn("NIT");
-                modelo.addColumn("EMPRESA");
-                modelo.addColumn("CAJERO");
-                modelo.addColumn("VALOR TOTAL");
-                modelo.addColumn("FECHA");
+        modelo.addColumn("FACTURA");
+        modelo.addColumn("DNI");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+        modelo.addColumn("VALOR TOTAL");
+        modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactC WHERE Empresa LIKE'%" + Empresa + "%'";
+                String ConsLista = "SELECT * FROM tblFactV WHERE Nombre LIKE'%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                              Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
                 } else {
-                    JOptionPane.showMessageDialog(null,"¡¡No existe la factura en la base de datos!!","¡Error!", JOptionPane.ERROR_MESSAGE);
-                  
-                    txtNit.setText("");
-                    txtNit.requestFocus();
+                    JOptionPane.showMessageDialog(null, "¡¡No existe la factura en la base de datos!!", "¡Error!", JOptionPane.ERROR_MESSAGE);
+
+                    txtDni.setText("");
+                    txtDni.requestFocus();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(),  "¡Error!",   JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-      ListarTablaP();
+            ListarTablaP();
         }
         Total();
-      
 
-}
-    
-        public void BuscarFactFecha() {
+    }
 
-    String Fecha = txtFecha.getText();
+    public void BuscarFactFecha() {
+
+        String Fecha = txtFecha.getText();
 
         if (!Fecha.equalsIgnoreCase("")) {
             try {
@@ -271,38 +267,36 @@ public class BackFacturasCompra {
                         return false;
                     }
                 };
-                modelo.addColumn("FACTURA");
-                modelo.addColumn("NIT");
-                modelo.addColumn("EMPRESA");
-                modelo.addColumn("CAJERO");
-                modelo.addColumn("VALOR TOTAL");
-                modelo.addColumn("FECHA");
+     modelo.addColumn("FACTURA");
+        modelo.addColumn("DNI");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+        modelo.addColumn("VALOR TOTAL");
+        modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactC WHERE Fecha LIKE'%" + Fecha + "%'";
+                String ConsLista = "SELECT * FROM tblFactV WHERE Fecha LIKE'%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                                 Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
                 } else {
-                    JOptionPane.showMessageDialog(null,"¡¡No existe la factura en la base de datos!!","¡Error!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "¡¡No existe la factura en la base de datos!!", "¡Error!", JOptionPane.ERROR_MESSAGE);
                     txtFecha.setText("");
                     txtFecha.requestFocus();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,   "Error en la consulta:" + e.getMessage(),"¡Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-         ListarTablaP();
+            ListarTablaP();
         }
         Total();
-       
 
-}
-    
-    
+    }
+
 }

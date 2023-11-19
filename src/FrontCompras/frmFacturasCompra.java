@@ -323,7 +323,7 @@ ObjCompras.ClickCar();
     }//GEN-LAST:event_txtNombreKeyReleased
 
     private void txtNitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyReleased
-       ObjCompras.ComprobarNit();
+       ObjCompras.BuscarFacturaNit();
     }//GEN-LAST:event_txtNitKeyReleased
 
     private void txtNitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNitMouseClicked

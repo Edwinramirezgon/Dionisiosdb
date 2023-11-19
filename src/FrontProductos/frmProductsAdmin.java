@@ -1,6 +1,6 @@
 package FrontProductos;
 
-import BackendeProductos.BackProductosAdmin;
+import BackendProductos.BackProductosAdmin;
 
 public class frmProductsAdmin extends javax.swing.JFrame {
 

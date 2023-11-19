@@ -1,395 +1,22 @@
 package FrontVentas;
 
-import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
-import java.awt.HeadlessException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import BackendVentas.BackVentas;
 
 public class frmVentas extends javax.swing.JFrame {
 
-    ClsConexion CON;
-    Connection CN;
-    DefaultTableModel Carrito;
-
+    BackVentas Objventas;
     public frmVentas() {
+        Objventas = new BackVentas();
         initComponents();
-        lblErrorNombre.setVisible(false);
-        lblErrorAnadirC.setVisible(false);
+         lblErrorAnadirC.setVisible(false);
         lblErrorElimin.setVisible(false);
-        lblErrorDni.setVisible(false);
-        this.setLocationRelativeTo(this);
-        CON = new ClsConexion();
-        CN = CON.getConnection();
-        ListarTablaP();
-        CrearTablaCar();
-        Limpiar();
+        this.setLocationRelativeTo(this);   
+        Objventas.ListarTablaP();
+        Objventas.CrearTablaCar();
+        Objventas.Limpiar();
+        Objventas.CargarListaPersonas();
     }
 
-    private void Limpiar() {
-        // Se limpian todos los campos
-        txtDni.setText("");
-        txtAnadirC.setText("0");
-        txtElimi.setText("0");
-        txtDni.setText("");
-
-        // Se ocultan todos los errores
-        lblErrorNombre.setVisible(false);
-        lblErrorAnadirC.setVisible(false);
-        lblErrorElimin.setVisible(false);
-        lblErrorDni.setVisible(false);
-
-    }
-
-    private void Limpiare() {
-
-        // Se ocultan todos los errores
-        lblErrorNombre.setVisible(false);
-        lblErrorAnadirC.setVisible(false);
-        lblErrorElimin.setVisible(false);
-        lblErrorDni.setVisible(false);
-
-    }
-
-    private void CrearTablaCar() {
-
-        // Definición de la configuración de la tabla y sus columnas
-        Carrito = new DefaultTableModel() {
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        Carrito.addColumn("CODIGO");
-        Carrito.addColumn("NOMBRE");
-        Carrito.addColumn("CANTIDAD");
-        Carrito.addColumn("VALOR UNITARIO");
-        Carrito.addColumn("VALOR TOTAL");
-
-        tbListCar.setModel(Carrito);
-
-    }
-
-    private double Total() {
-
-        float total = 0;
-
-        try {
-            for (int row = 0; row < Carrito.getRowCount(); row++) {
-
-                total += Double.parseDouble(String.valueOf(this.Carrito.getValueAt(row, 4)));
-
-            }
-
-            txtTotal.setText(total + "");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Error al listar los datos: " + e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        return total;
-
-    }
-
-    private void Pagar() {
-
-        String Dni = txtDni.getText();
-        String NombreC = "";
-        String Apellido = "";
-
-        if (Dni.equals("")) {
-            Limpiare();
-            lblErrorDni.setVisible(true);
-            txtDni.requestFocus();
-            JOptionPane.showMessageDialog(rootPane, "Debe ingresar el Dni del cliente");
-
-        } else {
-            try {
-
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni ='" + Dni + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-
-                if (RS.next()) {
-
-                    NombreC = RS.getString(2);
-                    Apellido = RS.getString(3);
-
-                    String ConsInsert2 = "INSERT INTO TblFactV(Dni,"
-                            + " Nombre,"
-                            + " Apellido,"
-                            + " Total ) "
-                            + "VALUES ('" + Dni + "','" + NombreC + "','" + Apellido + "','" + Total() + "')";
-
-                    PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
-                    PS4.executeUpdate();
-
-                    String ConsFact = "SELECT MAX(Fact) AS id FROM TblfactV";
-                    PreparedStatement PS5 = CN.prepareStatement(ConsFact);
-                    ResultSet RS5 = PS5.executeQuery();
-                    String fact = "";
-                    while (RS5.next()) {
-                        fact = RS5.getString(1);
-                    }
-
-                    try {
-
-                        for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
-                            String Codigo = (String) Carrito.getValueAt(rowC, 0);
-                            String ConsBuscar1 = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                            PreparedStatement PS1 = CN.prepareStatement(ConsBuscar1);
-                            ResultSet RS1 = PS1.executeQuery();
-
-                            while (RS1.next()) {
-                                String Code = RS1.getString(1);
-                                if (Codigo.equals(Code)) {
-                                    int CantidadP = 0;
-                                    int CantidadV = 0;
-                                    int Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
-                                    String Nombre = RS1.getString(2);
-                                    CantidadP = (Integer.parseInt(RS1.getString(4)) - Cantidad);
-                                    CantidadV = (Integer.parseInt(RS1.getString(5)) + Cantidad);
-                                    double ValorU = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 3)));
-                                    double ValorT = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 4)));
-
-                                    String Apodo = RS1.getString(2);
-                                    double ValorV = (Double.parseDouble(RS1.getString(6)));
-                                    double ValorC = (Double.parseDouble(RS1.getString(7)));
-                                    double ValorD = (Double.parseDouble(RS1.getString(8)));
-                                    String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
-                                            + "' WHERE Codigo='" + Codigo + "'";
-                                    PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
-                                    PS2.executeUpdate();
-                                    String ConsInser = "INSERT INTO TblVentas(Factura,"
-                                            + " Dni,"
-                                            + " NombreC,"
-                                            + " ApellidoC,"
-                                            + " Codigo,"
-                                            + " NombreP,"
-                                            + " CantidadP,"
-                                            + " ValorU,"
-                                            + "ValorT ) "
-                                            + "VALUES ('" + fact + "','" + Dni + "','" + NombreC + "','" + Apellido + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
-
-                                    PreparedStatement PS3 = CN.prepareStatement(ConsInser);
-                                    PS3.executeUpdate();
-
-                                }
-                            }
-
-                        }
-
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(rootPane,
-                                "Error al listar los datos: " + e.getMessage(),
-                                "¡Error!",
-                                JOptionPane.ERROR_MESSAGE);
-                    }
-
-                    JOptionPane.showMessageDialog(rootPane, "El cliente con Dni " + Dni + " de nombre " + NombreC + " " + Apellido + " Debe pagar un total de " + Total());
-
-                    Limpiar();
-                    ListarTablaP();
-                    CrearTablaCar();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el CLiente en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtDni.setText("");
-                    txtDni.requestFocus();
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error al listar los datos: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
-    }
-
-    private void anadirTablaCar() {
-
-        int Cantidad = Integer.parseInt(txtAnadirC.getText());
-        int row = this.tbListProducts.getSelectedRow();
-        int inventario = Integer.parseInt(String.valueOf(this.tbListProducts.getValueAt(row, 2)));
-
-        if (row == -1) {
-
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe escojer un producto",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            tbListProducts.requestFocus();
-
-        } else if (Cantidad <= 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar una cantidad de producto valida",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            Limpiare();
-            lblErrorAnadirC.setVisible(false);
-            txtAnadirC.requestFocus();
-
-        } else if (Cantidad > inventario) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Inventario insuficiente",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorAnadirC.setVisible(false);
-            txtAnadirC.requestFocus();
-
-        } else {
-
-            try {
-                String Codigo = (String.valueOf(this.tbListProducts.getValueAt(row, 0)));
-                for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
-                    String Code = (String) Carrito.getValueAt(rowC, 0);
-
-                    if (Code.equals(Codigo)) {
-
-                        Cantidad += Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
-                        Carrito.removeRow(rowC);
-
-                    }
-                }
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-
-                if (Cantidad <= 10) {
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
-                        Carrito.addRow(Lista);
-
-                    }
-                } else {
-                    // Recorer los resultados y cargalos a una lista
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
-                        Carrito.addRow(Lista);
-                    }
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error al listar los datos: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
-        Limpiar();
-
-        Total();
-
-    }
-
-    private void EliminarTablaCar() {
-
-        int row = this.tbListCar.getSelectedRow();
-        int Cantidad = Integer.parseInt(txtElimi.getText());
-
-        if (row == -1) {
-
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe escojer un producto",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            tbListProducts.requestFocus();
-
-        } else if (Cantidad <= 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar una cantidad de producto valida",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            lblErrorElimin.setVisible(false);
-            txtElimi.requestFocus();
-
-        } else {
-
-            try {
-                String Codigo = (String.valueOf(this.tbListCar.getValueAt(row, 0)));
-
-                Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2))) - Cantidad;
-                Carrito.removeRow(row);
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-
-                // Recorer los resultados y cargalos a una lista
-                if (Cantidad <= 0) {
-                    Carrito.removeRow(row);
-
-                } else if (Cantidad <= 10) {
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
-                        Carrito.addRow(Lista);
-
-                    }
-                } else {
-                    // Recorer los resultados y cargalos a una lista
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
-                        Carrito.addRow(Lista);
-                    }
-                }
-            } catch (Exception e) {
-                /*JOptionPane.showMessageDialog(rootPane,
-                        "Error al listar los datos: " + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);*/
-            }
-
-        }
-        Limpiar();
-        Total();
-
-    }
-
-    private void ListarTablaP() {
-
-        // Definición de la configuración de la tabla y sus columnas
-        DefaultTableModel modelo = new DefaultTableModel() {
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        modelo.addColumn("CODIGO");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("CANTIDAD");
-        modelo.addColumn("VALOR DE VENTA");
-        modelo.addColumn("VALOR CON DESCUENTO");
-
-        // Cargado de datos a la tabla
-        try {
-            // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblProducts";
-            PreparedStatement PS = CN.prepareStatement(ConsLista);
-            ResultSet RS = PS.executeQuery();
-
-            // Recorer los resultados y cargalos a una lista
-            while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(4), RS.getString(6), RS.getString(8),};
-                modelo.addRow(Lista);
-            }
-            tbListProducts.setModel(modelo);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Error al listar los datos: " + e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -407,9 +34,7 @@ public class frmVentas extends javax.swing.JFrame {
         tbListProducts = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblErrorNombre = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
-        jButtonSearchNom = new javax.swing.JButton();
         lblErrorAnadirC = new javax.swing.JLabel();
         jButtonAnadirC = new javax.swing.JButton();
         txtAnadirC = new javax.swing.JTextField();
@@ -425,10 +50,11 @@ public class frmVentas extends javax.swing.JFrame {
         btnCancelar1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jButtonDni = new javax.swing.JButton();
-        lblErrorDni = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         jButtonFactura = new javax.swing.JButton();
+        ltClientes = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE VENTAS");
@@ -492,13 +118,6 @@ public class frmVentas extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(307, 6, 272, 30);
 
-        lblErrorNombre.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorNombre.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorNombre.setText("* Error, ingrese Nombre válido");
-        lblErrorNombre.setAlignmentY(10.0F);
-        jPanel1.add(lblErrorNombre);
-        lblErrorNombre.setBounds(946, 91, 146, 13);
-
         txtDni.setBackground(new java.awt.Color(0, 153, 255));
         txtDni.setForeground(new java.awt.Color(51, 0, 51));
         txtDni.setToolTipText("");
@@ -508,27 +127,20 @@ public class frmVentas extends javax.swing.JFrame {
                 txtDniActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDni);
-        txtDni.setBounds(944, 625, 160, 40);
-
-        jButtonSearchNom.setBackground(new java.awt.Color(0, 0, 255));
-        jButtonSearchNom.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jButtonSearchNom.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSearchNom.setText(">");
-        jButtonSearchNom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSearchNomActionPerformed(evt);
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDniKeyReleased(evt);
             }
         });
-        jPanel1.add(jButtonSearchNom);
-        jButtonSearchNom.setBounds(1115, 44, 60, 40);
+        jPanel1.add(txtDni);
+        txtDni.setBounds(944, 625, 240, 40);
 
         lblErrorAnadirC.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorAnadirC.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorAnadirC.setText("* Error, ingrese Cantidad válida");
         lblErrorAnadirC.setAlignmentY(10.0F);
         jPanel1.add(lblErrorAnadirC);
-        lblErrorAnadirC.setBounds(946, 180, 152, 13);
+        lblErrorAnadirC.setBounds(940, 300, 152, 13);
 
         jButtonAnadirC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonAnadirC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -540,7 +152,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonAnadirC);
-        jButtonAnadirC.setBounds(1110, 134, 60, 40);
+        jButtonAnadirC.setBounds(1110, 260, 60, 40);
 
         txtAnadirC.setBackground(new java.awt.Color(0, 153, 255));
         txtAnadirC.setForeground(new java.awt.Color(51, 0, 51));
@@ -557,7 +169,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtAnadirC);
-        txtAnadirC.setBounds(946, 139, 158, 35);
+        txtAnadirC.setBounds(940, 260, 158, 35);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -569,17 +181,17 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(940, 210, 230, 40);
+        btnActualizar.setBounds(940, 330, 230, 40);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("BUSCAR POR NOMBRE");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(979, 20, 160, 18);
+        jLabel1.setBounds(970, 140, 160, 18);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("ANADIR CANTIDAD AL CARRITO");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(946, 110, 221, 18);
+        jLabel2.setBounds(940, 230, 221, 18);
 
         txtElimi.setBackground(new java.awt.Color(0, 153, 255));
         txtElimi.setForeground(new java.awt.Color(51, 0, 51));
@@ -601,12 +213,12 @@ public class frmVentas extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("DNI DEL CLIENTE");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(963, 595, 160, 23);
+        jLabel6.setBounds(990, 600, 160, 23);
 
         jButtonEliminarC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonEliminarC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jButtonEliminarC.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEliminarC.setText(">");
+        jButtonEliminarC.setText("<");
         jButtonEliminarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarCActionPerformed(evt);
@@ -632,7 +244,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPagar);
-        btnPagar.setBounds(1100, 715, 80, 50);
+        btnPagar.setBounds(1100, 780, 80, 50);
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("ELIMINAR CANTIDAD DEL CARRITO");
@@ -649,12 +261,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar1);
-        btnCancelar1.setBounds(940, 270, 230, 40);
+        btnCancelar1.setBounds(940, 390, 230, 40);
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel9.setText("VALOR TOTAL");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(964, 685, 130, 23);
+        jLabel9.setBounds(970, 750, 130, 23);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -665,27 +277,13 @@ public class frmVentas extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre);
-        txtNombre.setBounds(946, 45, 160, 40);
-
-        jButtonDni.setBackground(new java.awt.Color(0, 0, 255));
-        jButtonDni.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jButtonDni.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDni.setText(">");
-        jButtonDni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDniActionPerformed(evt);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
             }
         });
-        jPanel1.add(jButtonDni);
-        jButtonDni.setBounds(1110, 630, 63, 40);
-
-        lblErrorDni.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
-        lblErrorDni.setForeground(new java.awt.Color(153, 0, 0));
-        lblErrorDni.setText("* Error, ingrese Dni válido");
-        lblErrorDni.setAlignmentY(10.0F);
-        jPanel1.add(lblErrorDni);
-        lblErrorDni.setBounds(950, 671, 124, 13);
+        jPanel1.add(txtNombre);
+        txtNombre.setBounds(940, 160, 240, 40);
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(0, 153, 255));
@@ -703,7 +301,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTotal);
-        txtTotal.setBounds(942, 715, 152, 50);
+        txtTotal.setBounds(940, 780, 152, 50);
 
         jButtonFactura.setBackground(new java.awt.Color(0, 0, 255));
         jButtonFactura.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -715,7 +313,38 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonFactura);
-        jButtonFactura.setBounds(940, 780, 240, 60);
+        jButtonFactura.setBounds(940, 440, 230, 40);
+
+        ltClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ltClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ltClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ltClientes);
+        ltClientes.setBounds(940, 690, 240, 30);
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setText("BUSCAR POR CODIGO");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(970, 50, 170, 18);
+
+        txtCodigo.setBackground(new java.awt.Color(0, 153, 255));
+        txtCodigo.setForeground(new java.awt.Color(51, 0, 51));
+        txtCodigo.setToolTipText("");
+        txtCodigo.setAlignmentY(10.0F);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtCodigo);
+        txtCodigo.setBounds(940, 80, 240, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -731,95 +360,17 @@ public class frmVentas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSearchNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchNomActionPerformed
-        String Nombre = txtNombre.getText();
-
-        if (!Nombre.equalsIgnoreCase("")) {
-            try {
-                DefaultTableModel modelo = new DefaultTableModel() {
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
-                    }
-                };
-
-                modelo.addColumn("CODIGO");
-                modelo.addColumn("NOMBRE");
-                modelo.addColumn("CANTIDAD");
-                modelo.addColumn("VALOR DE VENTA");
-                modelo.addColumn("VALOR CON DESCUENTO");
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE'%" + Nombre + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(4), RS.getString(7), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane,
-                            "¡¡No existe el Producto en la base de datos!!",
-                            "¡Error!",
-                            JOptionPane.ERROR_MESSAGE);
-                    txtNombre.setText("");
-                    txtNombre.requestFocus();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un Nombre para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            Limpiar();
-            lblErrorNombre.setVisible(false);
-            txtNombre.requestFocus();
-        }
-
-    }//GEN-LAST:event_jButtonSearchNomActionPerformed
-
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void TblProductsMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblProductsMouseClick
-        try {
-            int row = this.tbListProducts.getSelectedRow();
-            this.txtDni.setText(String.valueOf(this.tbListProducts.getValueAt(row, 1)));
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Error en la consulta:" + e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        Limpiar();
+        Objventas.ClickListaProd();
     }//GEN-LAST:event_TblProductsMouseClick
 
     private void tbListCarTblProductsMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbListCarTblProductsMouseClick
-        try {
-            int row = this.tbListProducts.getSelectedRow();
-
-            this.txtDni.setText(String.valueOf(this.tbListProducts.getValueAt(row, 1)));
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Error en la consulta:" + e.getMessage(),
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        Limpiar();
+    Objventas.ClickListaProd();
     }//GEN-LAST:event_tbListCarTblProductsMouseClick
-
-    private void jButtonAnadirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCActionPerformed
-        anadirTablaCar();
-    }//GEN-LAST:event_jButtonAnadirCActionPerformed
 
     private void txtAnadirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnadirCActionPerformed
         // TODO add your handling code here:
@@ -836,8 +387,8 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnadirCKeyTyped
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        ListarTablaP();
-        Limpiar();
+         Objventas.ListarTablaP();
+         Objventas.Limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void txtElimiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtElimiActionPerformed
@@ -855,11 +406,11 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtElimiKeyTyped
 
     private void jButtonEliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarCActionPerformed
-        EliminarTablaCar();
+         Objventas.EliminarTablaCar();
     }//GEN-LAST:event_jButtonEliminarCActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        Pagar();
+         Objventas.Pagar();
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
@@ -869,38 +420,6 @@ public class frmVentas extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void jButtonDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDniActionPerformed
-        String Dni = txtDni.getText();
-        if (!Dni.equalsIgnoreCase("")) {
-            try {
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni ='" + Dni + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7),};
-                    JOptionPane.showMessageDialog(rootPane, "El DNI " + RS.getString(1) + " ESTA ASOCIADO AL CLIENTE " + RS.getString(2) + " " + RS.getString(3));
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "EL CLIENTE NO EXISTE EN LA BASE DE DATOS");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane,
-                        "Error en la consulta:" + e.getMessage(),
-                        "¡Error!",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Debe ingresar un Dni para validar",
-                    "¡Error!",
-                    JOptionPane.ERROR_MESSAGE);
-            Limpiar();
-            lblErrorDni.setVisible(false);
-            txtDni.requestFocus();
-        }
-
-
-    }//GEN-LAST:event_jButtonDniActionPerformed
 
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
@@ -917,9 +436,33 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTotalKeyTyped
 
     private void jButtonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFacturaActionPerformed
-        frmFacturas venfact = new frmFacturas();
+        frmFacturasVenta venfact = new frmFacturasVenta();
         venfact.setVisible(true);
     }//GEN-LAST:event_jButtonFacturaActionPerformed
+
+    private void ltClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ltClientesActionPerformed
+
+    }//GEN-LAST:event_ltClientesActionPerformed
+
+    private void jButtonAnadirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCActionPerformed
+        Objventas.anadirTablaCar();
+    }//GEN-LAST:event_jButtonAnadirCActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
+     Objventas.BuscarProductoCodigo();
+    }//GEN-LAST:event_txtCodigoKeyReleased
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+      Objventas.BuscarProductoNombre();
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
+       Objventas.ComprobarDni();
+    }//GEN-LAST:event_txtDniKeyReleased
 
     /**
      * @param args the command line arguments
@@ -1032,12 +575,11 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton jButtonAnadirC;
-    private javax.swing.JButton jButtonDni;
     private javax.swing.JButton jButtonEliminarC;
     private javax.swing.JButton jButtonFactura;
-    private javax.swing.JButton jButtonSearchNom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1046,16 +588,16 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblErrorAnadirC;
-    private javax.swing.JLabel lblErrorDni;
-    private javax.swing.JLabel lblErrorElimin;
-    private javax.swing.JLabel lblErrorNombre;
-    private javax.swing.JTable tbListCar;
-    private javax.swing.JTable tbListProducts;
-    private javax.swing.JTextField txtAnadirC;
-    private javax.swing.JTextField txtDni;
-    private javax.swing.JTextField txtElimi;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTotal;
+    public static javax.swing.JLabel lblErrorAnadirC;
+    public static javax.swing.JLabel lblErrorElimin;
+    public static javax.swing.JComboBox<String> ltClientes;
+    public static javax.swing.JTable tbListCar;
+    public static javax.swing.JTable tbListProducts;
+    public static javax.swing.JTextField txtAnadirC;
+    public static javax.swing.JTextField txtCodigo;
+    public static javax.swing.JTextField txtDni;
+    public static javax.swing.JTextField txtElimi;
+    public static javax.swing.JTextField txtNombre;
+    public static javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

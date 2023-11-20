@@ -24,8 +24,8 @@ public class BackVentas {
     public void Limpiar() {
         // Se limpian todos los campos
         txtDni.setText("");
-        txtAnadirC.setText("0");
-        txtElimi.setText("0");
+        txtAnadirC.setText("");
+        txtElimi.setText("");
         txtDni.setText("");
 
         // Se ocultan todos los errores
@@ -96,85 +96,108 @@ public class BackVentas {
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
 
-              
+                String ConsInsert2 = "INSERT INTO TblFactV(Nombre,"
+                        + " Total ) "
+                        + "VALUES ('" + NombreC + "','" + Total() + "')";
 
-                        String ConsInsert2 = "INSERT INTO TblFactV(Nombre,"
-                                + " Total ) "
-                                + "VALUES ('" + NombreC + "','" + Total() + "')";
+                PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
+                PS4.executeUpdate();
 
-                        PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
-                        PS4.executeUpdate();
+                String ConsFact = "SELECT MAX(Fact) AS id FROM TblfactV";
+                PreparedStatement PS5 = CN.prepareStatement(ConsFact);
+                ResultSet RS5 = PS5.executeQuery();
+                int fact = 0;
+                while (RS5.next()) {
+                    fact = RS5.getInt(1);
+                }
 
-                        String ConsFact = "SELECT MAX(Fact) AS id FROM TblfactV";
-                        PreparedStatement PS5 = CN.prepareStatement(ConsFact);
-                        ResultSet RS5 = PS5.executeQuery();
-                        String fact = "";
-                        while (RS5.next()) {
-                            fact = RS5.getString(1);
+                for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
+                    String Codigo = (String) Carrito.getValueAt(rowC, 0);
+                    String ConsBuscar1 = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
+                    PreparedStatement PS1 = CN.prepareStatement(ConsBuscar1);
+                    ResultSet RS1 = PS1.executeQuery();
+
+                    while (RS1.next()) {
+                        String Code = RS1.getString(1);
+                        if (Codigo.equals(Code)) {
+                            int CantidadP = 0;
+                            int CantidadV = 0;
+                            int Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
+                            String Nombre = RS1.getString(2);
+                            CantidadP = (RS1.getInt(4) - Cantidad);
+                            CantidadV = (RS1.getInt(5) + Cantidad);
+                            double ValorU = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 3)));
+                            double ValorT = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 4)));
+
+                            String Apodo = RS1.getString(2);
+                            double ValorV = RS1.getDouble(6);
+                            double ValorC = RS1.getDouble(7);
+                            double ValorD = RS1.getDouble(8);
+                            String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
+                                    + "' WHERE Codigo='" + Codigo + "'";
+                            PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
+                            PS2.executeUpdate();
+                            String ConsInser = "INSERT INTO TblVentas(Factura,"
+                                    + " NombreC,"
+                                    + " Codigo,"
+                                    + " NombreP,"
+                                    + " CantidadP,"
+                                    + " ValorU,"
+                                    + "ValorT ) "
+                                    + "VALUES ('" + fact + "','" + NombreC + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
+
+                            PreparedStatement PS3 = CN.prepareStatement(ConsInser);
+                            PS3.executeUpdate();
                         }
-                     
-
-                            for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
-                                String Codigo = (String) Carrito.getValueAt(rowC, 0);
-                                String ConsBuscar1 = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                                PreparedStatement PS1 = CN.prepareStatement(ConsBuscar1);
-                                ResultSet RS1 = PS1.executeQuery();
-
-                                while (RS1.next()) {
-                                    String Code = RS1.getString(1);
-                                    if (Codigo.equals(Code)) {
-                                        int CantidadP = 0;
-                                        int CantidadV = 0;
-                                        int Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
-                                        String Nombre = RS1.getString(2);
-                                        CantidadP = (Integer.parseInt(RS1.getString(4)) - Cantidad);
-                                        CantidadV = (Integer.parseInt(RS1.getString(5)) + Cantidad);
-                                        double ValorU = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 3)));
-                                        double ValorT = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(rowC, 4)));
-
-                                        String Apodo = RS1.getString(2);
-                                        double ValorV = (Double.parseDouble(RS1.getString(6)));
-                                        double ValorC = (Double.parseDouble(RS1.getString(7)));
-                                        double ValorD = (Double.parseDouble(RS1.getString(8)));
-                                        String ConsUpdate = "UPDATE TblProducts SET Nombre='" + Nombre + "', Apodo='" + Apodo + "',CantidadP='" + CantidadP + "',CantidadV='" + CantidadV + "',ValorV='" + ValorV + "',ValorC='" + ValorC + "',ValorD='" + ValorD
-                                                + "' WHERE Codigo='" + Codigo + "'";
-                                        PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
-                                        PS2.executeUpdate();
-                                        String ConsInser = "INSERT INTO TblVentas(Factura,"
-                                                + " NombreC,"
-                                                + " Codigo,"
-                                                + " NombreP,"
-                                                + " CantidadP,"
-                                                + " ValorU,"
-                                                + "ValorT ) "
-                                                + "VALUES ('" + fact + "','" + NombreC + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
-
-                                        PreparedStatement PS3 = CN.prepareStatement(ConsInser);
-                                        PS3.executeUpdate();
-                                    }
-                                }
-
-                            }
-
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
-                        }
-
-                        JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC + "  DEBE PAGAR UN TOTAL DE " + Total());
-
-                        Limpiar();
-                        ListarTablaP();
-                        CrearTablaCar();
-                        ltClientes.setSelectedIndex(0);
                     }
-                } 
 
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+            }
+
+            JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC + "  DEBE PAGAR UN TOTAL DE " + Total());
+
+            Limpiar();
+            ListarTablaP();
+            CrearTablaCar();
+            ltClientes.setSelectedIndex(0);
+        }
+    }
 
     public void anadirTablaCar() {
 
-        int Cantidad = Integer.parseInt(txtAnadirC.getText());
-        int row = tbListProducts.getSelectedRow();
-        int inventario = Integer.parseInt(String.valueOf(tbListProducts.getValueAt(row, 2)));
+        int Cantidad = 0;
+
+        if (!txtAnadirC.getText().equalsIgnoreCase("")) {
+
+            Cantidad = Integer.parseInt(txtAnadirC.getText());
+        }
+
+        int row = -1;
+        row = tbListProducts.getSelectedRow();
+
+        String codigo = "";
+
+        if (!String.valueOf(tbListProducts.getValueAt(row, 0)).equalsIgnoreCase(null)) {
+            codigo = String.valueOf(tbListProducts.getValueAt(row, 0));
+        }
+
+        int inventario = 0;
+        if (!String.valueOf(tbListProducts.getValueAt(row, 2)).equalsIgnoreCase(null)) {
+
+            inventario = Integer.parseInt(String.valueOf(tbListProducts.getValueAt(row, 2)));
+
+        }
+
+        for (int rowc = 0; rowc < Carrito.getRowCount(); rowc++) {
+            String Code = (String) Carrito.getValueAt(rowc, 0);
+            if (codigo.equalsIgnoreCase(Code)) {
+                inventario -= Integer.parseInt(String.valueOf(tbListCar.getValueAt(rowc, 2)));
+            }
+
+        }
 
         if (row == -1) {
 
@@ -237,8 +260,15 @@ public class BackVentas {
 
     public void EliminarTablaCar() {
 
-        int row = tbListCar.getSelectedRow();
-        int Cantidad = Integer.parseInt(txtElimi.getText());
+        int row = -1;
+        row = tbListCar.getSelectedRow();
+
+        int Cantidad = 0;
+
+        if (!txtElimi.getText().equalsIgnoreCase("")) {
+
+            Cantidad = Integer.parseInt(txtElimi.getText());
+        }
 
         if (row == -1) {
 
@@ -255,28 +285,33 @@ public class BackVentas {
             try {
                 String Codigo = (String.valueOf(tbListCar.getValueAt(row, 0)));
 
-                Cantidad = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2))) - Cantidad;
-                Carrito.removeRow(row);
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-
-                // Recorer los resultados y cargalos a una lista
-                if (Cantidad <= 0) {
+                int Cantidadc = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2)));
+                if (Cantidad > Cantidadc) {
+                    JOptionPane.showMessageDialog(null, "!!La cantidad de productos a eliminar debe ser menor a la cantidad que estan en el carrito!!");
+                } else {
+                    Cantidad = Cantidadc - Cantidad;
                     Carrito.removeRow(row);
 
-                } else if (Cantidad <= 10) {
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
-                        Carrito.addRow(Lista);
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
+                    PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                    ResultSet RS = PS.executeQuery();
 
-                    }
-                } else {
                     // Recorer los resultados y cargalos a una lista
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
-                        Carrito.addRow(Lista);
+                    if (Cantidad <= 0) {
+                        Carrito.removeRow(row);
+
+                    } else if (Cantidad <= 10) {
+                        while (RS.next()) {
+                            Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
+                            Carrito.addRow(Lista);
+
+                        }
+                    } else {
+                        // Recorer los resultados y cargalos a una lista
+                        while (RS.next()) {
+                            Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
+                            Carrito.addRow(Lista);
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -315,7 +350,7 @@ public class BackVentas {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(4), RS.getString(6), RS.getString(8),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getInt(4), RS.getDouble(6), RS.getDouble(8),};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -349,7 +384,7 @@ public class BackVentas {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(4), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getInt(4), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -390,7 +425,7 @@ public class BackVentas {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(4), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getInt(4), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -456,8 +491,6 @@ public class BackVentas {
         try {
             int row = tbListProducts.getSelectedRow();
 
-            txtDni.setText(String.valueOf(tbListProducts.getValueAt(row, 1)));
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
@@ -469,7 +502,6 @@ public class BackVentas {
 
         try {
             int row = tbListProducts.getSelectedRow();
-            txtDni.setText(String.valueOf(tbListProducts.getValueAt(row, 1)));
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);

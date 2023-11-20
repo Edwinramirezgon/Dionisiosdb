@@ -96,7 +96,7 @@ public class BackFacturasCompra {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -130,7 +130,7 @@ public class BackFacturasCompra {
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9),};
+                    Object[] Lista = {RS.getString(4), RS.getString(5), RS.getInt(6), RS.getDouble(7), RS.getDouble(8), RS.getDate(9)};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -168,7 +168,7 @@ public class BackFacturasCompra {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                       Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -238,7 +238,7 @@ public class BackFacturasCompra {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -283,7 +283,7 @@ public class BackFacturasCompra {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+              Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);

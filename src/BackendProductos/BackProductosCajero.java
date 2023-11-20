@@ -1,6 +1,5 @@
 package BackendProductos;
 
-
 import Conexion.ClsConexion;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
@@ -22,14 +21,12 @@ public class BackProductosCajero {
     }
 
     public void Limpiar() {
-  // Se limpian todos los campos
+        // Se limpian todos los campos
         txtCodigo.setText("");
         txtNombre.setText("");
         txtApodo.setText("");
-
-        txtValorV.setText("0");
-
-        txtValorD.setText("0");
+        txtValorV.setText("");
+        txtValorD.setText("");
 
         // Se ocultan todos los errores
         lblErrorCodigo.setVisible(false);
@@ -43,7 +40,7 @@ public class BackProductosCajero {
 
     public void Limpiare() {
 
- // Se ocultan todos los errores
+        // Se ocultan todos los errores
         lblErrorCodigo.setVisible(false);
         lblErrorNombre.setVisible(false);
         lblErrorApodo.setVisible(false);
@@ -55,7 +52,7 @@ public class BackProductosCajero {
 
     public void ListarTabla() {
 
-       // Definición de la configuración de la tabla y sus columnas
+        // Definición de la configuración de la tabla y sus columnas
         DefaultTableModel modelo = new DefaultTableModel() {
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -79,27 +76,31 @@ public class BackProductosCajero {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,   "Error al listar los datos: " + e.getMessage(),   "¡Error!",    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
-   
-
     public void RegistrarProducto() {
-              String Codigo = txtCodigo.getText();
+        String Codigo = txtCodigo.getText();
         String Nombre = txtNombre.getText();
         String Apodo = txtApodo.getText();
 
-        double ValorD = Double.parseDouble(txtValorD.getText());
+        double ValorD = 0;
+        if (!txtValorD.getText().equalsIgnoreCase("")) {
+            ValorD = Double.parseDouble(txtValorD.getText());
+        }
 
-        double ValorV = Double.parseDouble(txtValorV.getText());
+        double ValorV = 0;
+        if (!txtValorV.getText().equalsIgnoreCase("")) {
+            ValorV = Double.parseDouble(txtValorV.getText());
+        }
 
         if (Codigo.equals("")) {
             Limpiare();
@@ -156,7 +157,7 @@ public class BackProductosCajero {
     }
 
     public void BuscarProductoCodigo() {
-       String Codigo = txtCodigo.getText();
+        String Codigo = txtCodigo.getText();
 
         if (!Codigo.equalsIgnoreCase("")) {
             try {
@@ -179,26 +180,25 @@ public class BackProductosCajero {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             ListarTabla();
         }
-       
-     
+
     }
 
     public void BuscarProductoApodo() {
-       String Apodo = txtApodo.getText();
+        String Apodo = txtApodo.getText();
 
-      if (txtCodigo.getText().equalsIgnoreCase("")) {
+        if (txtCodigo.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
                     public boolean isCellEditable(int row, int column) {
@@ -219,22 +219,24 @@ public class BackProductosCajero {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,   "Error en la consulta:" + e.getMessage(),  "¡Error!",  JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else {
+            ListarTabla();
+        }
     }
 
     public void BuscarProductoNombre() {
-       String Nombre = txtNombre.getText();
+        String Nombre = txtNombre.getText();
 
-              if (txtCodigo.getText().equalsIgnoreCase("")) {
+        if (txtCodigo.getText().equalsIgnoreCase("")) {
 
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
@@ -256,30 +258,28 @@ public class BackProductosCajero {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
 
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,   "Error en la consulta:" + e.getMessage(),  "¡Error!",   JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
 
     }
 
-    
-
     public void ClickTablaProductos() {
-        
+
         try {
             int row = tbListProducts.getSelectedRow();
             txtCodigo.setText(String.valueOf(tbListProducts.getValueAt(row, 0)));
-           txtNombre.setText(String.valueOf(tbListProducts.getValueAt(row, 1)));
-           txtApodo.setText(String.valueOf(tbListProducts.getValueAt(row, 2)));            
+            txtNombre.setText(String.valueOf(tbListProducts.getValueAt(row, 1)));
+            txtApodo.setText(String.valueOf(tbListProducts.getValueAt(row, 2)));
             txtValorV.setText(String.valueOf(tbListProducts.getValueAt(row, 6)));
-           txtValorD.setText(String.valueOf(tbListProducts.getValueAt(row, 7)));
+            txtValorD.setText(String.valueOf(tbListProducts.getValueAt(row, 7)));
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
@@ -287,84 +287,97 @@ public class BackProductosCajero {
                     "¡Error!",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
 
     }
-    
-      
-       public void BuscarProductoValorVenta() {
 
-         int ValorV = Integer.parseInt(txtValorV.getText());
+    public void BuscarProductoValorVenta() {
 
-           if (txtCodigo.getText().equalsIgnoreCase("")) {
+        if (!txtValorV.getText().equalsIgnoreCase("")) {
 
-            try {
-                DefaultTableModel modelo = new DefaultTableModel() {
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
+            int ValorV = Integer.parseInt(txtValorV.getText());
+
+            if (txtCodigo.getText().equalsIgnoreCase("")) {
+
+                try {
+                    DefaultTableModel modelo = new DefaultTableModel() {
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    };
+                    modelo.addColumn("Codigo");
+                    modelo.addColumn("Nombre");
+                    modelo.addColumn("Apodo");
+                    modelo.addColumn("Cantidad De Productos");
+                    modelo.addColumn("Cantidad Vendida");
+                    modelo.addColumn("Valor De Compra");
+                    modelo.addColumn("Valor De Venta");
+                    modelo.addColumn("Valor Con Descuento");
+
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorV LIKE'%" + ValorV + "%'";
+                    PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                    ResultSet RS = PS.executeQuery();
+                    if (RS.next()) {
+                        do {
+                            Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
+                            modelo.addRow(Lista);
+                        } while (RS.next());
+                        tbListProducts.setModel(modelo);
+
                     }
-                };
-                modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apodo");
-                modelo.addColumn("Cantidad De Productos");
-                modelo.addColumn("Cantidad Vendida");
-                modelo.addColumn("Valor De Compra");
-                modelo.addColumn("Valor De Venta");
-                modelo.addColumn("Valor Con Descuento");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+            ListarTabla();
+        }
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorV LIKE'%" + ValorV + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } 
-            } catch (Exception e) { JOptionPane.showMessageDialog(null,  "Error en la consulta:" + e.getMessage(),  "¡Error!",  JOptionPane.ERROR_MESSAGE);
-            }
+        } else {
+            ListarTabla();
         } 
-      
     }
-       public void BuscarProductoValoDescuento() {
 
-        int ValorD = Integer.parseInt(txtValorD.getText());
+    public void BuscarProductoValoDescuento() {
 
-             if (txtCodigo.getText().equalsIgnoreCase("")) {
+        if (!txtValorD.getText().equalsIgnoreCase("")) {
 
-            try {
-                DefaultTableModel modelo = new DefaultTableModel() {
-                    public boolean isCellEditable(int row, int column) {
-                        return false;
+            int ValorD = Integer.parseInt(txtValorD.getText());
+
+            if (txtCodigo.getText().equalsIgnoreCase("")) {
+
+                try {
+                    DefaultTableModel modelo = new DefaultTableModel() {
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    };
+                    modelo.addColumn("Codigo");
+                    modelo.addColumn("Nombre");
+                    modelo.addColumn("Apodo");
+                    modelo.addColumn("Cantidad De Productos");
+                    modelo.addColumn("Cantidad Vendida");
+                    modelo.addColumn("Valor De Compra");
+                    modelo.addColumn("Valor De Venta");
+                    modelo.addColumn("Valor Con Descuento");
+
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorD LIKE'%" + ValorD + "%'";
+                    PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                    ResultSet RS = PS.executeQuery();
+                    if (RS.next()) {
+                        do {
+                            Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getInt(4), RS.getInt(5), RS.getDouble(7), RS.getDouble(6), RS.getDouble(8)};
+                            modelo.addRow(Lista);
+                        } while (RS.next());
+                        tbListProducts.setModel(modelo);
+
                     }
-                };
-                modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apodo");
-                modelo.addColumn("Cantidad De Productos");
-                modelo.addColumn("Cantidad Vendida");
-                modelo.addColumn("Valor De Compra");
-                modelo.addColumn("Valor De Venta");
-                modelo.addColumn("Valor Con Descuento");
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorD LIKE'%" + ValorD + "%'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                    do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(7), RS.getString(6), RS.getString(8),};
-                        modelo.addRow(Lista);
-                    } while (RS.next());
-                    tbListProducts.setModel(modelo);
-
-                } 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,   "Error en la consulta:" + e.getMessage(),   "¡Error!",   JOptionPane.ERROR_MESSAGE);
-            }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+            ListarTabla();
+        }
+        } else {
+            ListarTabla();
         } 
+    }
 }
-}
-

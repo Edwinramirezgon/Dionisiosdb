@@ -1,6 +1,5 @@
 package BackendProveedores;
 
-
 import Conexion.ClsConexion;
 import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
@@ -20,8 +19,8 @@ public class BackProveedorAdmin {
         CN = CON.getConnection();
 
     }
-    
-        private String SElDias() {
+
+    private String SElDias() {
 
         String Dias = "";
         if (LUNES.isSelected()) {
@@ -56,12 +55,12 @@ public class BackProveedorAdmin {
     }
 
     public void Limpiar() {
-       // Se limpian todos los campos
+        // Se limpian todos los campos
         txtNit.setText("");
         txtEmpresa.setText("");
         txtTelefono.setText("");
-        txtCantiD.setText("0");
-        txtPorceD.setText("0");
+        txtCantiD.setText("");
+        txtPorceD.setText("");
         LUNES.setSelected(false);
         MARTES.setSelected(false);
         MIERCOLES.setSelected(false);
@@ -90,14 +89,13 @@ public class BackProveedorAdmin {
 
     public void ListarTabla() {
 
-            // Definición de la configuración de la tabla y sus columnas
-               DefaultTableModel modelo = new DefaultTableModel(){
+        // Definición de la configuración de la tabla y sus columnas
+        DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         modelo.addColumn("Nit");
         modelo.addColumn("Empresa");
         modelo.addColumn("Telefono");
@@ -126,28 +124,41 @@ public class BackProveedorAdmin {
     }
 
     public void RegistarProveedor() {
-         String Nit = txtNit.getText();
+        String Nit = txtNit.getText();
         String Empresa = txtEmpresa.getText();
         String Telefono = txtTelefono.getText();
         String Dias = SElDias();
-        int CantiD = Integer.parseInt(txtCantiD.getText());
-        int PorceD = Integer.parseInt(txtPorceD.getText());
+
+        int CantiD = 0;
+
+        if (!txtCantiD.getText().equalsIgnoreCase("")) {
+            CantiD = Integer.parseInt(txtCantiD.getText());
+        }
+
+        int PorceD = 0;
+        if (!txtPorceD.getText().equalsIgnoreCase("")) {
+            PorceD = Integer.parseInt(txtPorceD.getText());
+        }
 
         if (Nit.equals("")) {
             Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-       
+
+        } else if (Dias.equals("")) {
+            Limpiare();
+
+            JOptionPane.showMessageDialog(null, "Debe escojer algun dia de entrega");
 
         } else {
             try {
@@ -155,7 +166,7 @@ public class BackProveedorAdmin {
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
-                                Limpiare();
+                    Limpiare();
                     JOptionPane.showMessageDialog(null, "¡Error! el Proveedor ya existe en la BD");
                 } else {
                     String ConsInser = "INSERT INTO TblProv(Nit,"
@@ -182,32 +193,45 @@ public class BackProveedorAdmin {
         String Empresa = txtEmpresa.getText();
         String Telefono = txtTelefono.getText();
         String Dias = SElDias();
-        int CantiD = Integer.parseInt(txtCantiD.getText());
-        int PorceD = Integer.parseInt(txtPorceD.getText());
+
+        int CantiD = 0;
+
+        if (!txtCantiD.getText().equalsIgnoreCase("")) {
+            CantiD = Integer.parseInt(txtCantiD.getText());
+        }
+
+        int PorceD = 0;
+        if (!txtPorceD.getText().equalsIgnoreCase("")) {
+            PorceD = Integer.parseInt(txtPorceD.getText());
+        }
 
         if (Nit.equals("")) {
             Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-       
+
+        } else if (Dias.equals("")) {
+            Limpiare();
+
+            JOptionPane.showMessageDialog(null, "Debe escojer algun dia de entrega");
 
         } else {
             try {
                 String ValNit = "SELECT * FROM TblProv WHERE Nit='" + Nit + "'";
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
-                if(!RS.next()) {
-                                Limpiare();
+                if (!RS.next()) {
+                    Limpiare();
                     JOptionPane.showMessageDialog(null, "¡Error! el Proveedor NO existe en la BD");
                 } else {
                     String ConsUpdate = "UPDATE TblProv SET Empresa='" + Empresa + "', Telefono='" + Telefono + "', Dias='" + Dias + "',CantiD='" + CantiD + "', PorceD='" + PorceD + "' WHERE Nit='" + Nit + "'";
@@ -218,8 +242,8 @@ public class BackProveedorAdmin {
                     txtNit.requestFocus();
                     ListarTabla();
                 }
-            } catch (Exception  e) {
-                JOptionPane.showMessageDialog(null, "Error en el registro: " + e.getMessage(), "¡Error!",JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en el registro: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -240,12 +264,12 @@ public class BackProveedorAdmin {
                     JOptionPane.showMessageDialog(null, "Proveedor eliminado con éxito");
                     ListarTabla();
                 } else {
-                    JOptionPane.showMessageDialog(null,"¡¡No existe el Proveedor en la base de datos!!", "¡Error!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "¡¡No existe el Proveedor en la base de datos!!", "¡Error!", JOptionPane.ERROR_MESSAGE);
                     txtNit.setText("");
                     txtNit.requestFocus();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error en la consulta:" + e.getMessage(), "¡Error!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Debe ingresar un Proveedor para validar", "¡Error!", JOptionPane.ERROR_MESSAGE);
@@ -255,17 +279,16 @@ public class BackProveedorAdmin {
     }
 
     public void BuscarProveedorNit() {
-          String Nit = txtNit.getText();
+        String Nit = txtNit.getText();
 
         if (!Nit.equalsIgnoreCase("")) {
             try {
-                       DefaultTableModel modelo = new DefaultTableModel(){
+                DefaultTableModel modelo = new DefaultTableModel() {
 
- public boolean isCellEditable(int row, int column)
- {
-     return false;
- }
-  };        
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -278,20 +301,19 @@ public class BackProveedorAdmin {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(),   "¡Error!",  JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-        ListarTabla();
+            ListarTabla();
         }
-      
-     
+
     }
 
     public void BuscarProveedorTelefono() {
@@ -299,7 +321,11 @@ public class BackProveedorAdmin {
 
         if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -312,25 +338,30 @@ public class BackProveedorAdmin {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(),"¡Error!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
-       
+        }
+
     }
 
     public void BuscarProveedorNombre() {
         String Empresa = txtEmpresa.getText();
 
-         if (txtNit.getText().equalsIgnoreCase("")) {
+        if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -343,24 +374,35 @@ public class BackProveedorAdmin {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
     }
 
     public void BuscarProveedorCantidad() {
-       int CantiD = Integer.parseInt(txtCantiD.getText());
 
-       if (txtNit.getText().equalsIgnoreCase("")) {
+        int CantiD =0;
+        if (!txtCantiD.getText().equalsIgnoreCase("")) {
+            CantiD = Integer.parseInt(txtCantiD.getText());
+            
+        }
+     
+
+        if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -373,23 +415,34 @@ public class BackProveedorAdmin {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
-            } catch (Exception e) { JOptionPane.showMessageDialog(null,  "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
     }
 
     public void BuscarProveedorPorcentaje() {
-        int PorceD = Integer.parseInt(txtPorceD.getText());
+        
+        int PorceD=0;
+        if (!txtPorceD.getText().equalsIgnoreCase("")) {
+            PorceD = Integer.parseInt(txtPorceD.getText());
+        }
+        
 
-         if (txtNit.getText().equalsIgnoreCase("")) {
+        if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -402,33 +455,32 @@ public class BackProveedorAdmin {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
 
     }
 
-   
-       
-       public void ClickListaProveedores() {
+    public void ClickListaProveedores() {
 
-try {
+        try {
             int row = tbListProv.getSelectedRow();
-         txtNit.setText(String.valueOf(tbListProv.getValueAt(row, 0)));
-           txtEmpresa.setText(String.valueOf(tbListProv.getValueAt(row, 1)));
-           txtTelefono.setText(String.valueOf(tbListProv.getValueAt(row, 2)));
-           txtCantiD.setText(String.valueOf(tbListProv.getValueAt(row, 4)));
+            txtNit.setText(String.valueOf(tbListProv.getValueAt(row, 0)));
+            txtEmpresa.setText(String.valueOf(tbListProv.getValueAt(row, 1)));
+            txtTelefono.setText(String.valueOf(tbListProv.getValueAt(row, 2)));
+            txtCantiD.setText(String.valueOf(tbListProv.getValueAt(row, 4)));
             txtPorceD.setText(String.valueOf(tbListProv.getValueAt(row, 5)));
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error en la consulta:" + e.getMessage(), "¡Error!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
-}
+    }
 }

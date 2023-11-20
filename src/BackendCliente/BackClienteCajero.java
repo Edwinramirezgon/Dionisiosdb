@@ -233,7 +233,9 @@ public class BackClienteCajero {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
 
     }
 
@@ -270,7 +272,9 @@ public class BackClienteCajero {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
 
     }
 
@@ -307,7 +311,9 @@ public class BackClienteCajero {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
 
     }
 
@@ -344,7 +350,9 @@ public class BackClienteCajero {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
 
     }
 
@@ -382,7 +390,9 @@ public class BackClienteCajero {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,  "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
         
         
 
@@ -423,7 +433,9 @@ public class BackClienteCajero {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(),"¡Error!",
                         JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        } else{
+            ListarTabla();
+        }
 
     }
        

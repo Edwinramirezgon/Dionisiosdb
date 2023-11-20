@@ -7,37 +7,33 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import FrontMenus.*;
 
-
 public class frmLogin extends javax.swing.JFrame {
-    
-        ClsConexion CON;
-    Connection CN;   
- 
 
-    public frmLogin() {          
-    CON = new ClsConexion();
-    CN = CON.getConnection();
+    ClsConexion CON;
+    Connection CN;
 
- 
-      
+    public frmLogin() {
+        CON = new ClsConexion();
+        CN = CON.getConnection();
+
         initComponents();
-        this.setLocationRelativeTo(this);   
+        this.setLocationRelativeTo(this);
     }
-    
-    private void login(){
+
+    private void login() {
         String User = txtUser.getText();
         String Pass = txtPass.getText();
 
         if (User.equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(null,"Por favor ingrese el nombre del Usuario","¡Error! Campo De Usuario vacio",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor ingrese el nombre del Usuario", "¡Error! Campo De Usuario vacio", JOptionPane.ERROR_MESSAGE);
             txtUser.setFocusable(true);
         } else {
             if (Pass.equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "Por favor ingrese la contraseña del usuario", "¡Error! Campo De Contraseña Vacio",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Por favor ingrese la contraseña del usuario", "¡Error! Campo De Contraseña Vacio", JOptionPane.ERROR_MESSAGE);
                 txtPass.setFocusable(true);
             } else {
                 try {
-                    PreparedStatement PS = CN.prepareStatement("SELECT User, Pass, Rol " + "FROM TblUsers "+ "WHERE User='" + User + "' AND pass='" + Pass + "'");
+                    PreparedStatement PS = CN.prepareStatement("SELECT User, Pass, Rol " + "FROM TblUsers " + "WHERE User='" + User + "' AND pass='" + Pass + "'");
 
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
@@ -48,49 +44,41 @@ public class frmLogin extends javax.swing.JFrame {
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                             PS1.executeUpdate();
-                            JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
+                            JOptionPane.showMessageDialog(null, "Bienvenido " + User + " su nivel de acceso es Administrador ");
                             frmAdmins objAdmin = new frmAdmins();
                             objAdmin.setVisible(true);
-                            dispose();                        
-                    
+                            dispose();
+
                         } else if (TipoRol.equalsIgnoreCase("CAJERO")) {
                             String ConsInser = "INSERT INTO TblLogin(User,"
                                     + " Rol) "
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                             PS1.executeUpdate();
-                            JOptionPane.showMessageDialog(null, "Bienvenido Cajero");
+                            JOptionPane.showMessageDialog(null, "Bienvenido " + User + " su nivel de acceso es Cajero ");
                             frmCajero objCajero = new frmCajero();
-                            objCajero.setVisible(true);    
+                            objCajero.setVisible(true);
                             dispose();
 
-                           
                         } else if (TipoRol.equalsIgnoreCase("MENSAJERO")) {
                             String ConsInser = "INSERT INTO TblLogin(User,"
                                     + " Rol) "
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);
                             PS1.executeUpdate();
-                            JOptionPane.showMessageDialog(null, "Bienvenido Mensajero");
+                            JOptionPane.showMessageDialog(null, "Bienvenido " + User + " su nivel de accesom es Mensajero ");
                             frmMensajero objMensajero = new frmMensajero();
                             objMensajero.setVisible(true);
                             dispose();
 
-                          
                         } else {
-                            JOptionPane.showMessageDialog(null,
-                                    "No tiene los permisos de ingreso",
-                                    "¡Error!",
-                                    JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"No tiene los permisos de ingreso","¡Error!",JOptionPane.ERROR_MESSAGE);
                             txtUser.setText("");
                             txtPass.setText("");
                             txtUser.requestFocus();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null,
-                                "Usuario o contraseña erroneo",
-                                "¡Error!",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"Usuario o contraseña erroneo","¡Error!", JOptionPane.ERROR_MESSAGE);
                         txtPass.setFocusable(true);
                     }
 
@@ -102,13 +90,8 @@ public class frmLogin extends javax.swing.JFrame {
                 }
             }
         }
-        
+
     }
-    
-              
-    
-    
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -263,8 +246,8 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
 
-    login();
-        
+        login();
+
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
@@ -272,21 +255,20 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
- 
+
     }//GEN-LAST:event_txtUserKeyTyped
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-      if(evt.getKeyCode() == evt.VK_ENTER){
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             txtPass.requestFocus();
         }
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
-     if(evt.getKeyCode() == evt.VK_ENTER){
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             login();
         }
     }//GEN-LAST:event_txtPassKeyPressed
-
 
     /**
      * @param args the command line arguments

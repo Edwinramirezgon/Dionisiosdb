@@ -60,8 +60,8 @@ public class BackProveedorCajero {
         txtNit.setText("");
         txtEmpresa.setText("");
         txtTelefono.setText("");
-        txtCantiD.setText("0");
-        txtPorceD.setText("0");
+        txtCantiD.setText("");
+        txtPorceD.setText("");
         LUNES.setSelected(false);
         MARTES.setSelected(false);
         MIERCOLES.setSelected(false);
@@ -129,28 +129,41 @@ public class BackProveedorCajero {
 
     
     public void RegistarProveedor() {
-         String Nit = txtNit.getText();
+        String Nit = txtNit.getText();
         String Empresa = txtEmpresa.getText();
         String Telefono = txtTelefono.getText();
         String Dias = SElDias();
-        int CantiD = Integer.parseInt(txtCantiD.getText());
-        int PorceD = Integer.parseInt(txtPorceD.getText());
+
+        int CantiD = 0;
+
+        if (!txtCantiD.getText().equalsIgnoreCase("")) {
+            CantiD = Integer.parseInt(txtCantiD.getText());
+        }
+
+        int PorceD = 0;
+        if (!txtPorceD.getText().equalsIgnoreCase("")) {
+            PorceD = Integer.parseInt(txtPorceD.getText());
+        }
 
         if (Nit.equals("")) {
             Limpiare();
             lblErrorNit.setVisible(true);
             txtNit.requestFocus();
         } else if (Empresa.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorEmpresa.setVisible(true);
             txtEmpresa.requestFocus();
         } else if (Telefono.equals("")) {
-                        Limpiare();
+            Limpiare();
 
             lblErrorTelefono.setVisible(true);
             txtTelefono.requestFocus();
-       
+
+        } else if (Dias.equals("")) {
+            Limpiare();
+
+            JOptionPane.showMessageDialog(null, "Debe escojer algun dia de entrega");
 
         } else {
             try {
@@ -158,7 +171,7 @@ public class BackProveedorCajero {
                 PreparedStatement PS = CN.prepareStatement(ValNit);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
-                                Limpiare();
+                    Limpiare();
                     JOptionPane.showMessageDialog(null, "¡Error! el Proveedor ya existe en la BD");
                 } else {
                     String ConsInser = "INSERT INTO TblProv(Nit,"
@@ -285,11 +298,21 @@ public class BackProveedorCajero {
     }
 
     public void BuscarProveedorCantidad() {
-       int CantiD = Integer.parseInt(txtCantiD.getText());
 
-       if (txtNit.getText().equalsIgnoreCase("")) {
+        int CantiD =0;
+        if (!txtCantiD.getText().equalsIgnoreCase("")) {
+            CantiD = Integer.parseInt(txtCantiD.getText());
+            
+        }
+     
+
+        if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -302,23 +325,34 @@ public class BackProveedorCajero {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
-            } catch (Exception e) { JOptionPane.showMessageDialog(null,  "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
     }
 
     public void BuscarProveedorPorcentaje() {
-        int PorceD = Integer.parseInt(txtPorceD.getText());
+        
+        int PorceD=0;
+        if (!txtPorceD.getText().equalsIgnoreCase("")) {
+            PorceD = Integer.parseInt(txtPorceD.getText());
+        }
+        
 
-         if (txtNit.getText().equalsIgnoreCase("")) {
+        if (txtNit.getText().equalsIgnoreCase("")) {
             try {
-                        DefaultTableModel modelo = new DefaultTableModel(){ public boolean isCellEditable(int row, int column) {     return false; }  };        
+                DefaultTableModel modelo = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int column) {
+                        return false;
+                    }
+                };
                 modelo.addColumn("Nit");
                 modelo.addColumn("Empresa");
                 modelo.addColumn("Telefono");
@@ -331,16 +365,17 @@ public class BackProveedorCajero {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)};
+
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProv.setModel(modelo);
 
-                } 
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
 
     }
 

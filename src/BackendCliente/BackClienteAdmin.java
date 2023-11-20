@@ -288,14 +288,14 @@ public class BackClienteAdmin {
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListClients.setModel(modelo);
-                } 
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-        ListarTabla();
+            ListarTabla();
         }
-     
+
     }
 
     public void BuscarClienteNombre() {
@@ -330,16 +330,17 @@ public class BackClienteAdmin {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
-            } 
-        
+            }
 
-    }
+        } else {
+            ListarTabla();
+        }
     }
 
     public void BuscarClienteApellidos() {
         String Apellido = txtApellido.getText();
 
-         if (txtDni.getText().equalsIgnoreCase("")) {
+        if (txtDni.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -365,19 +366,20 @@ public class BackClienteAdmin {
                     } while (RS.next());
                     tbListClients.setModel(modelo);
 
-               
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-         }
+        } else {
+            ListarTabla();
+        }
 
     }
 
     public void BuscarClienteCorreo() {
         String Correo = txtCorreo.getText();
 
-                if (txtDni.getText().equalsIgnoreCase("")) {
+        if (txtDni.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -403,19 +405,20 @@ public class BackClienteAdmin {
                     } while (RS.next());
                     tbListClients.setModel(modelo);
 
-               
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-                }
+        } else {
+            ListarTabla();
+        }
 
     }
 
     public void BuscarClienteDireccion() {
         String Direccion = txtDireccion.getText();
 
-               if (txtDni.getText().equalsIgnoreCase("")) {
+        if (txtDni.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -441,20 +444,21 @@ public class BackClienteAdmin {
                     } while (RS.next());
                     tbListClients.setModel(modelo);
 
-               
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-               }
+        } else {
+            ListarTabla();
+        }
 
     }
 
     public void BuscarClienteFecha() {
-        
+
         String Fecha = txtFecha.getText();
 
-         if (txtDni.getText().equalsIgnoreCase("")) {
+        if (txtDni.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -482,19 +486,19 @@ public class BackClienteAdmin {
 
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,  "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
-         }
-        
-        
+        } else {
+            ListarTabla();
+        }
 
     }
-    
-       public void BuscarClienteTelefono() {
-           
-            String Telefono = txtTelefono.getText();
 
-              if (txtDni.getText().equalsIgnoreCase("")) {
+    public void BuscarClienteTelefono() {
+
+        String Telefono = txtTelefono.getText();
+
+        if (txtDni.getText().equalsIgnoreCase("")) {
             try {
                 DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -520,17 +524,18 @@ public class BackClienteAdmin {
                     } while (RS.next());
                     tbListClients.setModel(modelo);
 
-               
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(),"¡Error!",
+                JOptionPane.showMessageDialog(null, "Error en la consulta:" + e.getMessage(), "¡Error!",
                         JOptionPane.ERROR_MESSAGE);
             }
-              }
+        } else {
+            ListarTabla();
+        }
 
     }
-       
-       public void ClickListaClientes() {
+
+    public void ClickListaClientes() {
 
         int row = tbListClients.getSelectedRow();
         txtDni.setText(String.valueOf(tbListClients.getValueAt(row, 0)));

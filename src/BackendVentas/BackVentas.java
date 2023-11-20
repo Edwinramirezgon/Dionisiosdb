@@ -7,15 +7,19 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static FrontVentas.frmVentas.*;
+import Backend.*;
 
 public class BackVentas {
 
     ClsConexion CON;
     Connection CN;
     DefaultTableModel Carrito;
+    private Cola<ClsGeneral> Colalista;
+    private Cola<ClsGeneral> Colaaux;
 
     public BackVentas() {
-
+        Colalista = new Cola();
+        Colaaux = new Cola();
         CON = new ClsConexion();
         CN = CON.getConnection();
 
@@ -81,6 +85,10 @@ public class BackVentas {
     }
 
     public void Pagar() {
+
+        int indice = ltClientes.getSelectedIndex();
+
+        BuscarCliente(indice);
 
         String NombreC = (String) ltClientes.getSelectedItem();
 
@@ -480,10 +488,21 @@ public class BackVentas {
             ltClientes.addItem("SELECCIONE UN CLIENTE");
 
             // Recorer los resultados y cargalos a una lista
-            while (RS.next()) {
+            int indice = 0;
+            while (RS.next()) {               
+                
+                Colalista.Encolar(new ClsGeneral(indice, RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7)));
+                indice++;
 
-                ltClientes.addItem(RS.getString(2) + " " + " " + RS.getString(3));
             }
+            ClsGeneral objlista = new ClsGeneral();
+            while (!Colalista.EstaVacia()) {
+                objlista = Colalista.getElementos();
+                ltClientes.addItem(objlista.getNombre() + " " + " " + objlista.getApellido());
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            }
+            retColaLista(Colaaux);
 
         } catch (Exception e) {
 
@@ -515,4 +534,39 @@ public class BackVentas {
         Limpiar();
     }
 
+    private void retColaLista(Cola<ClsGeneral> Colaaux) {
+
+        try {
+            while (!Colaaux.EstaVacia()) {
+                Colalista.Encolar(Colaaux.getElementos());
+                Colaaux.Desencolar();
+            }
+        } catch (Exception e) {
+            // RETORNAMOS EL ERROR
+            JOptionPane.showMessageDialog(null, "ERROR AL DEVOLVER LA COLA : " + e.getMessage());
+
+        }
+
+    }
+
+    public void BuscarCliente(int indice) {
+        ClsGeneral objlista = new ClsGeneral();
+        while (!Colalista.EstaVacia()) {
+            objlista = Colalista.getElementos();
+
+            if (objlista.getLista() == indice-1) {
+                System.out.println(objlista.getDni());
+
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            } else {
+
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            }
+        }
+
+        retColaLista(Colaaux);
+
+    }
 }

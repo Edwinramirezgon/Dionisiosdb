@@ -63,6 +63,7 @@ BackProveedorAdmin ObjProveedor;
         VIERNES = new javax.swing.JCheckBox();
         SABADO = new javax.swing.JCheckBox();
         DOMINGO = new javax.swing.JCheckBox();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Proveedores");
@@ -402,6 +403,11 @@ BackProveedorAdmin ObjProveedor;
         jPanel1.add(DOMINGO);
         DOMINGO.setBounds(980, 100, 85, 21);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(30, 110, 190, 170);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -659,6 +665,7 @@ BackProveedorAdmin ObjProveedor;
     public static javax.swing.JLabel lblErrorNit;
     public static javax.swing.JLabel lblErrorPorceD;
     public static javax.swing.JLabel lblErrorTelefono;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListProv;
     public static javax.swing.JTextField txtCantiD;
     public static javax.swing.JTextField txtEmpresa;

@@ -99,6 +99,7 @@ public class frmUsers extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Usuarios");
@@ -269,6 +270,11 @@ public class frmUsers extends javax.swing.JFrame {
         jLabel4.setText("LISTA DE USUARIOS");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(554, 18, 243, 30);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(20, -10, 200, 180);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -503,6 +509,7 @@ public class frmUsers extends javax.swing.JFrame {
     private javax.swing.JLabel lblErrorPass;
     private javax.swing.JLabel lblErrorRol;
     private javax.swing.JLabel lblErrorUser;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JTable tbListUsers;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;

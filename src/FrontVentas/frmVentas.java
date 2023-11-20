@@ -55,6 +55,7 @@ public class frmVentas extends javax.swing.JFrame {
         ltClientes = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE VENTAS");
@@ -84,7 +85,7 @@ public class frmVentas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbListCar);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 510, 913, 330);
+        jScrollPane2.setBounds(10, 510, 913, 400);
 
         tbListProducts.setAutoCreateRowSorter(true);
         tbListProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -133,14 +134,14 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtDni);
-        txtDni.setBounds(944, 625, 240, 40);
+        txtDni.setBounds(940, 750, 240, 40);
 
         lblErrorAnadirC.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorAnadirC.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorAnadirC.setText("* Error, ingrese Cantidad válida");
         lblErrorAnadirC.setAlignmentY(10.0F);
         jPanel1.add(lblErrorAnadirC);
-        lblErrorAnadirC.setBounds(940, 300, 152, 13);
+        lblErrorAnadirC.setBounds(940, 230, 152, 13);
 
         jButtonAnadirC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonAnadirC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -152,7 +153,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonAnadirC);
-        jButtonAnadirC.setBounds(1110, 260, 60, 40);
+        jButtonAnadirC.setBounds(1110, 190, 60, 40);
 
         txtAnadirC.setBackground(new java.awt.Color(0, 153, 255));
         txtAnadirC.setForeground(new java.awt.Color(51, 0, 51));
@@ -169,7 +170,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtAnadirC);
-        txtAnadirC.setBounds(940, 260, 158, 35);
+        txtAnadirC.setBounds(940, 190, 158, 35);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -181,17 +182,17 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(940, 330, 230, 40);
+        btnActualizar.setBounds(940, 260, 230, 40);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("BUSCAR POR NOMBRE");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(970, 140, 160, 18);
+        jLabel1.setBounds(970, 90, 160, 18);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("ANADIR CANTIDAD AL CARRITO");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(940, 230, 221, 18);
+        jLabel2.setBounds(940, 160, 221, 18);
 
         txtElimi.setBackground(new java.awt.Color(0, 153, 255));
         txtElimi.setForeground(new java.awt.Color(51, 0, 51));
@@ -208,12 +209,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtElimi);
-        txtElimi.setBounds(946, 526, 152, 34);
+        txtElimi.setBounds(940, 650, 152, 34);
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("DNI DEL CLIENTE");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(990, 600, 160, 23);
+        jLabel6.setBounds(980, 720, 160, 23);
 
         jButtonEliminarC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonEliminarC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -225,14 +226,14 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonEliminarC);
-        jButtonEliminarC.setBounds(1104, 524, 71, 40);
+        jButtonEliminarC.setBounds(1100, 650, 71, 40);
 
         lblErrorElimin.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorElimin.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorElimin.setText("* Error, ingrese Cantidad válida");
         lblErrorElimin.setAlignmentY(10.0F);
         jPanel1.add(lblErrorElimin);
-        lblErrorElimin.setBounds(946, 570, 152, 13);
+        lblErrorElimin.setBounds(940, 690, 152, 13);
 
         btnPagar.setBackground(new java.awt.Color(0, 0, 255));
         btnPagar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -244,12 +245,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPagar);
-        btnPagar.setBounds(1100, 780, 80, 50);
+        btnPagar.setBounds(1100, 870, 80, 50);
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("ELIMINAR CANTIDAD DEL CARRITO");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(940, 500, 244, 18);
+        jLabel7.setBounds(930, 620, 244, 18);
 
         btnCancelar1.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -261,12 +262,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar1);
-        btnCancelar1.setBounds(940, 390, 230, 40);
+        btnCancelar1.setBounds(940, 310, 230, 40);
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel9.setText("VALOR TOTAL");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(970, 750, 130, 23);
+        jLabel9.setBounds(970, 840, 130, 23);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -283,7 +284,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNombre);
-        txtNombre.setBounds(940, 160, 240, 40);
+        txtNombre.setBounds(940, 110, 240, 40);
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(0, 153, 255));
@@ -301,7 +302,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTotal);
-        txtTotal.setBounds(940, 780, 152, 50);
+        txtTotal.setBounds(940, 870, 152, 50);
 
         jButtonFactura.setBackground(new java.awt.Color(0, 0, 255));
         jButtonFactura.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -313,7 +314,7 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonFactura);
-        jButtonFactura.setBounds(940, 440, 230, 40);
+        jButtonFactura.setBounds(940, 360, 230, 40);
 
         ltClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ltClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -322,12 +323,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ltClientes);
-        ltClientes.setBounds(940, 690, 240, 30);
+        ltClientes.setBounds(940, 800, 240, 30);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("BUSCAR POR CODIGO");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(970, 50, 170, 18);
+        jLabel3.setBounds(970, 20, 170, 18);
 
         txtCodigo.setBackground(new java.awt.Color(0, 153, 255));
         txtCodigo.setForeground(new java.awt.Color(51, 0, 51));
@@ -344,7 +345,12 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCodigo);
-        txtCodigo.setBounds(940, 80, 240, 40);
+        txtCodigo.setBounds(940, 40, 240, 40);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(950, 410, 220, 200);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,7 +360,7 @@ public class frmVentas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 938, Short.MAX_VALUE)
         );
 
         pack();
@@ -590,6 +596,7 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lblErrorAnadirC;
     public static javax.swing.JLabel lblErrorElimin;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JComboBox<String> ltClientes;
     public static javax.swing.JTable tbListCar;
     public static javax.swing.JTable tbListProducts;

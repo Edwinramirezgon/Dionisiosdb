@@ -61,6 +61,7 @@ BackProveedorCajero ObjProveedor;
         SABADO = new javax.swing.JCheckBox();
         DOMINGO = new javax.swing.JCheckBox();
         btnRegistrar = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Proveedores");
@@ -159,7 +160,7 @@ BackProveedorCajero ObjProveedor;
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(20, 520, 203, 40);
+        btnActualizar.setBounds(20, 500, 203, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -171,7 +172,7 @@ BackProveedorCajero ObjProveedor;
             }
         });
         jPanel1.add(btnLimpiar);
-        btnLimpiar.setBounds(20, 460, 203, 40);
+        btnLimpiar.setBounds(20, 430, 203, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PROVEEDORES");
@@ -374,7 +375,12 @@ BackProveedorCajero ObjProveedor;
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(20, 400, 209, 40);
+        btnRegistrar.setBounds(20, 360, 209, 40);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(20, 130, 200, 200);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1071,6 +1077,7 @@ BackProveedorCajero ObjProveedor;
     public static javax.swing.JLabel lblErrorNit;
     public static javax.swing.JLabel lblErrorPorceD;
     public static javax.swing.JLabel lblErrorTelefono;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListProv;
     public static javax.swing.JTextField txtCantiD;
     public static javax.swing.JTextField txtEmpresa;

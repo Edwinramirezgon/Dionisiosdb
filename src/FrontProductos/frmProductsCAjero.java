@@ -55,6 +55,7 @@ BackProductosCajero ObjProductos;
         jLabel10 = new javax.swing.JLabel();
         txtValorV = new javax.swing.JTextField();
         lblErrorValorD = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Productos");
@@ -91,7 +92,7 @@ BackProductosCajero ObjProductos;
             }
         });
         jPanel1.add(btnRegistrar);
-        btnRegistrar.setBounds(10, 160, 203, 40);
+        btnRegistrar.setBounds(10, 230, 203, 40);
 
         lblErrorCodigo.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorCodigo.setForeground(new java.awt.Color(153, 0, 0));
@@ -165,7 +166,7 @@ BackProductosCajero ObjProductos;
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(10, 360, 203, 40);
+        btnActualizar.setBounds(10, 370, 203, 40);
 
         btnLimpiar.setBackground(new java.awt.Color(0, 0, 255));
         btnLimpiar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -177,7 +178,7 @@ BackProductosCajero ObjProductos;
             }
         });
         jPanel1.add(btnLimpiar);
-        btnLimpiar.setBounds(10, 260, 203, 40);
+        btnLimpiar.setBounds(10, 300, 203, 40);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PRODUCTOS");
@@ -299,6 +300,11 @@ BackProductosCajero ObjProductos;
         lblErrorValorD.setAlignmentY(10.0F);
         jPanel1.add(lblErrorValorD);
         lblErrorValorD.setBounds(1020, 90, 132, 13);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(20, 10, 200, 200);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -463,6 +469,7 @@ BackProductosCajero ObjProductos;
     public static javax.swing.JLabel lblErrorNombre;
     public static javax.swing.JLabel lblErrorValorD;
     public static javax.swing.JLabel lblErrorValorV;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListProducts;
     public static javax.swing.JTextField txtApodo;
     public static javax.swing.JTextField txtCodigo;

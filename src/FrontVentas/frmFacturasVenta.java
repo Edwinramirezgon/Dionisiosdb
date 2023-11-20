@@ -43,6 +43,7 @@ public class frmFacturasVenta extends javax.swing.JFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FACTURAS DE VENTA");
@@ -116,12 +117,12 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(940, 420, 250, 40);
+        btnActualizar.setBounds(940, 400, 250, 40);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("BUSCAR POR DNI");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(990, 40, 121, 18);
+        jLabel1.setBounds(990, 20, 121, 18);
 
         btnCancelar1.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -133,7 +134,7 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar1);
-        btnCancelar1.setBounds(940, 480, 250, 40);
+        btnCancelar1.setBounds(940, 460, 250, 40);
 
         txtDni.setBackground(new java.awt.Color(0, 153, 255));
         txtDni.setForeground(new java.awt.Color(51, 0, 51));
@@ -150,12 +151,12 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtDni);
-        txtDni.setBounds(946, 58, 240, 40);
+        txtDni.setBounds(950, 40, 240, 40);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("BUSCAR POR NOMBRE");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(980, 130, 160, 18);
+        jLabel2.setBounds(980, 110, 160, 18);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -172,12 +173,12 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNombre);
-        txtNombre.setBounds(946, 149, 240, 40);
+        txtNombre.setBounds(950, 130, 240, 40);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("BUSCAR POR FECHA");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(990, 220, 144, 18);
+        jLabel3.setBounds(990, 200, 144, 18);
 
         txtFecha.setBackground(new java.awt.Color(0, 153, 255));
         txtFecha.setForeground(new java.awt.Color(51, 0, 51));
@@ -194,12 +195,12 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtFecha);
-        txtFecha.setBounds(946, 242, 240, 40);
+        txtFecha.setBounds(950, 230, 240, 40);
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel9.setText("VALOR TOTAL");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(1000, 300, 130, 23);
+        jLabel9.setBounds(1000, 280, 130, 23);
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(0, 153, 255));
@@ -219,7 +220,12 @@ public class frmFacturasVenta extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTotal);
-        txtTotal.setBounds(940, 330, 250, 50);
+        txtTotal.setBounds(940, 310, 250, 50);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(960, 510, 190, 190);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -600,6 +606,7 @@ public class frmFacturasVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListCar;
     public static javax.swing.JTable tbListProducts;
     public static javax.swing.JTextField txtDni;

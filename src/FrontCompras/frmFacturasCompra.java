@@ -42,6 +42,7 @@ public class frmFacturasCompra extends javax.swing.JFrame {
         txtFecha = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("FACTURAS DE COMPRA");
@@ -71,7 +72,7 @@ public class frmFacturasCompra extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbListCar);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 418, 913, 280);
+        jScrollPane2.setBounds(10, 418, 913, 300);
 
         tbListProducts.setAutoCreateRowSorter(true);
         tbListProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -253,15 +254,20 @@ public class frmFacturasCompra extends javax.swing.JFrame {
         jPanel1.add(txtTotal);
         txtTotal.setBounds(940, 330, 250, 50);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(960, 530, 200, 200);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1201, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
         );
 
         pack();
@@ -1428,6 +1434,7 @@ ObjCompras.Limpiar();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListCar;
     public static javax.swing.JTable tbListProducts;
     public static javax.swing.JTextField txtFecha;

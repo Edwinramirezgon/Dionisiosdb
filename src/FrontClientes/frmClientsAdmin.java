@@ -61,6 +61,7 @@ public class frmClientsAdmin extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Clientes");
@@ -394,6 +395,11 @@ public class frmClientsAdmin extends javax.swing.JFrame {
         jPanel1.add(txtTelefono);
         txtTelefono.setBounds(920, 50, 160, 35);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(0, 120, 200, 200);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -558,6 +564,7 @@ public class frmClientsAdmin extends javax.swing.JFrame {
     public static javax.swing.JLabel lblErrorFecha;
     public static javax.swing.JLabel lblErrorNombre;
     public static javax.swing.JLabel lblErrorTelefono;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListClients;
     public static javax.swing.JTextField txtApellido;
     public static javax.swing.JTextField txtCorreo;

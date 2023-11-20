@@ -71,6 +71,7 @@ BackProductosAdmin ObjProductos;
         jLabel10 = new javax.swing.JLabel();
         txtValorV = new javax.swing.JTextField();
         lblErrorValorD = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gestion De Productos");
@@ -442,6 +443,11 @@ BackProductosAdmin ObjProductos;
         jPanel1.add(lblErrorValorD);
         lblErrorValorD.setBounds(1260, 90, 132, 13);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(20, 120, 190, 170);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -723,6 +729,7 @@ BackProductosAdmin ObjProductos;
     public static javax.swing.JLabel lblErrorValorC;
     public static javax.swing.JLabel lblErrorValorD;
     public static javax.swing.JLabel lblErrorValorV;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JTable tbListProducts;
     public static javax.swing.JTextField txtApodo;
     public static javax.swing.JTextField txtCantidadP;

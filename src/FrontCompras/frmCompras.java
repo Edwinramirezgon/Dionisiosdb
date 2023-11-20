@@ -62,6 +62,7 @@ public class frmCompras extends javax.swing.JFrame {
         txtCodigo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ltClientes = new javax.swing.JComboBox<>();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GESTION DE COMPRAS");
@@ -91,7 +92,7 @@ public class frmCompras extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbListCar);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 550, 913, 330);
+        jScrollPane2.setBounds(10, 550, 913, 410);
 
         tbListProducts.setAutoCreateRowSorter(true);
         tbListProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,7 +119,7 @@ public class frmCompras extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel5.setText("CARRITO");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(390, 510, 109, 30);
+        jLabel5.setBounds(400, 510, 109, 30);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("LISTA DE PRODUCTOS");
@@ -140,14 +141,14 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNit);
-        txtNit.setBounds(940, 700, 230, 40);
+        txtNit.setBounds(940, 790, 230, 40);
 
         lblErrorAnadirC.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorAnadirC.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorAnadirC.setText("* Error, ingrese Cantidad válida");
         lblErrorAnadirC.setAlignmentY(10.0F);
         jPanel1.add(lblErrorAnadirC);
-        lblErrorAnadirC.setBounds(950, 350, 152, 13);
+        lblErrorAnadirC.setBounds(950, 310, 152, 13);
 
         jButtonAnadirC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonAnadirC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -159,7 +160,7 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonAnadirC);
-        jButtonAnadirC.setBounds(1120, 310, 60, 40);
+        jButtonAnadirC.setBounds(1120, 270, 60, 40);
 
         txtAnadirC.setBackground(new java.awt.Color(0, 153, 255));
         txtAnadirC.setForeground(new java.awt.Color(51, 0, 51));
@@ -176,7 +177,7 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtAnadirC);
-        txtAnadirC.setBounds(940, 310, 170, 35);
+        txtAnadirC.setBounds(940, 270, 170, 35);
 
         btnActualizar.setBackground(new java.awt.Color(0, 0, 255));
         btnActualizar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -188,17 +189,17 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnActualizar);
-        btnActualizar.setBounds(940, 400, 230, 40);
+        btnActualizar.setBounds(940, 530, 230, 40);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel1.setText("BUSCAR POR CODIGO");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(970, 60, 170, 18);
+        jLabel1.setBounds(970, 20, 170, 18);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel2.setText("VALOR DE COMPRA");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(980, 210, 221, 18);
+        jLabel2.setBounds(980, 170, 221, 18);
 
         txtElimi.setBackground(new java.awt.Color(0, 153, 255));
         txtElimi.setForeground(new java.awt.Color(51, 0, 51));
@@ -215,12 +216,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtElimi);
-        txtElimi.setBounds(940, 620, 152, 34);
+        txtElimi.setBounds(940, 710, 152, 34);
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel6.setText("NIT DE LA EMPRESA");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(970, 680, 170, 23);
+        jLabel6.setBounds(970, 770, 170, 23);
 
         jButtonEliminarC.setBackground(new java.awt.Color(0, 0, 255));
         jButtonEliminarC.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -232,14 +233,14 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonEliminarC);
-        jButtonEliminarC.setBounds(1100, 620, 71, 40);
+        jButtonEliminarC.setBounds(1100, 710, 71, 40);
 
         lblErrorElimin.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorElimin.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorElimin.setText("* Error, ingrese Cantidad válida");
         lblErrorElimin.setAlignmentY(10.0F);
         jPanel1.add(lblErrorElimin);
-        lblErrorElimin.setBounds(950, 660, 152, 13);
+        lblErrorElimin.setBounds(950, 750, 152, 13);
 
         btnPagar.setBackground(new java.awt.Color(0, 0, 255));
         btnPagar.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -251,12 +252,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPagar);
-        btnPagar.setBounds(1100, 820, 80, 50);
+        btnPagar.setBounds(1100, 910, 80, 50);
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setText("ELIMINAR CANTIDAD DEL CARRITO");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(940, 600, 244, 18);
+        jLabel7.setBounds(940, 690, 244, 18);
 
         btnCancelar1.setBackground(new java.awt.Color(0, 0, 255));
         btnCancelar1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
@@ -268,12 +269,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCancelar1);
-        btnCancelar1.setBounds(940, 470, 230, 40);
+        btnCancelar1.setBounds(940, 580, 230, 40);
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel9.setText("VALOR TOTAL");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(960, 790, 130, 23);
+        jLabel9.setBounds(960, 880, 130, 23);
 
         txtNombre.setBackground(new java.awt.Color(0, 153, 255));
         txtNombre.setForeground(new java.awt.Color(51, 0, 51));
@@ -290,7 +291,7 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtNombre);
-        txtNombre.setBounds(940, 160, 240, 40);
+        txtNombre.setBounds(940, 120, 240, 40);
 
         txtTotal.setEditable(false);
         txtTotal.setBackground(new java.awt.Color(0, 153, 255));
@@ -308,7 +309,7 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtTotal);
-        txtTotal.setBounds(940, 820, 152, 50);
+        txtTotal.setBounds(940, 910, 152, 50);
 
         jButtonFactura.setBackground(new java.awt.Color(0, 0, 255));
         jButtonFactura.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -320,12 +321,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonFactura);
-        jButtonFactura.setBounds(940, 540, 230, 40);
+        jButtonFactura.setBounds(940, 630, 230, 40);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setText("ANADIR CANTIDAD AL CARRITO");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(940, 290, 221, 18);
+        jLabel3.setBounds(940, 250, 221, 18);
 
         txtValorC.setBackground(new java.awt.Color(0, 153, 255));
         txtValorC.setForeground(new java.awt.Color(51, 0, 51));
@@ -342,14 +343,14 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtValorC);
-        txtValorC.setBounds(940, 230, 240, 35);
+        txtValorC.setBounds(940, 190, 240, 35);
 
         lblErrorValor.setFont(new java.awt.Font("Lucida Sans", 0, 10)); // NOI18N
         lblErrorValor.setForeground(new java.awt.Color(153, 0, 0));
         lblErrorValor.setText("* Error, ingrese Valor válido");
         lblErrorValor.setAlignmentY(10.0F);
         jPanel1.add(lblErrorValor);
-        lblErrorValor.setBounds(940, 270, 134, 13);
+        lblErrorValor.setBounds(940, 230, 134, 13);
 
         txtCodigo.setBackground(new java.awt.Color(0, 153, 255));
         txtCodigo.setForeground(new java.awt.Color(51, 0, 51));
@@ -366,12 +367,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCodigo);
-        txtCodigo.setBounds(940, 80, 240, 40);
+        txtCodigo.setBounds(940, 40, 240, 40);
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setText("BUSCAR POR NOMBRE");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(970, 140, 170, 18);
+        jLabel8.setBounds(970, 100, 170, 18);
 
         ltClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ltClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -380,7 +381,12 @@ public class frmCompras extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ltClientes);
-        ltClientes.setBounds(940, 750, 240, 30);
+        ltClientes.setBounds(940, 840, 240, 30);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logo.png"))); // NOI18N
+        lblLogo.setRequestFocusEnabled(false);
+        jPanel1.add(lblLogo);
+        lblLogo.setBounds(960, 330, 190, 170);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -390,7 +396,7 @@ public class frmCompras extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 973, Short.MAX_VALUE)
         );
 
         pack();
@@ -700,6 +706,7 @@ public class frmCompras extends javax.swing.JFrame {
     public static javax.swing.JLabel lblErrorAnadirC;
     public static javax.swing.JLabel lblErrorElimin;
     public static javax.swing.JLabel lblErrorValor;
+    private javax.swing.JLabel lblLogo;
     public static javax.swing.JComboBox<String> ltClientes;
     public static javax.swing.JTable tbListCar;
     public static javax.swing.JTable tbListProducts;

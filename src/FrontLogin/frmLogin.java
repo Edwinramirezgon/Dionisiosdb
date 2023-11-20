@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import FrontMenus.*;
-import java.awt.Image;
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+
 
 
 public class frmLogin extends javax.swing.JFrame {
@@ -20,11 +18,7 @@ public class frmLogin extends javax.swing.JFrame {
     public frmLogin() {          
     CON = new ClsConexion();
     CN = CON.getConnection();
-     Image favi = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/LogoDionisios.png"));
-        //this.setIconImage(favi);
-
-        //Image logo = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/LogoDionisios.png"));
-        //lblLogo.setIcon(new ImageIcon(logo.getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH)));
+ 
       
         initComponents();
         this.setLocationRelativeTo(this);   
@@ -206,6 +200,8 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel5.setText("Dionisio´s Liquor Store");
 
+        lblLogo.setMaximumSize(new java.awt.Dimension(200, 200));
+        lblLogo.setMinimumSize(new java.awt.Dimension(200, 200));
         lblLogo.setPreferredSize(new java.awt.Dimension(200, 200));
         lblLogo.setRequestFocusEnabled(false);
 

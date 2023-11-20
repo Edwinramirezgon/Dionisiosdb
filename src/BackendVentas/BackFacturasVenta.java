@@ -54,7 +54,7 @@ public class BackFacturasVenta {
         try {
             for (int row = 0; row < tbListProducts.getRowCount(); row++) {
 
-                total += Double.parseDouble(String.valueOf(tbListProducts.getValueAt(row, 4)));
+                total += Double.parseDouble(String.valueOf(tbListProducts.getValueAt(row, 2)));
 
             }
 
@@ -78,9 +78,7 @@ public class BackFacturasVenta {
             }
         };
         modelo.addColumn("FACTURA");
-        modelo.addColumn("DNI");
         modelo.addColumn("NOMBRE");
-        modelo.addColumn("APELLIDO");
         modelo.addColumn("VALOR TOTAL");
         modelo.addColumn("FECHA");
 
@@ -93,7 +91,7 @@ public class BackFacturasVenta {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4),};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -127,7 +125,7 @@ public class BackFacturasVenta {
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8), RS.getString(9), RS.getString(10),};
+                    Object[] Lista = {RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7), RS.getString(8),};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -153,19 +151,17 @@ public class BackFacturasVenta {
                         return false;
                     }
                 };
-     modelo.addColumn("FACTURA");
-        modelo.addColumn("DNI");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("VALOR TOTAL");
-        modelo.addColumn("FECHA");
+                modelo.addColumn("FACTURA");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("VALOR TOTAL");
+                modelo.addColumn("FECHA");
 
                 String ConsLista = "SELECT * FROM tblFactV WHERE Dni LIKE'%" + Dni + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                               Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -223,19 +219,17 @@ public class BackFacturasVenta {
                         return false;
                     }
                 };
-        modelo.addColumn("FACTURA");
-        modelo.addColumn("DNI");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("VALOR TOTAL");
-        modelo.addColumn("FECHA");
+                modelo.addColumn("FACTURA");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("VALOR TOTAL");
+                modelo.addColumn("FECHA");
 
                 String ConsLista = "SELECT * FROM tblFactV WHERE Nombre LIKE'%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                              Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -267,19 +261,17 @@ public class BackFacturasVenta {
                         return false;
                     }
                 };
-     modelo.addColumn("FACTURA");
-        modelo.addColumn("DNI");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("APELLIDO");
-        modelo.addColumn("VALOR TOTAL");
-        modelo.addColumn("FECHA");
+                modelo.addColumn("FACTURA");
+                modelo.addColumn("NOMBRE");
+                modelo.addColumn("VALOR TOTAL");
+                modelo.addColumn("FECHA");
 
                 String ConsLista = "SELECT * FROM tblFactV WHERE Fecha LIKE'%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                                 Object[] Lista = {RS.getString(1), RS.getString(6), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5),};
+                        Object[] Lista = {RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4),};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);

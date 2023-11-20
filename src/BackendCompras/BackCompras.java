@@ -211,20 +211,23 @@ public class BackCompras {
         if (!txtAnadirC.getText().equalsIgnoreCase("")) {
             Cantidad = Integer.parseInt(txtAnadirC.getText());
         }        
-        int row = -1;
-        row=tbListProducts.getSelectedRow();
+        
         
         double ValorC = 0;
         if (!txtValorC.getText().equalsIgnoreCase("")) {
             
            ValorC = Double.parseDouble(txtValorC.getText());
-        }                   
+        }    
+        
+        int row = -1;
+        row=tbListProducts.getSelectedRow();
 
         if (row == -1) {
 
             JOptionPane.showMessageDialog(null, "Debe escojer un producto", "¡Error!", JOptionPane.ERROR_MESSAGE);
-            tbListProducts.requestFocus();
-        } else if (ValorC <= 0) {
+            tbListProducts.requestFocus();}
+        else{
+         if (ValorC <= 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar un valor de compra valido", "¡Error!", JOptionPane.ERROR_MESSAGE);
             Limpiare();
             lblErrorValor.setVisible(true);
@@ -269,20 +272,21 @@ public class BackCompras {
         }
 
         Total();
-
+        }
     }
 
     public void EliminarTablaCar() {
 
         int row = -1;
         row= tbListCar.getSelectedRow();
+        
         int Cantidad = 0;
         
         if (!txtElimi.getText().equalsIgnoreCase("")) {
            Cantidad =Integer.parseInt(txtElimi.getText());
         }
+        
 
-        double ValorC = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(row, 3)));
 
         if (row == -1) {
 
@@ -298,6 +302,8 @@ public class BackCompras {
 
             try {
                 String Codigo = (String.valueOf(tbListCar.getValueAt(row, 0)));
+                        double ValorC = Double.parseDouble(String.valueOf(this.Carrito.getValueAt(row, 3)));
+
 
                 int Cantidadc = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2)));
                 if (Cantidad > Cantidadc) {

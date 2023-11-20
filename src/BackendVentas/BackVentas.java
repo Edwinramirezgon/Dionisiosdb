@@ -178,129 +178,65 @@ public class BackVentas {
         int row = -1;
         row = tbListProducts.getSelectedRow();
 
-        String codigo = "";
-
-        if (!String.valueOf(tbListProducts.getValueAt(row, 0)).equalsIgnoreCase(null)) {
-            codigo = String.valueOf(tbListProducts.getValueAt(row, 0));
-        }
-
-        int inventario = 0;
-        if (!String.valueOf(tbListProducts.getValueAt(row, 2)).equalsIgnoreCase(null)) {
-
-            inventario = Integer.parseInt(String.valueOf(tbListProducts.getValueAt(row, 2)));
-
-        }
-
-        for (int rowc = 0; rowc < Carrito.getRowCount(); rowc++) {
-            String Code = (String) Carrito.getValueAt(rowc, 0);
-            if (codigo.equalsIgnoreCase(Code)) {
-                inventario -= Integer.parseInt(String.valueOf(tbListCar.getValueAt(rowc, 2)));
-            }
-
-        }
-
         if (row == -1) {
 
             JOptionPane.showMessageDialog(null, "Debe escojer un producto", "¡Error!", JOptionPane.ERROR_MESSAGE);
             tbListProducts.requestFocus();
 
-        } else if (Cantidad <= 0) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad de producto valida", "¡Error!", JOptionPane.ERROR_MESSAGE);
-            Limpiare();
-            lblErrorAnadirC.setVisible(false);
-            txtAnadirC.requestFocus();
-
-        } else if (Cantidad > inventario) {
-            JOptionPane.showMessageDialog(null, "Inventario insuficiente", "¡Error!", JOptionPane.ERROR_MESSAGE);
-            lblErrorAnadirC.setVisible(false);
-            txtAnadirC.requestFocus();
-
         } else {
 
-            try {
-                String Codigo = (String.valueOf(tbListProducts.getValueAt(row, 0)));
-                for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
-                    String Code = (String) Carrito.getValueAt(rowC, 0);
+            String codigo = "";
 
-                    if (Code.equals(Codigo)) {
-
-                        Cantidad += Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
-                        Carrito.removeRow(rowC);
-
-                    }
-                }
-
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-
-                if (Cantidad <= 10) {
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
-                        Carrito.addRow(Lista);
-
-                    }
-                } else {
-                    // Recorer los resultados y cargalos a una lista
-                    while (RS.next()) {
-                        Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
-                        Carrito.addRow(Lista);
-                    }
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
+            if (!String.valueOf(tbListProducts.getValueAt(row, 0)).equalsIgnoreCase(null)) {
+                codigo = String.valueOf(tbListProducts.getValueAt(row, 0));
             }
 
-        }
-        Limpiar();
+            int inventario = 0;
+            if (!String.valueOf(tbListProducts.getValueAt(row, 2)).equalsIgnoreCase(null)) {
 
-        Total();
+                inventario = Integer.parseInt(String.valueOf(tbListProducts.getValueAt(row, 2)));
 
-    }
+            }
 
-    public void EliminarTablaCar() {
+            for (int rowc = 0; rowc < Carrito.getRowCount(); rowc++) {
+                String Code = (String) Carrito.getValueAt(rowc, 0);
+                if (codigo.equalsIgnoreCase(Code)) {
+                    inventario -= Integer.parseInt(String.valueOf(tbListCar.getValueAt(rowc, 2)));
+                }
 
-        int row = -1;
-        row = tbListCar.getSelectedRow();
+            }
 
-        int Cantidad = 0;
+            if (Cantidad <= 0) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad de producto valida", "¡Error!", JOptionPane.ERROR_MESSAGE);
+                Limpiare();
+                lblErrorAnadirC.setVisible(false);
+                txtAnadirC.requestFocus();
 
-        if (!txtElimi.getText().equalsIgnoreCase("")) {
+            } else if (Cantidad > inventario) {
+                JOptionPane.showMessageDialog(null, "Inventario insuficiente", "¡Error!", JOptionPane.ERROR_MESSAGE);
+                lblErrorAnadirC.setVisible(false);
+                txtAnadirC.requestFocus();
 
-            Cantidad = Integer.parseInt(txtElimi.getText());
-        }
+            } else {
 
-        if (row == -1) {
+                try {
+                    String Codigo = (String.valueOf(tbListProducts.getValueAt(row, 0)));
+                    for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
+                        String Code = (String) Carrito.getValueAt(rowC, 0);
 
-            JOptionPane.showMessageDialog(null, "Debe escojer un producto", "¡Error!", JOptionPane.ERROR_MESSAGE);
-            tbListProducts.requestFocus();
+                        if (Code.equals(Codigo)) {
 
-        } else if (Cantidad <= 0) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad de producto valida", "¡Error!", JOptionPane.ERROR_MESSAGE);
-            lblErrorElimin.setVisible(false);
-            txtElimi.requestFocus();
+                            Cantidad += Integer.parseInt(String.valueOf(this.Carrito.getValueAt(rowC, 2)));
+                            Carrito.removeRow(rowC);
 
-        } else {
-
-            try {
-                String Codigo = (String.valueOf(tbListCar.getValueAt(row, 0)));
-
-                int Cantidadc = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2)));
-                if (Cantidad > Cantidadc) {
-                    JOptionPane.showMessageDialog(null, "!!La cantidad de productos a eliminar debe ser menor a la cantidad que estan en el carrito!!");
-                } else {
-                    Cantidad = Cantidadc - Cantidad;
-                    Carrito.removeRow(row);
+                        }
+                    }
 
                     String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
 
-                    // Recorer los resultados y cargalos a una lista
-                    if (Cantidad <= 0) {
-                        Carrito.removeRow(row);
-
-                    } else if (Cantidad <= 10) {
+                    if (Cantidad <= 10) {
                         while (RS.next()) {
                             Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
                             Carrito.addRow(Lista);
@@ -313,18 +249,88 @@ public class BackVentas {
                             Carrito.addRow(Lista);
                         }
                     }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (Exception e) {
-                /*JOptionPane.showMessageDialog(rootPane,
+
+            }
+            Limpiar();
+
+            Total();
+
+        }
+    }
+
+    public void EliminarTablaCar() {
+
+        int row = -1;
+        row = tbListCar.getSelectedRow();
+
+        if (row == -1) {
+
+            JOptionPane.showMessageDialog(null, "Debe escojer un producto", "¡Error!", JOptionPane.ERROR_MESSAGE);
+            tbListProducts.requestFocus();
+
+        } else {
+
+            int Cantidad = 0;
+
+            if (!txtElimi.getText().equalsIgnoreCase("")) {
+
+                Cantidad = Integer.parseInt(txtElimi.getText());
+            }
+
+            if (Cantidad <= 0) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad de producto valida", "¡Error!", JOptionPane.ERROR_MESSAGE);
+                lblErrorElimin.setVisible(false);
+                txtElimi.requestFocus();
+
+            } else {
+
+                try {
+                    String Codigo = (String.valueOf(tbListCar.getValueAt(row, 0)));
+
+                    int Cantidadc = Integer.parseInt(String.valueOf(this.Carrito.getValueAt(row, 2)));
+                    if (Cantidad > Cantidadc) {
+                        JOptionPane.showMessageDialog(null, "!!La cantidad de productos a eliminar debe ser menor a la cantidad que estan en el carrito!!");
+                    } else {
+                        Cantidad = Cantidadc - Cantidad;
+                        Carrito.removeRow(row);
+
+                        String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo ='" + Codigo + "'";
+                        PreparedStatement PS = CN.prepareStatement(ConsBuscar);
+                        ResultSet RS = PS.executeQuery();
+
+                        // Recorer los resultados y cargalos a una lista
+                        if (Cantidad <= 0) {
+                            Carrito.removeRow(row);
+
+                        } else if (Cantidad <= 10) {
+                            while (RS.next()) {
+                                Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(6), (Cantidad * RS.getInt(6)),};
+                                Carrito.addRow(Lista);
+
+                            }
+                        } else {
+                            // Recorer los resultados y cargalos a una lista
+                            while (RS.next()) {
+                                Object[] Lista = {RS.getString(1), RS.getString(2), Cantidad, RS.getString(8), (Cantidad * RS.getInt(8)),};
+                                Carrito.addRow(Lista);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    /*JOptionPane.showMessageDialog(rootPane,
                         "Error al listar los datos: " + e.getMessage(),
                         "¡Error!",
                         JOptionPane.ERROR_MESSAGE);*/
+                }
+
             }
+            Limpiar();
+            Total();
 
         }
-        Limpiar();
-        Total();
-
     }
 
     public void ListarTablaP() {

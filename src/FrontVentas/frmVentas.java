@@ -204,6 +204,9 @@ public class frmVentas extends javax.swing.JFrame {
             }
         });
         txtElimi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtElimiKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtElimiKeyTyped(evt);
             }
@@ -447,7 +450,7 @@ public class frmVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFacturaActionPerformed
 
     private void ltClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ltClientesActionPerformed
-
+       Objventas.LlenarDni();
     }//GEN-LAST:event_ltClientesActionPerformed
 
     private void jButtonAnadirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirCActionPerformed
@@ -469,6 +472,10 @@ public class frmVentas extends javax.swing.JFrame {
     private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
        Objventas.ComprobarDni();
     }//GEN-LAST:event_txtDniKeyReleased
+
+    private void txtElimiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtElimiKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtElimiKeyReleased
 
     /**
      * @param args the command line arguments

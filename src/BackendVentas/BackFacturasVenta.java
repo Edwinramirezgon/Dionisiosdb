@@ -26,7 +26,7 @@ public class BackFacturasVenta {
         txtDni.setText("");
         txtNombre.setText("");
         txtFecha.setText("");
-        Total();
+        //Total();
 
     }
 
@@ -78,8 +78,10 @@ public class BackFacturasVenta {
             }
         };
         modelo.addColumn("FACTURA");
-        modelo.addColumn("NOMBRE");
-        modelo.addColumn("VALOR TOTAL");
+        modelo.addColumn("DNI");
+       modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+       modelo.addColumn("VALOR TOTAL");
         modelo.addColumn("FECHA");
 
         // Cargado de datos a la tabla
@@ -91,7 +93,7 @@ public class BackFacturasVenta {
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getString(1), RS.getString(2), RS.getDouble(3), RS.getDate(4)};
+                Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -125,7 +127,7 @@ public class BackFacturasVenta {
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(3), RS.getString(4), RS.getInt(5), RS.getDouble(6), RS.getDouble(7), RS.getDate(8)};
+                    Object[] Lista = {RS.getString(5), RS.getString(6), RS.getInt(7), RS.getDouble(8), RS.getDouble(9), RS.getDate(10)};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -152,7 +154,9 @@ public class BackFacturasVenta {
                     }
                 };
                 modelo.addColumn("FACTURA");
+                modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
@@ -161,7 +165,7 @@ public class BackFacturasVenta {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                      Object[] Lista = {RS.getString(1), RS.getString(2), RS.getDouble(3), RS.getDate(4)};
+                       Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -220,7 +224,9 @@ public class BackFacturasVenta {
                     }
                 };
                 modelo.addColumn("FACTURA");
+                modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
@@ -229,7 +235,7 @@ public class BackFacturasVenta {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                  Object[] Lista = {RS.getString(1), RS.getString(2), RS.getDouble(3), RS.getDate(4)};
+                        Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -262,7 +268,9 @@ public class BackFacturasVenta {
                     }
                 };
                 modelo.addColumn("FACTURA");
+                modelo.addColumn("DNI");
                 modelo.addColumn("NOMBRE");
+                modelo.addColumn("APELLIDO");
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
@@ -271,7 +279,7 @@ public class BackFacturasVenta {
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                   Object[] Lista = {RS.getString(1), RS.getString(2), RS.getDouble(3), RS.getDate(4)};
+                   Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);

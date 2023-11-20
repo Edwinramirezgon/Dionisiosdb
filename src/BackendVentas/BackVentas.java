@@ -88,25 +88,33 @@ public class BackVentas {
 
         int indice = ltClientes.getSelectedIndex();
 
-        BuscarCliente(indice);
+        String Dni = BuscarCliente(indice);
+        String NombreC = "";
+        String Apellido = "";
 
-        String NombreC = (String) ltClientes.getSelectedItem();
-
-        if (NombreC.equals("SELECCIONE UN CLIENTE")) {
+        if (ltClientes.getSelectedIndex() == 0) {
             Limpiare();
             txtDni.requestFocus();
             JOptionPane.showMessageDialog(null, "Debe escojer un cliente");
 
+        } else if (Total() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe tener al menos un producto en el carrito");
         } else {
             try {
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Nombre ='" + NombreC + "'";
+             String ConsBuscar = "SELECT * FROM TblClients WHERE Dni = '" + Dni + "'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
-
-                String ConsInsert2 = "INSERT INTO TblFactV(Nombre,"
+                if (RS.next()) {
+                NombreC = RS.getString(2);
+                Apellido = RS.getString(3);
+               
+              
+                String ConsInsert2 = "INSERT INTO TblFactV(Dni,"
+                        + " Nombre,"
+                        + " Apellido,"
                         + " Total ) "
-                        + "VALUES ('" + NombreC + "','" + Total() + "')";
+                        + "VALUES ('" + Dni + "','" + NombreC + "','" + Apellido + "','" + Total() + "')";
 
                 PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
                 PS4.executeUpdate();
@@ -146,26 +154,28 @@ public class BackVentas {
                             PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
                             PS2.executeUpdate();
                             String ConsInser = "INSERT INTO TblVentas(Factura,"
+                                    + " Dni,"
                                     + " NombreC,"
+                                    + " Apellido,"
                                     + " Codigo,"
                                     + " NombreP,"
                                     + " CantidadP,"
                                     + " ValorU,"
                                     + "ValorT ) "
-                                    + "VALUES ('" + fact + "','" + NombreC + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
+                                    + "VALUES ('" + fact + "','" + Dni + "','" + NombreC + "','" + Apellido + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
 
                             PreparedStatement PS3 = CN.prepareStatement(ConsInser);
                             PS3.executeUpdate();
                         }
                     }
 
-                }
+                }}
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
 
-            JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC + "  DEBE PAGAR UN TOTAL DE " + Total());
+            JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC + " " +Apellido+" CON DNI " + Dni +" DEBE PAGAR UN TOTAL DE " + Total());
 
             Limpiar();
             ListarTablaP();
@@ -462,7 +472,7 @@ public class BackVentas {
 
         if (!Dni.equalsIgnoreCase("")) {
             try {
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni LIKE '%" + Dni + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Dni = '" + Dni + "'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -489,8 +499,8 @@ public class BackVentas {
 
             // Recorer los resultados y cargalos a una lista
             int indice = 0;
-            while (RS.next()) {               
-                
+            while (RS.next()) {
+
                 Colalista.Encolar(new ClsGeneral(indice, RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getString(5), RS.getString(6), RS.getString(7)));
                 indice++;
 
@@ -549,14 +559,14 @@ public class BackVentas {
 
     }
 
-    public void BuscarCliente(int indice) {
+    public String BuscarCliente(int indice) {
         ClsGeneral objlista = new ClsGeneral();
+        String Dni = "";
         while (!Colalista.EstaVacia()) {
             objlista = Colalista.getElementos();
 
-            if (objlista.getLista() == indice-1) {
-                System.out.println(objlista.getDni());
-
+            if (objlista.getLista() == indice - 1) {
+                Dni = objlista.getDni();
                 Colaaux.Encolar(Colalista.getElementos());
                 Colalista.Desencolar();
             } else {
@@ -567,6 +577,11 @@ public class BackVentas {
         }
 
         retColaLista(Colaaux);
+        return Dni;
+    }
 
+    public void LlenarDni() {
+        int index = ltClientes.getSelectedIndex();
+        txtDni.setText(BuscarCliente(index));
     }
 }

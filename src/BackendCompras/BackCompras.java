@@ -7,17 +7,23 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static FrontCompras.frmCompras.*;
+import Backend.*;
 
 public class BackCompras {
 
     ClsConexion CON;
     Connection CN;
     DefaultTableModel Carrito;
+    private Cola<ClsGeneral> Colalista;
+     private Cola<ClsGeneral> Colaaux;
 
     public BackCompras() {
 
         CON = new ClsConexion();
         CN = CON.getConnection();
+         Colalista = new Cola();
+        Colaaux = new Cola();
+        
 
     }
 
@@ -84,34 +90,35 @@ public class BackCompras {
     }
 
     public void Pagar() {
+int indice = ltClientes.getSelectedIndex();
 
-        String Nit = txtNit.getText();
+        String Nit = BuscarCliente(indice);
         String Empresa = (String) ltClientes.getSelectedItem();
         String NombreE = "";
         int Login = 0;
 
-        if (Empresa.equals("SELECCIONE UNA EMPRESA")) {
+        if (ltClientes.getSelectedIndex() == 0) {
             Limpiare();
             txtNit.requestFocus();
             JOptionPane.showMessageDialog(null, "Debe escojer una empresa");
 
-        } else {
+        } else if (Total() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe tener al menos un producto en el carrito");
+        }else {
             try {
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE Empresa = '" + Empresa + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
+                
 
-                if (RS.next()) {
-                    Nit = RS.getString(1);
+                
+                    
 
                     String ConsLogin = "SELECT MAX(Login) AS id FROM TblLogin";
                     PreparedStatement PS6 = CN.prepareStatement(ConsLogin);
                     ResultSet RS6 = PS6.executeQuery();
-                    while (RS6.next()) {
+                  if (RS6.next()) {
                         Login = RS6.getInt(1);
 
-                    }
+                    
                     String ConsUser = "SELECT * FROM TblLogin WHERE Login = '" + Login + "'";
                     PreparedStatement PS7 = CN.prepareStatement(ConsUser);
                     ResultSet RS7 = PS7.executeQuery();
@@ -120,11 +127,10 @@ public class BackCompras {
 
                     }
 
-                    String ConsInsert2 = "INSERT INTO TblFactC(Nit,"
-                            + " Empresa,"
+                    String ConsInsert2 = "INSERT INTO TblFactC(Nit,"                            
                             + " Nombre,"
                             + " Total ) "
-                            + "VALUES ('" + Nit + "','" + Empresa + "','" + NombreE + "','" + Total() + "')";
+                            + "VALUES ('" + Nit + "','" + NombreE + "','" + Total() + "')";
 
                     PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
                     PS4.executeUpdate();
@@ -164,15 +170,12 @@ public class BackCompras {
                                             + "' WHERE Codigo='" + Codigo + "'";
                                     PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
                                     PS2.executeUpdate();
-                                    String ConsInser = "INSERT INTO TblCompras(Factura,"
-                                            + " Nit,"
-                                            + " Empresa,"
-                                            + " Codigo,"
-                                            + " NombreP,"
+                                    String ConsInser = "INSERT INTO TblCompras(Factura,"                                
+                                            + " Codigo,"                                           
                                             + " Cantidad,"
                                             + " ValorU,"
                                             + "ValorT ) "
-                                            + "VALUES ('" + Fact + "','" + Nit + "','" + Empresa + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
+                                            + "VALUES ('" + Fact + "','" + Codigo + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
 
                                     PreparedStatement PS3 = CN.prepareStatement(ConsInser);
                                     PS3.executeUpdate();
@@ -493,9 +496,21 @@ public class BackCompras {
             ltClientes.addItem("SELECCIONE UNA EMPRESA");
 
             // Recorer los resultados y cargalos a una lista
+           int indice = 0;
             while (RS.next()) {
-                ltClientes.addItem(RS.getString(2));
+
+                Colalista.Encolar(new ClsGeneral(indice, RS.getString(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getInt(5), RS.getInt(6)));
+                indice++;
+
             }
+            ClsGeneral objlista = new ClsGeneral();
+            while (!Colalista.EstaVacia()) {
+                objlista = Colalista.getElementos();
+                ltClientes.addItem(objlista.getEmpresa());
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            }
+            retColaLista(Colaaux);
 
         } catch (Exception e) {
 
@@ -526,5 +541,47 @@ public class BackCompras {
         }
         Limpiar();
     }
+    
+     private void retColaLista(Cola<ClsGeneral> Colaaux) {
 
+        try {
+            while (!Colaaux.EstaVacia()) {
+                Colalista.Encolar(Colaaux.getElementos());
+                Colaaux.Desencolar();
+            }
+        } catch (Exception e) {
+            // RETORNAMOS EL ERROR
+            JOptionPane.showMessageDialog(null, "ERROR AL DEVOLVER LA COLA : " + e.getMessage());
+
+        }
+
+    }
+     
+     public String BuscarCliente(int indice) {
+        ClsGeneral objlista = new ClsGeneral();
+        String Nit = "";
+        while (!Colalista.EstaVacia()) {
+            objlista = Colalista.getElementos();
+
+            if (objlista.getLista() == indice - 1) {
+                Nit = objlista.getNit();
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            } else {
+
+                Colaaux.Encolar(Colalista.getElementos());
+                Colalista.Desencolar();
+            }
+        }
+
+        retColaLista(Colaaux);
+        return Nit;
+    }
+
+    public void LlenarNit() {
+        int index = ltClientes.getSelectedIndex();
+        txtNit.setText(BuscarCliente(index));
+    }
 }
+
+

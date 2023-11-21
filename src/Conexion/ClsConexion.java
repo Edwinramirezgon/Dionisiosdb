@@ -13,7 +13,7 @@ public class ClsConexion {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    private static final String URL = "jdbc:mysql://localhost:3306/DbDionisio";
+    private static final String URL = "jdbc:mysql://localhost:3306/DbDio";
     private Connection CN;
     
     public ClsConexion(){

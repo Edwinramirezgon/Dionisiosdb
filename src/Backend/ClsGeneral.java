@@ -10,24 +10,36 @@ package Backend;
 public class ClsGeneral {
 
     private int lista;
- private String Dni;
+    private String Dni;
+    private String Nit;
+    private String Empresa;
+    private String Dias;
     private String Nombre;
     private String apellido;
     private String correo;
     private String direccion;
     private String telefono;
     private String fecha;
+    private int CantidadDes;
+    private int CantidadPor;
+
 
     public ClsGeneral() {
-        Dni ="";
-        lista=0;
-        Nombre="";
-        apellido="";
-        correo="";
-        direccion="";
-        telefono="";
-        fecha="";
+        Dni = "";
+        Nit = "";
+        Empresa = "";
+        Dias = "";
+        lista = 0;
+        Nombre = "";
+        apellido = "";
+        correo = "";
+        direccion = "";
+        telefono = "";
+        fecha = "";
+        CantidadDes=0;
+        CantidadPor=0;
     }
+    //Constructor clientes
 
     public ClsGeneral(int lista, String Dni, String Nombre, String apellido, String correo, String direccion, String telefono, String fecha) {
         this.lista = lista;
@@ -39,9 +51,18 @@ public class ClsGeneral {
         this.telefono = telefono;
         this.fecha = fecha;
     }
-
     
-    //Constructor clientes
+    //Constructor Proveedores
+
+    public ClsGeneral(int lista, String Nit, String Empresa, String telefono, String Dias,  int CantidadDes, int CantidadPor) {
+        this.lista = lista;
+        this.Nit = Nit;
+        this.Empresa = Empresa;
+        this.Dias = Dias;
+        this.telefono = telefono;
+        this.CantidadDes = CantidadDes;
+        this.CantidadPor = CantidadPor;
+    }
 
     public int getLista() {
         return lista;
@@ -57,6 +78,30 @@ public class ClsGeneral {
 
     public void setDni(String Dni) {
         this.Dni = Dni;
+    }
+
+    public String getNit() {
+        return Nit;
+    }
+
+    public void setNit(String Nit) {
+        this.Nit = Nit;
+    }
+
+    public String getEmpresa() {
+        return Empresa;
+    }
+
+    public void setEmpresa(String Empresa) {
+        this.Empresa = Empresa;
+    }
+
+    public String getDias() {
+        return Dias;
+    }
+
+    public void setDias(String Dias) {
+        this.Dias = Dias;
     }
 
     public String getNombre() {
@@ -106,6 +151,24 @@ public class ClsGeneral {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public int getCantidadDes() {
+        return CantidadDes;
+    }
+
+    public void setCantidadDes(int CantidadDes) {
+        this.CantidadDes = CantidadDes;
+    }
+
+    public int getCantidadPor() {
+        return CantidadPor;
+    }
+
+    public void setCantidadPor(int CantidadPor) {
+        this.CantidadPor = CantidadPor;
+    }
+
+    
     
     
 }

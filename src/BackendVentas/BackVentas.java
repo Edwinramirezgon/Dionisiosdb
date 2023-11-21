@@ -89,8 +89,10 @@ public class BackVentas {
         int indice = ltClientes.getSelectedIndex();
 
         String Dni = BuscarCliente(indice);
-        String NombreC = "";
-        String Apellido = "";
+        
+        String NombreC=(String)ltClientes.getSelectedItem();
+       
+ 
 
         if (ltClientes.getSelectedIndex() == 0) {
             Limpiare();
@@ -102,19 +104,13 @@ public class BackVentas {
         } else {
             try {
 
-             String ConsBuscar = "SELECT * FROM TblClients WHERE Dni = '" + Dni + "'";
-                PreparedStatement PS = CN.prepareStatement(ConsBuscar);
-                ResultSet RS = PS.executeQuery();
-                if (RS.next()) {
-                NombreC = RS.getString(2);
-                Apellido = RS.getString(3);
+ 
                
               
                 String ConsInsert2 = "INSERT INTO TblFactV(Dni,"
-                        + " Nombre,"
-                        + " Apellido,"
                         + " Total ) "
-                        + "VALUES ('" + Dni + "','" + NombreC + "','" + Apellido + "','" + Total() + "')";
+                        + "VALUES ('" + Dni + "','" + Total() + "')";
+                 
 
                 PreparedStatement PS4 = CN.prepareStatement(ConsInsert2);
                 PS4.executeUpdate();
@@ -122,10 +118,10 @@ public class BackVentas {
                 String ConsFact = "SELECT MAX(Fact) AS id FROM TblfactV";
                 PreparedStatement PS5 = CN.prepareStatement(ConsFact);
                 ResultSet RS5 = PS5.executeQuery();
-                int fact = 0;
-                while (RS5.next()) {
-                    fact = RS5.getInt(1);
-                }
+                if (RS5.next()) {
+                int fact = RS5.getInt(1);               
+                     
+                
 
                 for (int rowC = 0; rowC < Carrito.getRowCount(); rowC++) {
                     String Codigo = (String) Carrito.getValueAt(rowC, 0);
@@ -153,16 +149,12 @@ public class BackVentas {
                                     + "' WHERE Codigo='" + Codigo + "'";
                             PreparedStatement PS2 = CN.prepareStatement(ConsUpdate);
                             PS2.executeUpdate();
-                            String ConsInser = "INSERT INTO TblVentas(Factura,"
-                                    + " Dni,"
-                                    + " NombreC,"
-                                    + " Apellido,"
-                                    + " Codigo,"
-                                    + " NombreP,"
+                            String ConsInser = "INSERT INTO TblVentas(Factura,"                                    
+                                    + " Codigo,"                                   
                                     + " CantidadP,"
                                     + " ValorU,"
                                     + "ValorT ) "
-                                    + "VALUES ('" + fact + "','" + Dni + "','" + NombreC + "','" + Apellido + "','" + Codigo + "','" + Nombre + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
+                                    + "VALUES ('" + fact + "','" + Codigo + "','" + Cantidad + "','" + ValorU + "','" + ValorT + "')";
 
                             PreparedStatement PS3 = CN.prepareStatement(ConsInser);
                             PS3.executeUpdate();
@@ -175,7 +167,7 @@ public class BackVentas {
                 JOptionPane.showMessageDialog(null, "Error al listar los datos: " + e.getMessage(), "¡Error!", JOptionPane.ERROR_MESSAGE);
             }
 
-            JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC + " " +Apellido+" CON DNI " + Dni +" DEBE PAGAR UN TOTAL DE " + Total());
+            JOptionPane.showMessageDialog(null, "El CLIENTE " + NombreC +" CON DNI " + Dni +" DEBE PAGAR UN TOTAL DE " + Total());
 
             Limpiar();
             ListarTablaP();

@@ -87,13 +87,13 @@ public class BackFacturasVenta {
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblFactV";
+            String ConsLista = "SELECT * FROM `TblVentas` INNER JOIN TblFactV ON TblVentas.Factura=TblFactV.Fact INNER JOIN TblClients ON TblClients.Dni=TblFactV.Dni";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
 
             // Recorer los resultados y cargalos a una lista
             while (RS.next()) {
-                Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
+                Object[] Lista = {RS.getInt("TblFactV.Fact"), RS.getString("TblFactV.Dni"), RS.getString("TblClients.Nombre"), RS.getString("TblClients.Apellido"), RS.getDouble("TblFactV.Total"), RS.getDate("TblFactV.Fecha")};
                 modelo.addRow(Lista);
             }
             tbListProducts.setModel(modelo);
@@ -117,17 +117,17 @@ public class BackFacturasVenta {
         modelo.addColumn("CANTIDAD");
         modelo.addColumn("VALOR UNITARIO");
         modelo.addColumn("VALOR TOTAL");
-        modelo.addColumn("FECHA");
+      
 
         // Cargado de datos a la tabla
         try {
             // Comunicación con la base de datos 
-            String ConsLista = "SELECT * FROM tblVentas WHERE Factura = '" + fact + "'";
+            String ConsLista = "SELECT * FROM tblVentas INNER JOIN TblProducts ON TblVentas.Codigo=TblProducts.Codigo  WHERE TblVentas.Factura = '" + fact + "'";
             PreparedStatement PS = CN.prepareStatement(ConsLista);
             ResultSet RS = PS.executeQuery();
             if (RS.next()) {
                 do {
-                    Object[] Lista = {RS.getString(5), RS.getString(6), RS.getInt(7), RS.getDouble(8), RS.getDouble(9), RS.getDate(10)};
+                    Object[] Lista = {RS.getString("TblProducts.Codigo"), RS.getString("TblProducts.Nombre"), RS.getInt("TblVentas.CantidadP"), RS.getDouble("TblVentas.ValorU"), RS.getDouble("TblVentas.ValorT")};
                     modelo.addRow(Lista);
                 } while (RS.next());
                 tbListCar.setModel(modelo);
@@ -160,12 +160,12 @@ public class BackFacturasVenta {
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Dni LIKE'%" + Dni + "%'";
+                String ConsLista = "SELECT * FROM `TblVentas` INNER JOIN TblFactV ON TblVentas.Factura=TblFactV.Fact INNER JOIN TblClients ON TblClients.Dni=TblFactV.Dni WHERE TblFactV.Dni LIKE'%" + Dni + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                       Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
+                       Object[] Lista = {RS.getInt("TblFactV.Fact"), RS.getString("TblFactV.Dni"), RS.getString("TblClients.Nombre"), RS.getString("TblClients.Apellido"), RS.getDouble("TblFactV.Total"), RS.getDate("TblFactV.Fecha")};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -230,12 +230,12 @@ public class BackFacturasVenta {
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsLista = "SELECT * FROM `TblVentas` INNER JOIN TblFactV ON TblVentas.Factura=TblFactV.Fact INNER JOIN TblClients ON TblClients.Dni=TblFactV.Dni TblClients.Nombre LIKE'%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     do {
-                        Object[] Lista = {RS.getInt(1), RS.getString(2), RS.getString(3), RS.getString(4), RS.getDouble(5), RS.getDate(6)};
+                        Object[] Lista = {RS.getInt("TblFactV.Fact"), RS.getString("TblFactV.Dni"), RS.getString("TblClients.Nombre"), RS.getString("TblClients.Apellido"), RS.getDouble("TblFactV.Total"), RS.getDate("TblFactV.Fecha")};
                         modelo.addRow(Lista);
                     } while (RS.next());
                     tbListProducts.setModel(modelo);
@@ -274,7 +274,7 @@ public class BackFacturasVenta {
                 modelo.addColumn("VALOR TOTAL");
                 modelo.addColumn("FECHA");
 
-                String ConsLista = "SELECT * FROM tblFactV WHERE Fecha LIKE'%" + Fecha + "%'";
+                String ConsLista = "SELECT * FROM `TblVentas` INNER JOIN TblFactV ON TblVentas.Factura=TblFactV.Fact INNER JOIN TblClients ON TblClients.Dni=TblFactV.Dni TblFactV.Fecha LIKE'%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsLista);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {

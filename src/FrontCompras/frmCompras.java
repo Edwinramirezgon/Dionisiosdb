@@ -507,7 +507,7 @@ public class frmCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoKeyReleased
 
     private void ltClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ltClientesActionPerformed
-        
+         ObjCompras.LlenarNit();
     }//GEN-LAST:event_ltClientesActionPerformed
 
     private void txtNitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyReleased

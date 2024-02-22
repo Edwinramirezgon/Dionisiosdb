@@ -1,7 +1,7 @@
 package BackendCliente;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -219,7 +219,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Nombre LIKE '%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -258,7 +258,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Apellido LIKE'%" + Apellido + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Apellido LIKE '%" + Apellido + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -297,7 +297,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Correo LIKE'%" + Correo + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Correo LIKE '%" + Correo + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -336,7 +336,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Direccion LIKE'%" + Direccion + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Direccion LIKE '%" + Direccion + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -376,7 +376,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Fecha LIKE'%" + Fecha + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Fecha LIKE '%" + Fecha + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -418,7 +418,7 @@ public class BackClienteCajero {
                 modelo.addColumn("TELEFONO");
                 modelo.addColumn("FECHA DE NACIMIENTO");
 
-                String ConsBuscar = "SELECT * FROM TblClients WHERE Telefono LIKE'%" + Telefono + "%'";
+                String ConsBuscar = "SELECT * FROM TblClients WHERE Telefono LIKE '%" + Telefono + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {

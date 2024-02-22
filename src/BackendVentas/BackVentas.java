@@ -1,7 +1,7 @@
 package BackendVentas;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -72,6 +72,7 @@ public class BackVentas {
             for (int row = 0; row < Carrito.getRowCount(); row++) {
 
                 total += Double.parseDouble(String.valueOf(this.Carrito.getValueAt(row, 4)));
+                System.out.println(total);
 
             }
 
@@ -395,7 +396,7 @@ public class BackVentas {
                 modelo.addColumn("VALOR DE VENTA");
                 modelo.addColumn("VALOR CON DESCUENTO");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE '%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -436,7 +437,7 @@ public class BackVentas {
                 modelo.addColumn("VALOR DE VENTA");
                 modelo.addColumn("VALOR CON DESCUENTO");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo LIKE'%" + Codigo + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo LIKE '%" + Codigo + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {

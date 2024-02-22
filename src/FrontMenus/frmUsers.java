@@ -1,7 +1,7 @@
 package FrontMenus;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -316,7 +316,7 @@ public class frmUsers extends javax.swing.JFrame {
             lblErrorRol.setVisible(true);
         } else {
             try {
-                String ValUser = "SELECT * FROM TblUsers WHERE User='" + User + "'";
+                String ValUser = "SELECT * FROM TblUsers WHERE Useer='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ValUser);
                 ResultSet RS = PS.executeQuery();
                 if (!RS.next()) {
@@ -350,11 +350,11 @@ public class frmUsers extends javax.swing.JFrame {
 
         if (!User.equalsIgnoreCase("")) {
             try {
-                String ConsBuscar = "SELECT * FROM tblUsers WHERE User='" + User + "'";
+                String ConsBuscar = "SELECT * FROM tblUsers WHERE Useer='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
-                    String ConsEliminar = "DELETE FROM tblUsers WHERE User='" + User + "'";
+                    String ConsEliminar = "DELETE FROM tblUsers WHERE Useer='" + User + "'";
                     PreparedStatement PS1 = CN.prepareStatement(ConsEliminar);
                     PS1.executeUpdate();
                     Limpiar();
@@ -404,13 +404,13 @@ public class frmUsers extends javax.swing.JFrame {
             lblErrorRol.setVisible(true);
         } else {
             try {
-                String ValUser = "SELECT * FROM tblUsers WHERE User='" + User + "'";
+                String ValUser = "SELECT * FROM tblUsers WHERE Useer='" + User + "'";
                 PreparedStatement PS = CN.prepareStatement(ValUser);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
                     JOptionPane.showMessageDialog(rootPane, "¡Error! el usuario ya existe en la BD");
                 } else {
-                    String ConsInser = "INSERT INTO tblUsers(User,"
+                    String ConsInser = "INSERT INTO tblUsers(Useer,"
                             + " Pass, Rol) "
                             + "VALUES ('" + User + "','" + Pass + "','" + Rol + "')";
                     PreparedStatement PS1 = CN.prepareStatement(ConsInser);

@@ -1,7 +1,7 @@
 package BackendProveedores;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -296,7 +296,7 @@ public class BackProveedorAdmin {
                 modelo.addColumn("Cantidad Descuento");
                 modelo.addColumn("Porcentaje Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE Nit LIKE'%" + Nit + "%'";
+                String ConsBuscar = "SELECT * FROM TblProv WHERE Nit LIKE '%" + Nit + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -333,7 +333,7 @@ public class BackProveedorAdmin {
                 modelo.addColumn("Cantidad Descuento");
                 modelo.addColumn("Porcentaje Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE Telefono LIKE'%" + Telefono + "%'";
+                String ConsBuscar = "SELECT * FROM TblProv WHERE Telefono LIKE '%" + Telefono + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -369,7 +369,7 @@ public class BackProveedorAdmin {
                 modelo.addColumn("Cantidad Descuento");
                 modelo.addColumn("Porcentaje Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE Empresa LIKE'%" + Empresa + "%'";
+                String ConsBuscar = "SELECT * FROM TblProv WHERE Empresa LIKE '%" + Empresa + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -410,7 +410,7 @@ public class BackProveedorAdmin {
                 modelo.addColumn("Cantidad Descuento");
                 modelo.addColumn("Porcentaje Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE CantiD LIKE'%" + CantiD + "%'";
+                String ConsBuscar = "SELECT * FROM TblProv WHERE CantiD LIKE '%" + CantiD + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -450,7 +450,7 @@ public class BackProveedorAdmin {
                 modelo.addColumn("Cantidad Descuento");
                 modelo.addColumn("Porcentaje Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProv WHERE PorceD LIKE'%" + PorceD + "%'";
+                String ConsBuscar = "SELECT * FROM TblProv WHERE PorceD LIKE '%" + PorceD + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {

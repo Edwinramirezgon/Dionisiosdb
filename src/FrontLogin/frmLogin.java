@@ -1,7 +1,11 @@
 package FrontLogin;
 
+import java.sql.Connection;
+
+
+
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -33,13 +37,13 @@ public class frmLogin extends javax.swing.JFrame {
                 txtPass.setFocusable(true);
             } else {
                 try {
-                    PreparedStatement PS = CN.prepareStatement("SELECT User, Pass, Rol " + "FROM TblUsers " + "WHERE User='" + User + "' AND pass='" + Pass + "'");
+                    PreparedStatement PS = CN.prepareStatement("SELECT Useer, Pass, Rol " + "FROM TblUsers " + "WHERE Useer='" + User + "' AND pass='" + Pass + "'");
 
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
                         String TipoRol = RS.getString("Rol");
                         if (TipoRol.equalsIgnoreCase("ADMIN")) {
-                            String ConsInser = "INSERT INTO TblLogin(User,"
+                            String ConsInser = "INSERT INTO TblLogin(Useer,"
                                     + " Rol) "
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);
@@ -50,7 +54,7 @@ public class frmLogin extends javax.swing.JFrame {
                             dispose();
 
                         } else if (TipoRol.equalsIgnoreCase("CAJERO")) {
-                            String ConsInser = "INSERT INTO TblLogin(User,"
+                            String ConsInser = "INSERT INTO TblLogin(Useer,"
                                     + " Rol) "
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);
@@ -61,7 +65,7 @@ public class frmLogin extends javax.swing.JFrame {
                             dispose();
 
                         } else if (TipoRol.equalsIgnoreCase("MENSAJERO")) {
-                            String ConsInser = "INSERT INTO TblLogin(User,"
+                            String ConsInser = "INSERT INTO TblLogin(Useer,"
                                     + " Rol) "
                                     + "VALUES ('" + User + "','" + TipoRol + "')";
                             PreparedStatement PS1 = CN.prepareStatement(ConsInser);

@@ -1,7 +1,7 @@
 package BackendCompras;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -399,7 +399,7 @@ int indice = ltClientes.getSelectedIndex();
                 modelo.addColumn("VALOR DE VENTA");
                 modelo.addColumn("VALOR CON DESCUENTO");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE '%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -440,7 +440,7 @@ int indice = ltClientes.getSelectedIndex();
                 modelo.addColumn("VALOR DE VENTA");
                 modelo.addColumn("VALOR CON DESCUENTO");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo LIKE'%" + Codigo + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Codigo LIKE '%" + Codigo + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {

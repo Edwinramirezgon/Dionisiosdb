@@ -1,7 +1,7 @@
 package BackendProductos;
 
 import Conexion.ClsConexion;
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -339,7 +339,7 @@ public class BackProductosAdmin {
                 modelo.addColumn("Valor De Venta");
                 modelo.addColumn("Valor Con Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Apodo LIKE'%" + Apodo + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Apodo LIKE '%" + Apodo + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -378,7 +378,7 @@ public class BackProductosAdmin {
                 modelo.addColumn("Valor De Venta");
                 modelo.addColumn("Valor Con Descuento");
 
-                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE'%" + Nombre + "%'";
+                String ConsBuscar = "SELECT * FROM TblProducts WHERE Nombre LIKE '%" + Nombre + "%'";
                 PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                 ResultSet RS = PS.executeQuery();
                 if (RS.next()) {
@@ -421,7 +421,7 @@ public class BackProductosAdmin {
                     modelo.addColumn("Valor De Venta");
                     modelo.addColumn("Valor Con Descuento");
 
-                    String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadP LIKE'%" + CantidadP + "%'";
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadP LIKE '%" + CantidadP + "%'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
@@ -487,7 +487,7 @@ public class BackProductosAdmin {
                     modelo.addColumn("Valor De Venta");
                     modelo.addColumn("Valor Con Descuento");
 
-                    String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadV LIKE'%" + CantidadV + "%'";
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE CantidadV LIKE '%" + CantidadV + "%'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
@@ -533,7 +533,7 @@ public class BackProductosAdmin {
                     modelo.addColumn("Valor De Venta");
                     modelo.addColumn("Valor Con Descuento");
 
-                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorC LIKE'%" + ValorC + "%'";
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorC LIKE '%" + ValorC + "%'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
@@ -582,7 +582,7 @@ public class BackProductosAdmin {
                     modelo.addColumn("Valor De Venta");
                     modelo.addColumn("Valor Con Descuento");
 
-                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorV LIKE'%" + ValorV + "%'";
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorV LIKE '%" + ValorV + "%'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {
@@ -627,7 +627,7 @@ public class BackProductosAdmin {
                     modelo.addColumn("Valor De Venta");
                     modelo.addColumn("Valor Con Descuento");
 
-                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorD LIKE'%" + ValorD + "%'";
+                    String ConsBuscar = "SELECT * FROM TblProducts WHERE ValorD LIKE '%" + ValorD + "%'";
                     PreparedStatement PS = CN.prepareStatement(ConsBuscar);
                     ResultSet RS = PS.executeQuery();
                     if (RS.next()) {

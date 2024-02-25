@@ -5,6 +5,10 @@ package Backend;
 public class createbd {
     /*
     CREATE DATABASE DbDio
+    GO
+    
+    USE DbDio
+    GO
     
     CREATE TABLE [dbo].[TblClients] (
     [Dni]       VARCHAR (50) PRIMARY KEY,
@@ -16,6 +20,7 @@ public class createbd {
     [Fecha]     VARCHAR (50) DEFAULT (NULL) NULL,
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblCompras] (
     [Factura]  INT  PRIMARY KEY,
@@ -25,6 +30,7 @@ CREATE TABLE [dbo].[TblCompras] (
     [ValorT]   FLOAT (53)   NOT NULL,
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblFactC] (
     [Fact]    INT    IDENTITY (1, 1) PRIMARY KEY,
@@ -34,6 +40,7 @@ CREATE TABLE [dbo].[TblFactC] (
     [Fecha]   DATETIME     DEFAULT (getdate()) NULL
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblFactV] (
     [Fact]    INT          IDENTITY (1, 1)PRIMARY KEY ,
@@ -42,6 +49,7 @@ CREATE TABLE [dbo].[TblFactV] (
     [Fecha]  DATETIME      DEFAULT (getdate()) NULL
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblLogin] (
     [Login] INT          IDENTITY (1, 1) PRIMARY KEY ,
@@ -51,6 +59,7 @@ CREATE TABLE [dbo].[TblLogin] (
 
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblProducts] (
     [Codigo]    VARCHAR (50) PRIMARY KEY,
@@ -63,6 +72,7 @@ CREATE TABLE [dbo].[TblProducts] (
     [ValorD]    FLOAT (53)   DEFAULT (NULL) NULL
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblProv] (
     [Nit]      VARCHAR (50)  PRIMARY KEY,
@@ -73,20 +83,23 @@ CREATE TABLE [dbo].[TblProv] (
     [PorceD]   INT           DEFAULT (NULL) NULL
 
 );
+    GO
 
 CREATE TABLE [dbo].[TblUsers] (
-    [Useer] VARCHAR (30) NOT NULL,
+    [Useer] VARCHAR (30) PRIMARY KEY,
     [Pass]  VARCHAR (30) NOT NULL,
     [Rol]   VARCHAR (30) NOT NULL
 );
+    GO
 
 CREATE TABLE [dbo].[TblVentas] (
-    [Factura]   VARCHAR (50) DEFAULT (NULL) NULL,
+    [Factura]   VARCHAR (50) PRIMARY KEY,
     [Codigo]    VARCHAR (50) DEFAULT (NULL) NULL,
     [CantidadP] INT          DEFAULT (NULL) NULL,
     [ValorU]    FLOAT (53)   DEFAULT (NULL) NULL,
     [ValorT]    FLOAT (53)   DEFAULT (NULL) NULL,
 );
+    GO
 
 INSERT INTO TblUsers (Useer, Pass, Rol) VALUES
 ('ADMIN', 'TRABA-JO', 'ADMIN'),
